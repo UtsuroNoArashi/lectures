@@ -2,7 +2,7 @@
 \begin{document}
     This section will focus on the analysis of algorithms in terms of complexity.
     To be more precise, even though we should also focus on the space complexity,
-    the following discussion will just refer to the time one.
+    the following discussion will just cover the time complexity.
     Also, we will make a focus on the \emph{amortized time complexity}.
 
     To start, what do we mean by time complexity? 
@@ -16,28 +16,14 @@
         \item \emph{the worst case:} the time required by the worst possible input configuration.
     \end{enumerate} 
     \begin{remark*}
-        From now on we will refer to each cases using the associated notation.
+        From now on we will refer to each case using the associated notation.
         Briefly, we will use \(\Omega\), \(\Theta\), \(\mathcal{O}\) to refer to the 
-        best, average and worst case respectively.
+        best, average and worst case respectively\footnotemark[1].
     \end{remark*}
-    \begin{example*}
-        As an example, let's consider the following code.
-        \begin{lstlisting}[language=PSEUDO]
-               BinarySearch(array, target):
-                low = 0
-                high = length of array - 1
 
-                while low <= high:
-                    mid = (low + high) / 2
+    \subsection{Amortized analysis}
+    \subfile{../sub/Amortized analysis.tex}
 
-                    if array[mid] == target:
-                        return mid   // Target found, return the index
-                    else if array[mid] < target:
-                        low = mid + 1  // Target is on the right half, adjust low
-                    else:
-                        high = mid - 1  // Target is on the left half, adjust high
-
-                return -1  // Target not found, return -1
-        \end{lstlisting}
-    \end{example*}
+    \footnotetext[1]{We assume the reader knows what \(\OmegaOf{f(x)}\),
+    \(\ThetaOf{f(x)} \text{ and } \BigoOf{f(x)}\) represents.}
 \end{document}
