@@ -1,0 +1,22 @@
+\documentclass{subfiles}
+\begin{document}
+    As the name suggests, a binary search tree is a search tree organized as a binary tree.
+    As an example, let's consider the binary tree shown in \emph{Figure \ref{Fig:2.a}}
+    whose representation as binary search tree is shown in \emph{Figure \ref{Fig:2.b}}.
+    \subfile{../../figures/1 - Binary search tree.tex}
+    The latter, in addition to the \emph{key} field has also three additional fields
+    used to indicate the parent node, the left and right subtree roots.
+
+    \begin{remark*}
+        Given \(T\) a binary tree, we call it binary search tree if the following holds:
+        for every node \(x\) in \(T\), 
+        if \(y\) is a node in the left subtree of \(x\), then \(y.key \le x.key\),
+        if \(y\) is a node in the right subtree of \(x\), then \(y.key \ge x.key\).
+    \end{remark*}
+
+    The above remark tells us that, if visited in order, 
+    the elements of the tree appear sorted.
+
+    \subsubsection{Red black trees}
+    \subfile{../subsub/RB trees.tex}
+\end{document}

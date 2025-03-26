@@ -1,0 +1,31 @@
+\documentclass{subfiles}
+\begin{document}
+    Until now we have focus our attention to the single operation done by the algorithm;
+    let's now suppose to have some data structure, and to operate on its data. 
+    More precisely we'll considere a sequece \(S\) of operation done onto such structure.
+
+    Just as a reference let's consider the following:
+    \begin{figure}[!hb]
+        \centering
+        \begin{subfigure}{0.55\textwidth}
+            \begin{lstlisting}[language=PSEUDO]
+                procedure increaseCounter(array v, int n)
+                    for i = 0 to n - 1 do
+                        v[i] = not v[i]
+                        if ( v[i] == 1 ) then break 
+            \end{lstlisting}
+        \end{subfigure}
+        \caption{Algorithm for a \emph{n} bit counter.}
+    \end{figure}
+    Let's assume to run such algorithm \emph{n} times: one would expect that \(\BigoOf{n^{2}}\) is required in the worst case, 
+    but in reality the time required is just \(\BigoOf{n}\) due to the way data may be arranged.
+    \begin{definition*}
+        Let \(T(n ,k)\) be the time spent in the worst case to compute the \(k\)
+        operations, then 
+        \[
+            T_{a}(n) = \frac{T(n, k)}{k}
+        \]
+        represents the amortized time of the algorithm.
+    \end{definition*}
+    \clearpage
+\end{document}
