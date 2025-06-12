@@ -1,0 +1,46 @@
+\documentclass{subfiles}
+\begin{document}
+
+        Even though we could define the entropy using a more general approach,
+        we now proceed to define it axiomatically.
+
+    Let \(H(S) = H_{n}(p_{1}, \ldots, p_{n})\) be a mesure of entropy, then: 
+    \begin{enumerate}
+        \item it must be a continuos in the \(p_{i}\) in the range \([0, 1]\)
+        \item \(H_{2}(\tfrac{1}{2}, \tfrac{1}{2}) = 1\)
+        \item any permutation of the \(p_{i}\) does not change the value of \(H_{n}\)
+        \item if \(A(n) = H_{n}(\tfrac{1}{n}, \ldots, \tfrac{1}{n})\),
+            then \(H_{n}\) is monotonically increasing
+        \item if any choice can be broke down into \(K\) consecutive ones,
+            then the value of \(H_{n}\) must be the averaged sum of the new H.
+            In symbols
+            \[\begin{aligned}
+                H_{n}(p_{1}, \ldots, p_{n}) = &
+                    H_{n - k + 1}(p_{1} + \ldots + p_{k}, p_{k + 1}, \ldots, p_{n}) \\ + &  
+                    (p_{1} + \ldots +  p_{k})H_{k}\left\lparen 
+                        \frac{p_{1}}{p_{1} + \ldots + p_{k}},
+                        \ldots,
+                        \frac{p_{k}}{p_{1} + \ldots + p_{k}}
+                        \right\rparen
+            \end{aligned}\]
+    \end{enumerate}
+
+    \begin{theorem*}
+        The only function \(H\) that satisfies the above axioms,
+        has the form of \emph{Equation \eqref{Eq:1}}.
+    \end{theorem*}
+    \begin{proof*}
+        Let's observe that: 
+        \begin{enumerate}
+            \item From the 5th axiom we can derive that \(A(nm) = A(n) A(m)\)
+            \item From its definition \(A(n^{k}) = kA(n)\), 
+                for any positive \(n\) and \(k\)
+            \item \(A(n) = K \ln n\) for any value of \(n\), 
+                with \(K\) a positive constant
+            \item \(H_{p, 1 - p} = -C[p \ln p + (1- p) \ln (1 - p)]\), 
+                for \(p \in [0, 1]\)
+            \item \(H_{n}(p_{1}, \ldots, p_{n}) = 
+                K \sum_{i = 1}^{n} p_{i} \ln (\tfrac{1}{p_{i}})\)
+        \end{enumerate}
+    \end{proof*}
+\end{document}

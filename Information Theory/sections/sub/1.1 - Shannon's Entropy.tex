@@ -1,0 +1,53 @@
+\documentclass{subfiles}
+\begin{document}
+    When talking about information we all have a general notion of what it represents,
+        but can we define it formally? And also, is there a way to measure information?
+
+    The first to do so was \emph{Claude Shannon}, 
+        considered by many the father of modern Information theory.
+    In is paper [\note[TODO]{Add reference to the paper.}],
+    Shannon analizes various comunication systems,
+    from the discrete noiceless one to the continous noisy one.
+    A general structure of these systems is shown in \emph{Figure \ref{Fig:1}}
+    \subfile{../../extra/TikZ/Figure 1 - Source structure.tex}
+
+    \begin{itemize}
+        \item The \emph{Source} or, more precisely, 
+            the \emph{Information Source} referes to some entity
+            (a human, a computer, etc) that produces messages.
+
+        \item The \emph{Encoder} encodes the messages coming from the source,
+            and transmits them trough the channel.
+
+        \item The \emph{channel} is the physical mean trough which the messages
+            are transmitted.
+
+        \item The \emph{Decoder} has the opposite role of the \emph{Encoder}.
+        \item The \emph{Destination} is the entity to which the messages are meant for.
+    \end{itemize}
+
+    \begin{remark*}
+        What follows in this section, and the those following,
+        refers just to the discrete noiceless case.
+    \end{remark*}
+
+    Let \(S\) be a source of information. 
+    Let \(\Sigma\) be the alphabet of symbols used by the source,
+    and for each symbols let \(p_{i}\) be \(\Pr(S = \sigma_{i})\).
+    We define the entropy of \(S\) as follow:
+    \begin{equation}\label{Eq:1}
+        H = -K \sum_{i = 1}^{n}{p_{i} \ln p_{i}}
+    \end{equation}
+
+    The above definition of \emph{entropy} comes out of it's axiomatic definition,
+    which will be proved (more like a sketch of the proof) in the following.
+
+    From \emph{Equation \eqref{Eq:1}} it's easy to understand that,
+        the entropy measures the average information in each symbols of the source.
+        Thus, we can conclude that information is just the uncertainty lost 
+        when the outcome of the event is know.
+    \note{In this context, by event we mean the next symbol transmitted/recived.}
+    
+    \subsubsection{Entropy: an axiomatic definition.}
+    \subfile{../subsub/1.1.1 - Entropy axiomatically defined.tex}
+\end{document}

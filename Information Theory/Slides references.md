@@ -6,7 +6,7 @@
     Specifically, the parts regarding the entropy, it's derivation and properties.
 - Concept of self-information
 - Axiomatic definition of entropy and proof of the 
-    **Thm:** `H = -K\Sum_{i = 1}^{n}{p_{i} \ln{p_{i}}}`
+    **Thm:** `H = -K\sum_{i = 1}^{n}{p_{i} \ln{p_{i}}}`
 
 # PDF 2 - Kraft inequality
 - The inequality itself and it's meaning 
@@ -18,3 +18,13 @@
 - Concepts of UDC and IDC 
 - Sardinas-Patterson algorithm
 - Concept of prefix codes
+
+# PDF 3 - Average code length and optimal codes
+- Concept of ACL 
+    - Shannon's theorem and proof 
+- Optimal codes
+    - Non optimality of Shannon's code 
+    - Shannon-Fano's code
+
+# PDF 3 - Kraft-McMillan inequality
+- Remarks
