@@ -1,46 +1,115 @@
 \documentclass{subfiles}
 \begin{document}
+    In \emph{Section \ref{Sec:1.1}} we said that the only form \(H\) can 
+    assume is the one in \emph{Equation \eqref{Eq:1}}. 
+    The reason behind this, though one may use different approaches 
+        (eg. the connection with the entropy in quantum mechanics), 
+        is the way entropy is defined axiomatically. 
 
-        Even though we could define the entropy using a more general approach,
-        we now proceed to define it axiomatically.
+    \begin{axiom*}
+        Let \(H\) be a measure of uncertainty of a source \(S\), 
+            then \(H\) must satisfy the following properties.
+        \begin{enumerate}
+            \item \(H\) must be a continuos function of the probabilities.
+                Meaning that if \(H(S) = \Entropy{p_{1}, \ldots, p_{n}}\), 
+                then \(H\) is continuos in [0, 1].
 
-    Let \(H(S) = H_{n}(p_{1}, \ldots, p_{n})\) be a mesure of entropy, then: 
-    \begin{enumerate}
-        \item it must be a continuos in the \(p_{i}\) in the range \([0, 1]\)
-        \item \(H_{2}(\tfrac{1}{2}, \tfrac{1}{2}) = 1\)
-        \item any permutation of the \(p_{i}\) does not change the value of \(H_{n}\)
-        \item if \(A(n) = H_{n}(\tfrac{1}{n}, \ldots, \tfrac{1}{n})\),
-            then \(H_{n}\) is monotonically increasing
-        \item if any choice can be broke down into \(K\) consecutive ones,
-            then the value of \(H_{n}\) must be the averaged sum of the new H.
-            In symbols
-            \[\begin{aligned}
-                H_{n}(p_{1}, \ldots, p_{n}) = &
-                    H_{n - k + 1}(p_{1} + \ldots + p_{k}, p_{k + 1}, \ldots, p_{n}) \\ + &  
-                    (p_{1} + \ldots +  p_{k})H_{k}\left\lparen 
-                        \frac{p_{1}}{p_{1} + \ldots + p_{k}},
-                        \ldots,
-                        \frac{p_{k}}{p_{1} + \ldots + p_{k}}
-                        \right\rparen
-            \end{aligned}\]
-    \end{enumerate}
+            \item \(\Entropy[2]{\tfrac{1}{2}, \tfrac{1}{2}} = 1\).
 
-    \begin{theorem*}
+            \item If \(\tau\) is a permutation of the probabilities, 
+                then \(\Entropy{\tau} = \Entropy[n]{p_{1}, \ldots, p_{n}}\). 
+                Meaning that, \(H\) must not care of the order of the probabilities.
+
+            \item If \(A(n) = \Entropy[n]{\tfrac{1}{n}, \ldots, \tfrac{1}{n}}\),
+                then \(H\) is monotonically increasing.
+                Equally probable events imply greater uncertainty.
+
+            \item If a choice can be divided into \(k\) consecutive ones,
+                then the original value of \(H\) must be the weighted sum of the new \(H\).
+                Meaning that
+                \[\begin{aligned}
+                    \Entropy[n]{p_{1}, \ldots, p_{n}} & = 
+                        \Entropy[n - k + 1]{
+                            p_{1} + \ldots + p_{k}, p_{k + 1}, \ldots, p_{n}
+                        } \\ 
+                        & + (p_{1} + \ldots + p_{k})
+                            \Entropy[k]{
+                                \frac{p_{1}}{p_{1} + \ldots + p_{k}},
+                                \ldots,
+                                \frac{p_{k}}{p_{1} + \ldots + p_{k}}
+                            }.
+                \end{aligned}\]
+       \end{enumerate}
+    \end{axiom*} 
+
+    \begin{theorem*}[Theorem 2, \cite{ShannonEntropy}]
         The only function \(H\) that satisfies the above axioms,
         has the form of \emph{Equation \eqref{Eq:1}}.
     \end{theorem*}
     \begin{proof*}
-        Let's observe that: 
+        Let's show how \emph{Equation \eqref{Eq:1}} satisfies all the axioms.
         \begin{enumerate}
-            \item From the 5th axiom we can derive that \(A(nm) = A(n) A(m)\)
-            \item From its definition \(A(n^{k}) = kA(n)\), 
-                for any positive \(n\) and \(k\)
-            \item \(A(n) = K \ln n\) for any value of \(n\), 
-                with \(K\) a positive constant
-            \item \(H_{p, 1 - p} = -C[p \ln p + (1- p) \ln (1 - p)]\), 
-                for \(p \in [0, 1]\)
-            \item \(H_{n}(p_{1}, \ldots, p_{n}) = 
-                K \sum_{i = 1}^{n} p_{i} \ln (\tfrac{1}{p_{i}})\)
+            \item From axiom 5 we have \(A(nm) = A(n) + A(m)\).
+                Let's note in fact that: 
+                \[\begin{aligned}
+                    A(nm) & = \Entropy[nm]{\frac{1}{nm}, \ldots, \frac{1}{nm}} \\ 
+                        & = \Entropy[nm - n + 1]{
+                            \frac{1}{m}, \frac{1}{nm}, \ldots, \frac{1}{nm} 
+                        } + \frac{1}{m} \Entropy[n]{
+                            \frac{1}{n}, \ldots, \frac{1}{n}
+                        } \\
+                        & \underbrace{ = \ldots = }_{m \Text{times}} \Entropy[nm -nm + m]{
+                            \frac{1}{m}, \ldots, \frac{1}{m}
+                        } + \Entropy[n]{ \frac{1}{n}, \ldots, \frac{1}{n}} \\ 
+                    & = A(m) + A(n).
+                \end{aligned}\]
+            \item From the previous point, 
+                we also have that \(A(n^{k}) = k A(n)\), for any \(n, k\).
+
+            \item Let us consider some \(r\) big enough such that 
+                \(\exists k : 2^{k} \le n^{r} < 2^{k + 1}\).
+                It follows that 
+                \[
+                    k \log_{b} 2 \le r \log_{b} n < (k + 1) \log_{b} 2.
+                \]
+                Let's divide everything by \(r \log_{b} 2\), we now have 
+                \[
+                    \frac{k}{r} \le \log_{2} n < \frac{k + 1}{r} 
+                        \implies \Abs{\log_{2} n - \frac{k}{r}} < \frac{1}{r}.
+                \]
+                From axiom 4 follows \(A(2^{k}) \le A(n^{r}) < A(n^{k + 1})\),
+                which means that \(k A(2) \le r A(n) < (k + 1)A(2)\).
+                From a similar reasoning as before, we get 
+                \[
+                    \Abs{\frac{A(n)}{A(2)} - \frac{k}{r}} < \frac{1}{r}
+                        \implies A(n) \approx \frac{A(2)}{\log_{b} 2} \log_{b} n
+                \]
+                since \(\nicefrac{A(n)}{A(2)} \approx \log_{b} n\).
+                Thus, \(A(n) = c \log_{b} n\).
+
+            \item Suppose \(p \in \Q \iff p = \tfrac{r}{s}, r \le s\).
+                Then we have 
+                \[\begin{aligned}
+                    A(s) & = \Entropy[s]{\frac{1}{s}, \ldots, \frac{1}{s}} \\ 
+                        & = \Entropy[s - r + 1]{\frac{r}{s}, \frac{1}{s}, \ldots, \frac{1}{s}} 
+                          + \frac{r}{s} \Entropy[r]{\frac{1}{r}, \ldots, \frac{1}{r}} \\ 
+                        & = \ldots = \Entropy[2]{\frac{r}{s}, 1 - \frac{r}{s}}
+                          + \frac{s - r}{s} A(s - r) + \frac{r}{s} A(s).
+                \end{aligned}\]
+                From the previous point, we can conclude that 
+                \[
+                    A(n) = -c \left\lbrack
+                        (1 - p) \log_{b} (1 - p) + p \log_{b} p
+                    \right\rbrack.
+                \]
+                Also, since \(\Q \Text{is dense in } \R\) and \(H\) is continuos,
+                we can extend what above to any \(p \in \R\).
+
+            \item Lastly, \emph{Equation \eqref{Eq:1}} can be easily proved by 
+                induction on \(n\).
+
         \end{enumerate}
     \end{proof*}
+    The proof we provide is berly a sketch.
+    See \cite{ShannonEntropy} (\emph{Appendix 2}) for a detailed proof.
 \end{document}

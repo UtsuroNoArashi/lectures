@@ -1,0 +1,44 @@
+\documentclass{subfiles} \begin{document}
+    Let's now focus our attention onto the source itself.
+    In general, the alphabet these use may not be suitable for transmission,
+        for some reason or another.
+    For this particular reason, a \emph{encoder} is used to convert the source alphabet,
+        to a new one, which is more suitable for transmission.
+    On the recieving side, a \emph{decoder} is used to convert back to the original alphabet.
+    This process is called \emph{source encoding/decoding}.
+
+    Formally, given a source \(S\) defined on some alphabet, 
+        and \(X\) a new alphabet, called \emph{input alphabet}, 
+        we define a function \(C : S \to X\) that maps sequences of symbols of \(S\)
+        to sequences of symbols in \(X\). 
+        A sequence of symbols in \(X\) is called a \emph{codeword}.
+
+    Before we consider specific types of \emph{codes},
+        let us consider the general case. 
+    Let's \(C\) be a generic mapping from a source \(S\) to some new alphabet \(X\).
+    Since we have not imposed any condition on \(C\), 
+        one may define it in such a way that two, or more,
+        source symbols share the same codeword.
+    It easy to observe that, in doing so,
+        the decoded message may not be correct or even unique.
+
+    \begin{example*}
+        Let's consider the code shown below.
+        \subfile{../../extra/TikZ/Example - Non non-singular codes.tex}
+        How would we decode the text 000111? 
+            We have two possibilities: 
+                either as \(s_{1}s_{1}s_{3}s_{2}\) or as \(s_{1}s_{1}s_{3}s_{4}\).
+        As said before, the decoded message might not be unique. 
+        Also, unless the context is given, there's no way to know which one is correct.
+    \end{example*}
+
+    From the above example, we can conclude that a ``good'' code must encode each 
+    source symbols with a unique codeword. 
+    We call such codes \emph{non-singular codes}.
+  
+    \subsubsection{\Gls{ud}.}
+    \subfile{../subsub/1.2.1 - UD codes.tex}
+
+    \subsubsection{Sardinas-Patterson algorithm.}
+    \subfile{../subsub/1.2.2 - Sardina-Patterson.tex}
+\end{document}

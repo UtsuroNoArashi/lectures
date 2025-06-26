@@ -1,0 +1,62 @@
+\documentclass{subfiles}
+\begin{document}
+    The \emph{Sardinas-Patterson} algorithm provides a way to check whether a code \(C\),
+        is \gls{ud} or not. 
+    Conceptually the algorithm, and the theorem from which it derives,
+        are based on the following remark: 
+        consider a string that is the concatenation of codewords.
+        If we try to construct two distinct factorization, 
+        each word in of the factorization is either \textcolor{rpIris}{part of a word in the other factorization,
+        or it starts with a prefix that is suffix of a word in the other factorization}.
+    Hence, a code is non-UD if it happens that a suffix is itself a codeword.
+
+    As stated before the algorithm is based on a theorem, given below.
+    \begin{criterion*}
+        Given \(C\) a code on an alphabet \(\Sigma\), 
+            consider the sets \(S_{0}, S_{1}, \ldots\) such that:
+            \begin{itemize}
+                \item \(S_{0} = C\)
+                \item \(S_{i} = \Set{\omega \in \Sigma^{*}}[
+                    \exists \alpha \in S_{0}, \exists \beta \in S_{i - 1} : 
+                    \alpha = \beta \omega \lor \beta = \alpha \omega
+                ]\)
+            \end{itemize}
+            then necessary and sufficient condition for \(C\) to be \gls{ud} is that,
+            \(\forall n > 0, S_{0} \cap S_{n} = \varnothing\).
+    \end{criterion*}
+    \clearpage
+    Therefore, the algorithm has three halt conditions:
+    \begin{itemize}
+        \item \(\forall i > 0,  S_{0} \cap S_{i} \neq \varnothing\) the the code is not \gls{ud}.
+        \item \(\forall i > 0, S_{i} = \varnothing\) then the code is \gls{ud}.
+        \item \(\forall i, j > 0, S_{i} = S_{j}\) then the code is \gls{ud}.
+    \end{itemize}
+    \begin{example*}
+        Let's consider the following code: \(C = \Set{a, c, ad, abb, bad, deb,bbcde}\).
+        Is it \gls{ud}? Applying Sardinas-Patterson, step by step we get the following:
+        \begin{description}
+            \item [\textbf{Iter 1. }] Let \(\alpha_{0} = ab, \alpha_{1} = abb\) 
+                and \(\beta_{0} = \beta_{1} = a\) then, \(S_{1} = \Set{d, bb}\).
+            \item [\textbf{Iter 2. }] Let \(\alpha_{0} = deb, \alpha_{1} = bbcde\)
+                and \(\beta_{0} = d, \beta_{1} = bb\) then, \(S_{2} = \Set{eb, cde}\).
+            \item [\textbf{Iter 3. }] Let \(\alpha_{0} = c\) and \(\beta = cde\)
+                then, \(S_{3} = \Set{de}\). 
+            \item [\textbf{Iter 4. }] Let \(\alpha_{0} = deb\) and \(\beta = de\)
+                then, \(S_{4} = \Set{b}\). 
+            \item [\textbf{Iter 5. }] Let \(\alpha_{0} = bad\) and \(\beta = b\)
+                then, \(S_{5} = \Set{ad}\). 
+        \end{description}
+        From the above steps (summarised in \emph{Table \ref{Tab:1}}), 
+            follows that the code is not \gls{ud} since \(S_{0} \cap S_{5} =
+            \Set{ab} \ne \varnothing\).
+            \subfile{../../extra/TikZ/Example - Sardinas-Patterson.tex}
+    \end{example*}
+    \begin{exercise}
+        Apply the Sardinas-Patterson algorithm to the following codes:
+        \begin{itemize}
+            \item \(C_{0} = \Set{a, b, cd, abb, abcd }\) 
+            \item \(C_{1} = \Set{0, 01, 100, 11001, 01011}\)
+            \item \(C_{2} = \Set{010, 0001, 0110, 11000, 00011, 00110, 11110, 101011}\)
+        \end{itemize}
+    \end{exercise}
+\end{document}
