@@ -1,0 +1,22 @@
+\documentclass{subfiles}
+\begin{document}
+    We have disscussed what prefix-free codes are, 
+        and what the average code length represents.
+    We now provide a necessary and sufficient condition for the existence of 
+    a prefix code: the \emph{Kraft-McMillan inequality}.
+    \begin{theorem}[Kraft-McMillan]\label{Thm:2}
+        Let us consider a source alphabet \(S = \Set{s_{1}, \ldots, s_{n}}\)
+        and a code alphabet \(X =\Set{x_{1}, \ldots, x_{d}}\).
+        Let \(l_{1}, \ldots, l_{m}\) be a set of lengths.
+        Then necessary and sufficient condition for the existence of a 
+        prefix-free code \(C\) over the alphabet \(X\) with codewords lenghts 
+        \(l_{1}, \ldots, l_{m}\) is that 
+        \[
+            \sum_{i = 1}^{m}{d^{-l_{i}}} \le 1
+        \]
+        with \(d\) size of the code alphabet.
+    \end{theorem}
+    In other terms, if a set of lengths satisfies the inequality then,
+        there exist at least a way to arrange the codewords into a prefix code.
+    A proof of this theorem is beyond the scope of this \underline{\em notes}.
+\end{document}

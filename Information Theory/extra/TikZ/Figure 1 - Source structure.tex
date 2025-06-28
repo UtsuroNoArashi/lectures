@@ -14,8 +14,11 @@
         \node [square, label=above:{Destination}] (Re) at (8, 0) {};
         \node [square, label=below:{Noise Source}] (No) at (4, -2) {};
 
-        \draw (IS) -- (En) -- (Ch) -- (No)
-            (Ch) -- (De) -- (Re);
+        \draw [-Latex] (IS) -- (En);
+        \draw [-Latex] (En) -- (Ch);
+        \draw [-Latex] (No) -- (Ch);
+        \draw [-Latex] (Ch) -- (De);
+        \draw [-Latex] (De) -- (Re);
 
 
         \end{tikzpicture}
