@@ -1,0 +1,26 @@
+\documentclass{subfiles}
+\begin{document}
+    The concept of average code length allows us to define a intresting class of 
+        codes: the \emph{compact} (or optimal) codes.
+        These are \gls{ud} codes that have the lowest \gls{acl}.
+    
+    A first attempt to achive such codes was firstly proposed by Shannon 
+        and \emph{Robert Mario Fano}, who developed the so called Shannon-Fano 
+        encoding (1949).
+
+    \paragraph{Shannon-Fano encoding}
+    We will be considering the binary case. 
+    The encoding itself is very simple: we order the symbols in decreasing order,
+    divide the symbols in two sets such that the sum of probabilities in each set 
+    is almost equal, encode the symbols in the first set with 0 and the other with 1.
+    Lastly, repeat the procedure for each set recursively.
+    \begin{example*}
+        Let's assume the alphabet \(\Set{a, b, c, d, e}\) whose probabilities are
+            \(\Set{\tfrac{1}{2}, \tfrac{1}{4}, \tfrac{1}{8},
+                \tfrac{1}{16}, \tfrac{1}{16}}\). 
+            Applying the steps above we get the following. 
+            \subfile{../../extra/TikZ/Example - SF encoding}
+    \end{example*}
+    One can prove that Shannon-Fano encoding is not optimal.
+    \clearpage
+\end{document}
