@@ -1,0 +1,29 @@
+\documentclass{subfiles}
+\begin{document}
+    The first to solve the problem of creating optimal code was \emph{D.A. Huffman},
+       who in \cite{Huffman} provides a method to create compact codes.
+
+        Before we actually analyze such method, 
+            it's of intrest to point out some properties that optimal codes 
+            must satisfy.
+        Let \(S\) be a source with some probability distribution,
+        let's also assume that \(p_{1} \ge p_{2} \ge \ldots \ge p_{n}\).
+        Let \(C\) be a compact prefix code for \(S\) such that \(c_{i}\) is 
+            the codeword associated to \(p_{i}\). Then:
+        \begin{enumerate}
+            \item To reduce the expected code length, 
+                the shortes codewords are associated to the symbols with the higtest
+                probability. This means that 
+                \[
+                   p_{i} \ge p_{j} \implies \Abs{c_{i}} \le \Abs{c_{j}}
+                \]
+                If this was not the case, 
+                swapping the codewords would result in a code with lower \gls{acl}.
+
+            \item The least probable symbols have codewords with the same length.
+            \item The longest codewords differ only by the last symbol.
+        \end{enumerate}
+
+        \subsection{The algorithm}
+        \subfile{../sub/2.1 - HE the algorithm}
+\end{document}

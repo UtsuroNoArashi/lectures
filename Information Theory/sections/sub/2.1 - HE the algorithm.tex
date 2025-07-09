@@ -1,0 +1,36 @@
+\documentclass{subfiles}
+\begin{document}
+    We treat the binary case; the extension to the general case is immediate.
+    Let 
+    \[
+        S = \begin{pmatrix}
+            s_{1} & s_{2} & \cdots & s_{n} \\ 
+            p_{1} & p_{2} & \cdots & p_{n} 
+        \end{pmatrix}
+    \]
+    be a source, such that the probabilities are sorted non-increasingly.
+    Denote by \(R(S)\) the \emph{reduced soource}, 
+        obtained by replacing the two least common symbols from \(S\),
+        with one whose probabily is the sum of those of the replaced symbols.
+        This means 
+        \[
+            R(S) = \begin{pmatrix}
+                s_{1} & s_{2} & \cdots & (s_{n - 1}, s_{n}) \\ 
+                p_{1} & p_{2} & \cdots & p_{n - 1} + p_{n} \\
+            \end{pmatrix}
+        \]
+    Assume \(C_{R}\) to be a binary prefix code for \(R(S)\),
+        and let \(z\) be the codeword associated to the merged symbols \((s_{n - 1}, s_{n})\).
+    Then, a prefix code \(C\) for \(S\) can be obtained by \(C_{R}\) by assigning 
+        to the i-th symbol of \(S\) the i-th codeword in \(C_{R}\),
+        for \(i \le n - 2\). 
+        The codeword for \(s_{n - 1} \text{ and } s_{n}\) are simply 
+        \(z0 \text{ and } z1\) respectively.
+
+    \clearpage 
+    \subsubsection{The encoding}
+    \subfile{../subsub/2.1.1 - Huffman encoding}
+
+    \subsubsection{The decoding}
+    \subfile{../subsub/2.1.2 - Huffman decoding}
+\end{document}

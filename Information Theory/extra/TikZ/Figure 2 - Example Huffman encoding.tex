@@ -1,0 +1,54 @@
+\documentclass{subfiles}
+\begin{document}
+    \begin{figure}[!hb]
+        \centering
+        \begin{subfigure}{0.45\textwidth}
+            \centering
+            \begin{tikzpicture}[
+                    every node/.style={draw, circle, minimum size=0.1cm},
+                    scale=0.5
+                ]
+                \node [fill=rpGold] (root) at (0, 0) {};
+                \foreach \symb/\pos in {a/-2, c/-1, b/0, d/1, e/2}{
+                    \node (\symb) at (\pos, -4) [label=below:\symb] {};
+                }
+
+                \node [fill=rpIris] (m1) at (1.5, -3) {};
+                \node [fill=rpFoam] (m2) at (1, -2) {};
+                \node [fill=rpPine] (m3) at (0.5, -1) {};
+
+                \draw (a) -- (root) -- (m3);
+                \draw (c) -- (m3) -- (m2);
+                \draw (b) -- (m2) -- (m1);
+                \draw (d) -- (m1) -- (e);
+            \end{tikzpicture}
+            \caption{}
+            \label{Fig:2.a}
+        \end{subfigure}
+        \begin{subfigure}{0.45\textwidth}
+            \centering
+            \begin{tikzpicture}[
+                    every node/.style={draw, circle, minimum size=0.125cm},
+                    scale=0.5
+                ]
+                \node [fill=rpGold] (root) at (0, 0) {};
+                \foreach \symb/\pos in {a/-2, c/-1, b/0, d/1, e/2}{
+                    \node (\symb) at (\pos, -4) [label=below:\symb] {};
+                }
+
+                \node [fill=rpIris] (m1) at (1.5, -3) {};
+                \node [fill=rpFoam] (m2) at (1, -2) {};
+                \node [fill=rpPine] (m3) at (-1, -2) {};
+
+                \draw (m3) -- (root) -- (m2);
+                \draw (a) -- (m3) -- (c);
+                \draw (b) -- (m2) -- (m1);
+                \draw (d) -- (m1) -- (e);
+            \end{tikzpicture}
+            \caption{}
+            \label{Fig:2.b}
+        \end{subfigure}
+        \caption{Huffman trees for the source \(S\).}
+        \label{Fig:2}
+    \end{figure}
+\end{document}
