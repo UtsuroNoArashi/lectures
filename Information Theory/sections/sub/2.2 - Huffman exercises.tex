@@ -1,0 +1,30 @@
+\documentclass{subfiles}
+\begin{document}
+    \begin{exercise}
+        Apply Huffman encoding to the following strings.
+        \begin{itemize}
+            \item \(\omega_{0} = abbabccadeabf\)
+            \item \(\omega_{1} = \textbf{010010001001010}\)
+            \item \(\omega_{2} = baabbbacabbdeffea\)
+        \end{itemize}
+    \end{exercise}
+    \begin{exercise}\label{Exe:1}
+        Determine which of the following is the Huffman tree for the source 
+            \(S = \Set{a, b, c, d, e}\) whose probabilities are,
+        respectively, the following: 
+            \(\Set{\tfrac{1}{4}, 
+                \tfrac{1}{2},
+                \tfrac{1}{16}, 
+                \tfrac{1}{8}, 
+                \tfrac{1}{16}}\).
+        \subfile{../../extra/TikZ/Exercise - Which is Huffman}
+    \end{exercise}
+    \begin{exercise}
+        Using the tree from \emph{Exercise \ref{Exe:1}},
+        decode the following strings: 
+        \begin{itemize}
+            \item \(\omega_{0} = 111011000100010\)
+            \item \(\omega_{1} = 111100110110110011110\) 
+        \end{itemize}
+    \end{exercise}
+\end{document}
