@@ -1,0 +1,64 @@
+\documentclass{subfiles}
+\begin{document}
+    Let \(C\) be the usual Huffman encoding for some source.
+        To obtain the canonical version from it, we need to: 
+        \begin{enumerate}
+            \item Compute the length of the codewords in \(C\),
+                with respect to each symbol in the source alphabet.
+
+            \item Construct the \lstinline{num} array which stores
+                at each entry \lstinline{num[l]},
+
+                how many symbol have length \(l\).
+            \item Construct the \lstinline{symb} array which stores
+                at each entry \lstinline{symb[l]},
+                the symbols having length \(l\).
+
+            \item Construct the \lstinline{fc} array that stores
+                at each entry \lstinline{fc[l]},
+                the first codeword off all symbols having codeword length \(l\).
+                Such construction is done via the following snippet.
+                \note{The snippet shown uses a reverse approach, 
+                which usually produces codewords that differ from those 
+                built via a forward approach.}
+                \subfile{../../extra/TikZ/Example - Canonical Huffman encoding.tex}
+
+            \item Assign consecutive codewords to the symbols in \lstinline{symb[l]}
+                starting from \lstinline{symb[l]}.
+        \end{enumerate}
+    \begin{example*}
+        Let \(C\) be the Huffman code obtained by the tree in \emph{Figure \ref{Fig:2.b}}.
+        \begin{enumerate}
+            \item Let \(l_{i}\) be the length of the i-th codeword,
+                we have: \(l_{0} = l_{1} = l_{2} = 2, l_{3} = l_{4} = 3\).
+
+            \item Computing \lstinline{num} we have:
+                \lstinline{num[1] = 0}, 
+                \lstinline{num[2] = 3} and \lstinline{num[3] = 2}.
+
+            \item Computing \lstinline{symb} we get:
+                \lstinline{symb[1] = null}, 
+                \lstinline{symb[2, 0] = a},
+                \lstinline{symb[2, 1] = c},
+                \lstinline{symb[2, 2] = b},
+                \lstinline{symb[3, 0] = d} and 
+                \lstinline{symb[3, 1] = e}.
+                To ease things out, 
+                    we use a second index to move within a list when needed.
+
+            \item Computing \lstinline{fc} we get:
+                \lstinline{fc[1] = 2} 
+                (this value will be used in the decoding process),
+                \lstinline{fc[2] = 1},
+                \lstinline{fc[3] = 0}.
+
+            \item Let's observe that \lstinline{symb[1] = null}, 
+                    meaning there're no codewords to assign.
+                    Considering \lstinline{symb[2]} we assign \(01\) to \(a\),
+                    \(10\) to \(c\) and \(11\) to \(b\). 
+                    For what regards \lstinline{symb[3]} we have that \(000\) is 
+                    assigned to \(d\) and \(001\) to \(e\).
+        \end{enumerate}
+    \end{example*}
+    We assume a 1-based indexing for the arrays and a 0-based one for the lists.
+\end{document}

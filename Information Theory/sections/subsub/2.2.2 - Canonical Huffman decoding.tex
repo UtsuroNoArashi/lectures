@@ -1,0 +1,11 @@
+\documentclass{subfiles}
+\begin{document}
+    Let's assume \(\omega\) to be a a encoded text via the Canonical Huffman encoding.
+    To decode such text, we simply apply the following procedure.
+    \subfile{../../extra/TikZ/Example - Canonical Huffman decoding}
+    \begin{example*}
+        Let \(\omega = 01 10 000 001 10 11\) be a text encoded using the Canonical Huffman encoding,
+            and let \lstinline{symb} and \lstinline{fc} be those computed in the previous example.
+        Applying the snippet above, one can verify that \(\omega = acdecb\).
+    \end{example*}
+\end{document}

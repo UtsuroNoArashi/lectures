@@ -1,0 +1,31 @@
+\documentclass{subfiles}
+\begin{document}
+    As it was pointed out previously, 
+        the main issue with the classic Huffman approach,
+        is the necessity to scan the text twice,
+        which slows down the encoding.
+    Also, to work properly we need to know the symbols probabilities in advace,
+        which is not always the case.
+    To solve both these issues, a new approach has been developed known as 
+        \emph{Adaptive Huffman}.
+
+    The key point of this new approach is the fact that the tree is built and updated dynamically.
+    Essentially we:
+    \begin{itemize}
+        \item Start with an initially empty tree,
+            or one which only contains a special \textbf{Not Yet Transfered} node.
+        \item For each symbol in the text: 
+            \begin{itemize}
+                \item If the symbol was already encoded, 
+                    endode it with the existing code.
+                \item If it's a new symbol:
+                    encode the \textbf{NYT} node first, 
+                    then encode the symbol itself and add the symbol to the tree as a leaf.
+                \item After encoding a symbol, update the tree:
+                    increment the frequency of the symbol and its ancestors.
+                    Reorganize the tree to mantain the Huffman properties.
+            \end{itemize}
+    \end{itemize}
+
+    One can prove that the adaptive approach has a better locality the the classic one.
+\end{document}
