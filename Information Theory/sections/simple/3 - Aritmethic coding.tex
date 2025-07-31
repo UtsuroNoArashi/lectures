@@ -1,0 +1,35 @@
+\documentclass{subfiles}
+\begin{document}
+    Let us recall that, given \(C\) a code, 
+        \(L_{S}(C)\) represents the average code length of the codewords in \(C\).
+
+    From it, we can define two other important quantities: 
+        the efficiency and the redundancy of the code.
+        Formally, we define the efficiency as 
+        \[
+            \vartheta(C) = \frac{\Entropy[d]{S}}{L_{S}(C)}
+        \]
+        which, from Shannon's theorem, is a value in the range \([0, 1]\).
+        We define the redundancy of the code as 
+        \[
+            \rho(S) = 1 - \vartheta(C)\text{.}
+        \]
+        When considering Huffman, 
+            one can prove that its redundancy approaches 1 when the most 
+            frequent symbol probability approaches 1.
+
+        The question then is: can we do better than Huffman?
+            The answer is yes, but we have to use a completely different approach:
+            instead of assigning a codeword to each symbol, 
+            we assign one to the whole text.
+            The method we are about to present is known as \emph{\gls{ac}}.
+
+        \subsection{The encoding}
+        \subfile{../sub/3.1 - AC encoding}
+
+        \subsection{The decoding}
+        \subfile{../sub/3.2 - AC decoding}
+
+        \subsection{The adaptive version}
+        \subfile{../sub/3.3 - Adaptive AC}
+\end{document}

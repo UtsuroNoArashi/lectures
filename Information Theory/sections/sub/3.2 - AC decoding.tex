@@ -1,0 +1,16 @@
+\documentclass{subfiles}
+\begin{document}
+    Deconding a text compressed via the \gls{ac} encoding,
+        is straightforward as its encoding.
+        In fact, the decoding proceeds similarly to the encoding.
+        We just 
+        \begin{enumerate}
+            \item Initialize the range \([0, 1]\).
+            \item We divide the subrange according to the probabilities,
+                as done for the encoding.
+            \item At each step we select as current interval the one where the 
+                encoded text fall in to.
+        \end{enumerate}
+        Algorithmically speaking we proceed applying the procedure in \emph{Figure \ref{Fig:5}}.
+        \subfile{../../extra/TikZ/Figure 5 - AC decoding snippet}
+\end{document}

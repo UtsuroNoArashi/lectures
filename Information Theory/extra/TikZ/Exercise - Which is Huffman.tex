@@ -1,6 +1,6 @@
 \documentclass{subfiles}
 \begin{document}
-    \begin{figure}[!hb]
+    \begin{figure*}[!hb]
         \centering
         \begin{subfigure}{0.45\textwidth}
             \centering
@@ -46,5 +46,6 @@
                 \draw (e) -- (root) -- (m3);
             \end{tikzpicture}
         \end{subfigure}
-    \end{figure}
+    \end{figure*}
+    \addtocounter{figure}{-1} % Wierd float math
 \end{document}
