@@ -1,0 +1,22 @@
+\documentclass{subfiles}
+\begin{document}
+    Let \(x\) be a positve Integer.
+        Its gamma code (\(\gamma(x)\)) is a binary sequence composed by:
+        \begin{itemize}
+            \item the unary encoding of \(\Abs{B(x)}\)
+            \item the binary representaion of \(x\) minus the most significant bit.
+        \end{itemize}
+
+    \begin{example*}
+        If \(x = 11\), then its gamma encoding is:
+            \[
+                \gamma(x) = 0001011
+            \]
+        where \(0001\) is the unary encoding of \(\Abs{B(x)}\) and \(011\)
+        the binary representaion of \(x\) minus the most significant bit.
+    \end{example*}
+
+    The decoding is trivial, so we skip it.
+    It's easy to prove that with this kind of code, we need at most \(2 \Floor{\log x} + 1\)
+    bits. Also, most importantly, this encoding is reasonable when \(p(x) = 2x^{-2}\).
+\end{document}

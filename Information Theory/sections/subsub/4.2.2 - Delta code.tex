@@ -1,0 +1,23 @@
+\documentclass{subfiles}
+\begin{document}
+    Let \(x\) be a positive Integer, 
+        its delta code (\(\delta(x)\)) is a binary sequence composed by:
+        \begin{itemize}
+            \item the delta code of \(\Abs{B(x)}\)
+            \item the binary representation of \(x\) excluding the most significant bit
+        \end{itemize}
+
+    \begin{example*}
+        Let \(x = 11\), then its delta code is:
+            \[
+                \delta(x) = 001 00 011
+            \]
+        where \(00100\) is the gamma encoding of \(\Abs{B(x)}\) and 
+            \(011\) the binary encoding of \(x\), most significant bit excluded.
+    \end{example*}
+    
+    As before, the decoding is trivial, so we skip it.
+    Once can prove that the code uses at most \(1 + \log x + 2 \log \log x\) bits.
+    Also, and most importantly,
+        gamma codes are reasonable when \(p(x) = \tfrac{1}{2x (\log x)^{2}}\).
+\end{document}

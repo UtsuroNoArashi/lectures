@@ -1,0 +1,14 @@
+\documentclass{subfiles}
+\begin{document}
+    One of the simplest approch is to use the binary reprentation of the given integers,
+    but there's an issue: such reprentation is not prefix free.
+
+    A more valid, but still not reasonable on its own, is the so called \emph{unary encoding}.
+    Briefly, given \(x\) an integer we encode it as a sequence of \(x - 1\) 0s followed by a 1.
+    It obvious that such reprentation is indeed prefix free, 
+        but it's not reasonable -- the higher the integer, 
+        the higher is the number of bits needed for its reprentation. 
+    
+    Clearly we needs something else. Even though there's plenty of codes to encode integers, 
+    the following sections focus on the \emph{Elias codes} and the \emph{Fibonaci codes}. 
+\end{document}

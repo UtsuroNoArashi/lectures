@@ -1,0 +1,16 @@
+\documentclass{subfiles}
+\begin{document}
+    \begin{figure*}[!hb]
+        \centering
+        \begin{subfigure}{0.5725\textwidth}
+            \centering
+            \begin{lstlisting}[language=C]
+                fc[MAX] = 0 // MAX = 3 in the example
+                for(l = MAX - 1; l >= 1; l--){
+                    fc[l] = (fc[l + 1] + num[l + 1]) >> 1;
+                }
+            \end{lstlisting}
+        \end{subfigure}
+    \end{figure*}
+    \addtocounter{figure}{-1}
+\end{document}

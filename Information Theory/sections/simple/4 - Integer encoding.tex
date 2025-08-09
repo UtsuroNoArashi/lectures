@@ -1,0 +1,28 @@
+\documentclass{subfiles}
+\begin{document}\label{Sec:4}
+    What happens when the source to encode uses positive integers as symbols?
+        How can we find a universal representaion? 
+        Meaning, how can we find a code that is prefix free,
+        and whose \gls{acl} is \BigO{\ln x}, for any \(x\).
+
+    Can we still use the codes seen so far, or do we need new ones?
+        The answer is we can do both depending on the case.
+        For instance, if we know the distribution of such integers and the range is
+        relatively small, we can still use Huffman. 
+        If not, we need to use some new codes: those we are about to discuss.
+
+    \begin{remark*}
+        We can relax the constrain on the positiveness, 
+            by mapping any positive integers \(x \text{ to } 2x + 1\) and 
+            any negative integers \(y \text{to} -2y\).
+    \end{remark*}
+
+    \subsection{Simple approaches}
+    \subfile{../sub/4.1 - IE simple approaches}
+
+    \subsection{Elias codes}
+    \subfile{../sub/4.2 - Elias codes}
+
+    \subsection{Fibonacci code}
+    \subfile{../sub/4.3 - Fibonacci code}
+\end{document}
