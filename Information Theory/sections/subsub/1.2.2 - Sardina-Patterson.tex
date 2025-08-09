@@ -1,14 +1,14 @@
 \documentclass{subfiles}
 \begin{document}
-    The \emph{Sardinas-Patterson} algorithm provides a way to check whether a code \(C\),
-        is \gls{ud} or not. 
-    Conceptually the algorithm, and the theorem from which it derives,
-        are based on the following remark: 
+    The \emph{Sardinas-Patterson} algorithm provides a way to check whether a code is \gls{ud} or not. 
+        Conceptually the algorithm, and the theorem it's built on,
+        is based on the following remark: 
         consider a string that is the concatenation of codewords.
         If we try to construct two distinct factorization, 
-        each word in of the factorization is either \textcolor{rpIris}{part of a word in the other factorization,
+        each word in of the factorization is either 
+        \textcolor{rpIris}{part of a word in the other factorization,
         or it starts with a prefix that is suffix of a word in the other factorization}.
-    Hence, a code is non-UD if it happens that a suffix is itself a codeword.
+        Hence, a code is non-UD if it happens that a suffix is itself a codeword.
 
     As stated before the algorithm is based on a theorem, given below.
     \begin{theorem}\label{Thm:1}
@@ -21,7 +21,7 @@
                     \alpha = \beta \omega \lor \beta = \alpha \omega
                 ]\)
             \end{itemize}
-            then necessary and sufficient condition for \(C\) to be \gls{ud} is that,
+            then necessary and sufficient condition for \(C\) to be a \gls{ud} code is that,
             \(\forall n > 0, S_{0} \cap S_{n} = \varnothing\).
     \end{theorem}
     Therefore, the algorithm has three halt conditions:
@@ -45,10 +45,10 @@
             \item [\textbf{Iter 5. }] Let \(\alpha_{0} = bad\) and \(\beta = b\)
                 then, \(S_{5} = \Set{ad}\). 
         \end{description}
+        \subfile{../../extra/TikZ/Tab 1 - Example of Sardinas-Patterson}
         From the above steps (summarised in \emph{Table \ref{Tab:1}}), 
             follows that the code is not \gls{ud} since \(S_{0} \cap S_{5} =
             \Set{ab} \ne \varnothing\).
-            \subfile{../../extra/TikZ/Example - Sardinas-Patterson}
     \end{example*}
     \begin{exercise}
         Apply the Sardinas-Patterson algorithm to the following codes:
