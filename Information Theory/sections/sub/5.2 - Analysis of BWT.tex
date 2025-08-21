@@ -1,0 +1,51 @@
+\documentclass{subfiles}
+\begin{document}
+    From the discussion of the BWT, a question might arise naturally: 
+        how much does the compression improve by preprocessing the string using the BWT?
+        The question to this question can be found in \cite{manzini2001}.
+        Here Manzini analyzes the compression of BWT-based algorithm,
+        in terms of their \emph{empirical entropy\footnotemark[4]}.
+        Even though the paper referes just to the 0-th order empirical entropy,
+        defined as follow,
+        \[
+            \Entropy[0]{s} = - \sum_{c \in \Sigma}
+                \frac{n_{c}}{n} \log \frac{n_{c}}{n}  
+        \]
+        where \(n_{c}\) is the number of occurences of \(c \text{ in } s\);
+        one could generalize the idea to a k-th order empirical entropy as follow
+        \begin{equation}\label{Eq:2}
+            \Entropy[k]{s} = \frac{1}{\Abs{s}} 
+                \sum_{w \in \Sigma^{k}} \Abs{w_{s}} \Entropy[0]{w_{s}}
+        \end{equation}
+        where \(w_{s}\) is the concatenation of symbols that follow \(w \text{ in } s\).
+
+        In the paper Manzini provides also the following results.
+        \begin{theorem*}[Manzini]
+            For any string \(s\) over some alphabet \(\Sigma\) and for any \(k \ge 0\),
+            it holds that 
+            \[
+                BW_{0} = \le 8 \Abs{s} \Entropy[k]{s} +
+                    \left\lparen \mu + \frac{2}{25} \right\rparen \Abs{s} + 
+                    h^{k} (2h \log h + 9)
+            \]
+            where \(h = \Abs{\Sigma} \text{ and } \mu = 1\).
+        \end{theorem*}
+        Let us point out that \(BW_{0} = Order-0 + MTF + BWT\), 
+        where \(Order-0\) is some 0-order compressor.
+        \begin{theorem*}
+            For any string \(s\) over some alphabet \(\Sigma\) and for any \(k \ge 0\),
+            there exists some constant \(g_{k}\), such that it holds
+            \[
+                BW_{0} + RL \le (5 + 3\mu)\Abs{s} H_{k}^{*}(s) + g_{k}
+            \]
+            where \(RL\) is the run length encoding of the string.
+        \end{theorem*}
+
+        To conclude this section, 
+            let us observe that the bottleneck of the BWT is
+            given by the sorting of the cyclic rotations.
+            We should show, in the following sections, 
+            that the problem can be reduced to the sorting of suffixes.
+        \footnotetext[4]{Due to the way it's defined, see \eqref{Eq:2},
+        empirical entropy is perfect for a worst-case analysis.}
+\end{document}

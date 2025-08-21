@@ -1,0 +1,41 @@
+\documentclass{subfiles}
+\begin{document}
+    The \gls{bwt}, introduced by \emph{M. Burrows \emph{and} D. Wheeler} in \cite{burrows1994},
+    is a simple, yet efficient tool to enhance the compressibility of a given string.
+
+    Let \(\omega\) be a string we want to compress, thus preprocess using BWT.
+    First step of the transform, is to compute all the cyclic rotations of \(\omega\).
+    Then, we sort them lexicographically\footnotemark[3] and lastly, 
+    we return the last column. 
+    \note{By last column we mean the concatenation of the last symbol of each rotation.} 
+    and the index (starting from 0) of the inital string.
+
+    \begin{example*}
+        Let \(\omega = aleph\). Its cyclic rotations, already sorted, are
+        \[\begin{aligned}
+            & aleph \\ 
+            & ephal \\
+            & halep \\
+            & lepha \\
+            & phale \\
+        \end{aligned}\]
+        Thus, we return the pair \((hlpae, 0)\).
+    \end{example*}
+
+    Let us point out some interesting properties of the BWT.
+        \begin{enumerate}
+            \item \(\forall i \ne I \text{, where } I\) is the index of the inital string,
+                we have that \(F[i]\) follows \(L[i]\) in \(\omega\).
+            \item \(F[I]\) is the first symbol of \(\omega\).
+            \item For any character \(x\), the i-th occurence of \(x \text{ in } F\),
+                corresponds to the i-th occurence of \(x \text{ in } L\).
+        \end{enumerate}
+
+    \footnotetext[3]{For the sake of our disscussion, 
+            assume that the lexicographic order is the usual alphabetical one.
+            This is, in general, not true.}
+
+    \subsubsection{Inverse of the BWT}
+    \subfile{../subsub/5.1.1 - Inverse BWT}
+\end{document}
+
