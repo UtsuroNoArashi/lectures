@@ -7,10 +7,10 @@
         has the shortest length.
 
     \begin{definition*}[\Gls{acl}]
-        Let \(C\) be a code with a source alphabet \(S = \Set{s_{1}, \ldots, s_{n}}\)
-        and a code alphabet \(X = \Set{x_{1}, \ldots, x_{m}}\). 
-        Let \(\Set{c_{1}, \ldots, c_{n}}\) be the codewords with lengths 
-        \(l_{1}, \ldots, l_{n}\) respectively. And let \(\Set{p_{1}, \ldots, p_{n}}\)
+        Let \(C\) be a code with a source alphabet \(S = \set{s_{1}, \ldots, s_{n}}\)
+        and a code alphabet \(X = \set{x_{1}, \ldots, x_{m}}\). 
+        Let \(\set{c_{1}, \ldots, c_{n}}\) be the codewords with lengths 
+        \(l_{1}, \ldots, l_{n}\) respectively. And let \(\set{p_{1}, \ldots, p_{n}}\)
         be the probabilities for the source symbols. 
             Then, we define the quantity
             \[
@@ -25,11 +25,11 @@
     thanks to Shannon, we have the following result.
     \begin{theorem*}[Shannon]
         Let \(C\) be a \gls{ud} code for a memoryless source \(S\),
-        whose probabilities are \(\Set{p_{1}, \ldots, p_{n}}\),
+        whose probabilities are \(\set{p_{1}, \ldots, p_{n}}\),
         and alphabet code \(X\) with a size \(d\). 
         Then 
         \[
-            L_{S}(C) \ge \frac{\Entropy{S}}{\log_{b}{d}}
+            L_{S}(C) \ge \frac{\entropy{S}}{\log_{b}{d}}
         \]
     \end{theorem*}
 

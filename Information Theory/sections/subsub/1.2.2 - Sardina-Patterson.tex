@@ -16,7 +16,7 @@
             consider the sets \(S_{0}, S_{1}, \ldots\) such that:
             \begin{itemize}
                 \item \(S_{0} = C\)
-                \item \(S_{i} = \Set{\omega \in \Sigma^{*}}[
+                \item \(S_{i} = \set{\omega \in \Sigma^{*}}[
                     \exists \alpha \in S_{0}, \exists \beta \in S_{i - 1} : 
                     \alpha = \beta \omega \lor \beta = \alpha \omega
                 ]\)
@@ -31,31 +31,31 @@
         \item \(\forall i, j > 0, S_{i} = S_{j}\) then the code is \gls{ud}.
     \end{itemize}
     \begin{example*}
-        Let's consider the following code: \(C = \Set{a, c, ad, abb, bad, deb,bbcde}\).
+        Let's consider the following code: \(C = \set{a, c, ad, abb, bad, deb,bbcde}\).
         Is it \gls{ud}? Applying Sardinas-Patterson, step by step we get the following:
         \begin{description}
             \item [\textbf{Iter 1. }] Let \(\alpha_{0} = ab, \alpha_{1} = abb\) 
-                and \(\beta_{0} = \beta_{1} = a\) then, \(S_{1} = \Set{d, bb}\).
+                and \(\beta_{0} = \beta_{1} = a\) then, \(S_{1} = \set{d, bb}\).
             \item [\textbf{Iter 2. }] Let \(\alpha_{0} = deb, \alpha_{1} = bbcde\)
-                and \(\beta_{0} = d, \beta_{1} = bb\) then, \(S_{2} = \Set{eb, cde}\).
+                and \(\beta_{0} = d, \beta_{1} = bb\) then, \(S_{2} = \set{eb, cde}\).
             \item [\textbf{Iter 3. }] Let \(\alpha_{0} = c\) and \(\beta = cde\)
-                then, \(S_{3} = \Set{de}\). 
+                then, \(S_{3} = \set{de}\). 
             \item [\textbf{Iter 4. }] Let \(\alpha_{0} = deb\) and \(\beta = de\)
-                then, \(S_{4} = \Set{b}\). 
+                then, \(S_{4} = \set{b}\). 
             \item [\textbf{Iter 5. }] Let \(\alpha_{0} = bad\) and \(\beta = b\)
-                then, \(S_{5} = \Set{ad}\). 
+                then, \(S_{5} = \set{ad}\). 
         \end{description}
         \subfile{../../extra/TikZ/Tab 1 - Example of Sardinas-Patterson}
         From the above steps (summarised in \emph{Table \ref{Tab:1}}), 
             follows that the code is not \gls{ud} since \(S_{0} \cap S_{5} =
-            \Set{ab} \ne \varnothing\).
+            \set{ab} \ne \varnothing\).
     \end{example*}
     \begin{exercise}
         Apply the Sardinas-Patterson algorithm to the following codes:
         \begin{itemize}
-            \item \(C_{0} = \Set{a, b, cd, abb, abcd }\) 
-            \item \(C_{1} = \Set{0, 01, 100, 11001, 01011}\)
-            \item \(C_{2} = \Set{010, 0001, 0110, 11000, 00011, 00110, 11110, 101011}\)
+            \item \(C_{0} = \set{a, b, cd, abb, abcd }\) 
+            \item \(C_{1} = \set{0, 01, 100, 11001, 01011}\)
+            \item \(C_{2} = \set{010, 0001, 0110, 11000, 00011, 00110, 11110, 101011}\)
         \end{itemize}
     \end{exercise}
 \end{document}

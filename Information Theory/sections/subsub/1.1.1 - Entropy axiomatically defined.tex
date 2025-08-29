@@ -11,16 +11,16 @@
             then \(H\) must satisfy the following properties.
         \begin{enumerate}
             \item \(H\) must be a continuos function of the probabilities.
-                Meaning that if \(H(S) = \Entropy{p_{1}, \ldots, p_{n}}\), 
+                Meaning that if \(H(S) = \entropy{p_{1}, \ldots, p_{n}}\), 
                 then \(H\) is continuous in [0, 1].
 
-            \item \(\Entropy[2]{\tfrac{1}{2}, \tfrac{1}{2}} = 1\).
+            \item \(\entropy{\tfrac{1}{2}, \tfrac{1}{2}}[2] = 1\).
 
             \item If \(\tau\) is a permutation of the probabilities, 
-                then \(\Entropy{\tau} = \Entropy[n]{p_{1}, \ldots, p_{n}}\). 
+                then \(\entropy{\tau} = \entropy{p_{1}, \ldots, p_{n}}[n]\). 
                 Meaning that, \(H\) must not care of the order of the probabilities.
 
-            \item If \(A(n) = \Entropy[n]{\tfrac{1}{n}, \ldots, \tfrac{1}{n}}\),
+            \item If \(A(n) = \entropy{\tfrac{1}{n}, \ldots, \tfrac{1}{n}}[n]\),
                 then \(H\) is monotonically increasing.
                 Equally probable events imply greater uncertainty.
 
@@ -28,16 +28,16 @@
                 then the original value of \(H\) must be the weighted sum of the new \(H\).
                 Meaning that
                 \[\begin{aligned}
-                    \Entropy[n]{p_{1}, \ldots, p_{n}} & = 
-                        \Entropy[n - k + 1]{
+                    \entropy{p_{1}, \ldots, p_{n}}[n] & = 
+                        \entropy{
                             p_{1} + \ldots + p_{k}, p_{k + 1}, \ldots, p_{n}
-                        } \\ 
+                        }[n - k + 1] \\ 
                         & + (p_{1} + \ldots + p_{k})
-                            \Entropy[k]{
+                            \entropy{
                                 \frac{p_{1}}{p_{1} + \ldots + p_{k}},
                                 \ldots,
                                 \frac{p_{k}}{p_{1} + \ldots + p_{k}}
-                            }.
+                            }[k].
                 \end{aligned}\]
        \end{enumerate}
     \end{axiom*} 
@@ -52,15 +52,15 @@
             \item From axiom 5 we have \(A(nm) = A(n) + A(m)\).
                 Let's note in fact that: 
                 \[\begin{aligned}
-                    A(nm) & = \Entropy[nm]{\frac{1}{nm}, \ldots, \frac{1}{nm}} \\ 
-                        & = \Entropy[nm - n + 1]{
+                    A(nm) & = \entropy{\frac{1}{nm}, \ldots, \frac{1}{nm}}[nm] \\ 
+                        & = \entropy{
                             \frac{1}{m}, \frac{1}{nm}, \ldots, \frac{1}{nm} 
-                        } + \frac{1}{m} \Entropy[n]{
+                        }[nm - n + 1] + \frac{1}{m} \entropy{
                             \frac{1}{n}, \ldots, \frac{1}{n}
-                        } \\
-                        & \underbrace{ = \ldots = }_{m \text{ times}} \Entropy[nm -nm + m]{
+                        }[n] \\
+                        & \underbrace{ = \ldots = }_{m \text{ times}} \entropy{
                             \frac{1}{m}, \ldots, \frac{1}{m}
-                        } + \Entropy[n]{ \frac{1}{n}, \ldots, \frac{1}{n}} \\ 
+                        }[m] + \entropy{\frac{1}{n}, \ldots, \frac{1}{n}}[n] \\ 
                     & = A(m) + A(n).
                 \end{aligned}\]
             \item From the previous point, 
@@ -75,13 +75,13 @@
                 Let's divide everything by \(r \log_{b} 2\), we now have 
                 \[
                     \frac{k}{r} \le \log_{2} n < \frac{k + 1}{r} 
-                        \implies \Abs{\log_{2} n - \frac{k}{r}} < \frac{1}{r}.
+                        \implies \abs[\log_{2} n - \frac{k}{r}] < \frac{1}{r}.
                 \]
                 From axiom 4 follows \(A(2^{k}) \le A(n^{r}) < A(n^{k + 1})\),
                 which means that \(k A(2) \le r A(n) < (k + 1)A(2)\).
                 From a similar reasoning as before, we get 
                 \[
-                    \Abs{\frac{A(n)}{A(2)} - \frac{k}{r}} < \frac{1}{r}
+                    \abs[\frac{A(n)}{A(2)} - \frac{k}{r}] < \frac{1}{r}
                         \implies A(n) \approx \frac{A(2)}{\log_{b} 2} \log_{b} n
                 \]
                 since \(\nicefrac{A(n)}{A(2)} \approx \log_{b} n\).
@@ -90,17 +90,17 @@
             \item Suppose \(p \in \Q \iff p = \tfrac{r}{s}, r \le s\).
                 Then we have 
                 \[\begin{aligned}
-                    A(s) & = \Entropy[s]{\frac{1}{s}, \ldots, \frac{1}{s}} \\ 
-                        & = \Entropy[s - r + 1]{\frac{r}{s}, \frac{1}{s}, \ldots, \frac{1}{s}} 
-                          + \frac{r}{s} \Entropy[r]{\frac{1}{r}, \ldots, \frac{1}{r}} \\ 
-                        & = \ldots = \Entropy[2]{\frac{r}{s}, 1 - \frac{r}{s}}
+                    A(s) & = \entropy{\frac{1}{s}, \ldots, \frac{1}{s}}[s] \\ 
+                        & = \entropy{\frac{r}{s}, \frac{1}{s}, \ldots, \frac{1}{s}}[s - r + 1]
+                          + \frac{r}{s} \entropy{\frac{1}{r}, \ldots, \frac{1}{r}}[r] \\ 
+                        & = \ldots = \entropy{\frac{r}{s}, 1 - \frac{r}{s}}[2]
                           + \frac{s - r}{s} A(s - r) + \frac{r}{s} A(s).
                 \end{aligned}\]
                 From the previous point, we can conclude that 
                 \[
-                    A(n) = -c \left\lbrack
+                    A(n) = -c \lbrack
                         (1 - p) \log_{b} (1 - p) + p \log_{b} p
-                    \right\rbrack.
+                    \rbrack.
                 \]
                 Also, since \(\Q \text{ is dense in } \R\) and \(H\) is continuous,
                 we can extend what above to any \(p \in \R\).

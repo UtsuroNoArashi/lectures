@@ -17,15 +17,15 @@
             \item Output the binary representation\footnotemark[1] of the lowerbound of the last subinteval.
         \end{enumerate}
         \begin{example*}
-            Let \(\omega = abac\) and let \(S = \Set{a, b, c}\)
-            with probabilities \(\Set{\tfrac{1}{2}, \tfrac{1}{4}, \tfrac{1}{4}}\).
+            Let \(\omega = abac\) and let \(S = \set{a, b, c}\)
+            with probabilities \(\set*{\tfrac{1}{2}, \tfrac{1}{4}, \tfrac{1}{4}}\).
 
             By applying the above steps, we get:
             \begin{description}
                 \item [\textbf{Step 1.}] We initialize the range \([0, 1]\).
                 \item [\textbf{Step 2.}] Let us consider each iteraction,
                     each step can be observed in \emph{Figure \ref{Fig:3}}.
-                    We read ``a'' anddthus, we select the range \([0, \tfrac{1}{2}]\).
+                    We read ``a'' thus, we select the range \([0, \nicefrac{1}{2}]\).
                     We proceed to updated the ranges, 
                     and repeat the process until the end of the text.
                     \subfile{../../extra/TikZ/Figure 2 - AC encoding}
@@ -34,6 +34,7 @@
             \end{description}
         \end{example*}
         \footnotetext[1]{We assume the reader knows how fractional numbers are represented in binary.}
+        \clearpage
         Algorithmically speaking, we simply apply the following code.
         \subfile{../../extra/TikZ/Figure 3 - AC encoding snippet}
 
@@ -67,10 +68,10 @@
         \end{proof*}
         \begin{corollary*}
             Given \(x \in [low, high]\) its truncation to the first
-            \(\Ceil{\log \tfrac{2}{high - low}}\) falls within the range.
+            \(\ceil[\log \tfrac{2}{high - low}]\) falls within the range.
         \end{corollary*}
         \begin{proof*}
             It follows by the above \emph{Lemma} putting 
-                \(d = \Ceil{\log \tfrac{2}{high - low}}\).
+                \(d = \ceil[\log \tfrac{2}{high - low}]\).
         \end{proof*}
 \end{document}
