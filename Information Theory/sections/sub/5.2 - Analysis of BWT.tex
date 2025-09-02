@@ -18,6 +18,8 @@
                 \sum_{w \in \Sigma^{k}} \abs[w_{s}] \entropy{w_{s}}[0]
         \end{equation}
         where \(w_{s}\) is the concatenation of symbols that follow \(w \text{ in } s\).
+    \footnotetext[4]{Due to the way it's defined, see \eqref{Eq:2},
+        empirical entropy is perfect for a worst-case analysis.}
 
         In the paper Manzini provides also the following results.
         \begin{theorem*}[Manzini]
@@ -46,8 +48,6 @@
             given by the sorting of the cyclic rotations.
             We should show, in the following section, 
             that the problem can be reduced to the sorting of suffixes.
-        \footnotetext[4]{Due to the way it's defined, see \eqref{Eq:2},
-        empirical entropy is perfect for a worst-case analysis.}
 
         \subsubsection{Efficient computation of the BWT}
         \subfile{../subsub/5.2.1 - Efficient BWT computation}

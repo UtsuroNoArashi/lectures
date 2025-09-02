@@ -1,0 +1,115 @@
+\documentclass{subfiles}
+\begin{document}
+    Let \(\omega\) be the string of which we want to compute the BWT, 
+        and let \(\tilde{\omega} = \omega\textdollar\), 
+        where \(\textdollar \notin \Sigma\).
+        If we compute the BWT of \(\tilde{\omega}\),
+        we can just focus on sorting the suffixes rather then the whole cyclic rotations,
+        as the BWT of \(\omega\) would require.
+
+    A question rise naturally: how do we compute and sort these suffixes?
+        Through the years many algorithms have been proposed 
+        (see \cite{karkkainen2006, ko2005, baier2016}), 
+        all of them with a thing in common -- a special data structure -- the \gls{sa}.
+        (The following section summarise the algorithm proposed in \cite{karkkainen2006},
+        for a better understanding we suggest to read the paper directly). 
+
+    Formally, given \(T = T[1, n]\) a text,
+        define \(T_{i}\) to be the suffixes of \(T \text{,} \forall i = 1, \ldots, n\).
+        Denote by \(Suf\!f(T)\) the set of all suffixes of \(T\),
+            meaning 
+            \[
+                Suf\!f (T) = \set{T_{i}}[i = 1, \ldots, n] 
+            \]
+        We define SA to be a sorted array for \(Suf\!f(T)\).
+
+    \begin{remark*}
+        One can prove that by using the SA, 
+            BWT complexity is reduced to the one of the algorithm used to sort the suffixes.
+    \end{remark*}
+
+    \paragraph{The DC3 algorithm}
+    Let \(S\) be the text of which to compute the suffixes, our goal is to compute \(SA_{S}\).
+    First step of the algorithm is to compute the following positions sets:
+    \[
+        B_{k} = \set{i \in [0, n - 1]}[i \mod 3 = k].
+    \]
+    Let \(C = B_{1} \cup B_{2}\). Then, 
+        for all \(i \in C\) define the triplet \(r_i = [s_{i}, s_{i + 1}, s_{i + 2}]\),
+        filling the missing symbols with a \(\textdollar\), 
+        and define \(R\) as the concatenation of all such triplets.
+        Thus 
+        \[
+            R = r_{1}r_{2}\ldots
+        \]
+        It can be proved that there's a correspondence between the suffixes of \(R\) 
+            and those of \(S\).
+    Next, radix sort the triplets and replace each with its rank to define \(R'\).
+    If all symbols are distinct, the order is given by the symbols ranks.
+    Otherwise, sort the suffixes of \(R'\) via the DC3 algorithm.
+    Compute \(SA_{R'}\).
+
+    Once the suffixes are computed, 
+        for all \(i \in C\) define \(rank(S_{i})\) to be the rank of \(S_{i}\).
+        \note{See the example for a better understanding.}
+    For all \(i \in B_{0}\) define the pair \((s_{i}, Rank(S_{i + 1}))\),
+        and sort them as follow: for all \(i, j \in B_{0}\)
+        \[
+            S_{i} \le S_{j} \iff (s_{i}, Rank(S_{i + 1})) \le (s_{j}, Rank(S_{j + 1}))
+        \]
+        where the pairs are radix sorted.
+
+    Lastly, merge the two sets of suffixes as follow:
+        for all \(i \in C \text{ and all } j \in B_{0}\) we distinguish two cases
+        \[\begin{aligned}
+            i \in B_{1}:& S_{i} \le S_{j} \iff (s_{i}, Rank(S_{i + 1})) \le (s_{j}, Rank(S_{j + 1})) \\
+            i \in B_{2}:&  S_{i} \le S_{j} \iff 
+                (s_{i}, s_{i +1}, Rank(S_{i + 2})) \le (s_{j}, s_{j + 1}, Rank(S_{j + 2})) \\
+        \end{aligned}\]
+    \begin{theorem*}
+        The complexity of the DC3 algorithm is \(\bigO{n}\).
+    \end{theorem*}
+    \begin{proof*}
+        Aside the recursive call, everything can be done in linear time. 
+        The recursion is on a string of length \(\tfrac{2n}{3}\).
+        Thus the time complexity is given by the recurrence \(T(n) = T(\tfrac{2}{3}n) + \bigO{n}\),
+        whose solution is \(T(n) = \bigO{n}\).
+    \end{proof*}
+
+    \begin{example*}
+        Let \(S = mathisawesome\). Computing \(B_{k}, k = 0, 1, 2\) we have 
+        \[\begin{aligned}
+            B_{0} & = \set{0, 3, 6, 9, 12} \\
+            B_{1} & = \set{1, 4, 7, 10} \\ 
+            B_{2} & = \set{2, 5, 8, 11} \\
+        \end{aligned}\]
+            thus, \(C = \set{1, 2, 4, 5, 7, 8, 10, 11}\).
+
+        % m  a  t  h  i  s  a  w  e  s  o  m  e
+        % 0  1  2  3  4  5  6  7  8  9  10 11 12
+
+        By considering all \(i \in C\) and computing all the \(r_{i}\)s,
+            we get 
+            \[ 
+                R = [ath][thi][isa][saw][wes][eso][ome][me\textdollar].
+            \]
+        Applying the radix sort to the triplets,
+            we get 
+            \[
+                R' = (1, 7, 3, 6, 8, 2, 5, 4), 
+            \]
+            from which \(SA_{R'} = (8, 0, 5, 2, 7, 6, 3, 1, 4)\).
+            Let us observe that index 8 corresponds to the empty suffix,
+            thus the lowest.
+        Before we compute \(Rank(S_{i})\text{,} \forall i \in C\),
+            let's reduce \(SA_{R'} \text{ to } SA_{R}\) by excluding index 8.
+            To assign the rank to each \(S_{i}\), 
+                we first assign a rank to the entries in \(SA_{R}\) in order.
+                Then, assign the j-th rank to the entry of \(R\) with index \(k = SA_{R}[j - 1]\),
+                and track back to which \(S_{i}\) it corresponds to.
+                In our case:
+                \subfile{../../extra/TikZ/Figure * - Example DC3}
+
+            We leave the rest as an exercise to the reader.
+    \end{example*}
+\end{document}
