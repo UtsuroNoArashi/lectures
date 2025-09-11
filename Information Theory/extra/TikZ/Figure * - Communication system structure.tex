@@ -2,23 +2,32 @@
 \begin{document}
     \begin{figure}[!hb]
         \centering
-        \begin{tikzpicture}[
-            square/.style={draw, rectangle, minimum size=1.5cm, inner sep=0pt},
-            ch/.style={draw, rectangle, minimum size=0.75cm, inner sep=0pt}
-        ]
-        \node [square, label=above:{Source}] (IS) at (0, 0) {};
-        \node [square, label=above:{Encoder}] (En) at (2, 0) {};
-        \node [ch, label=above:{Channel}] (Ch) at (4, 0) {};
-        \node [square, label=above:{Decoder}] (De) at (6, 0) {};
-        \node [square, label=above:{Destination}] (Re) at (8, 0) {};
-        \node [square, label=below:{Noise Source}] (No) at (4, -2) {};
+            \begin{tikzpicture}
+            [
+                box/.style={draw, rectangle, minimum size=1cm},
+                smallbox/.style={draw, rectangle, minimum size=0.5cm},
+                every label/.style={scale=0.75}
+            ]
 
-        \draw [-Latex] (IS) -- (En);
-        \draw [-Latex] (En) -- (Ch);
-        \draw [-Latex] (No) -- (Ch);
-        \draw [-Latex] (Ch) -- (De);
-        \draw [-Latex] (De) -- (Re);
+            \node (Is) [box] {};
+            \node (En) [box, right=of Is] {};
+            \node (Ch) [smallbox, right=1.5cm of En] {};
+            \node (No) [box, below=1cm of Ch] {};
+            \node (De) [box, right=1.5cm of Ch] {};
+            \node (Id) [box, right=of De] {};
+
+
+            \foreach \source/\target in {Is/En, En/Ch, No/Ch, Ch/De, De/Id} {
+                \draw [-Latex] (\source) -- (\target);
+            }
+
+            \node [above=0.125 of Is, text width=2.25cm, align=center] {Information Source};
+            \node [above=0.125 of En, text width=2.25cm, align=center] {Transmitter};
+            \node [above=0.125 of De, text width=2.25cm, align=center] {Receiver};
+            \node [above=0.125 of Id, text width=2.25cm, align=center] {Destination};
+            \node [below=0.125 of No, text width=2.25cm, align=center] {Noise Source};
+            \node [below right=0 and -0.3 of En.east, text width=2cm, align=center] {Signal};
+            \node [below left=0 and -0.35 of De.west, text width=2cm, align=center] {Received Signal};
         \end{tikzpicture}
     \end{figure}
 \end{document}
-

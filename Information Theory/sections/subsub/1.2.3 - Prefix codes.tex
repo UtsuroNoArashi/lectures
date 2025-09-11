@@ -1,22 +1,23 @@
 \documentclass{subfiles}
 \begin{document}
     Let's look back at the example of \emph{Section \ref{Sec:1.2.1}}. 
-    Given the codewords \(\set{0, 1, 01, 11}\) for the source symbol \(s_{1},
-    s_{2}, s_{3}, s_{4}\) respectively, how should we decode the string \(000111\)?
-    As said before, unless some context is given, we can't be sure.
+        Given the codewords \(\set{0, 1, 01, 11}\) for the source symbols \(s_{1}, s_{2}, s_{3}, s_{4}\) respectively,
+        how should we decode the string \(000111\)?
+        As noted before, unless some context is given, we cannot be certain.
 
-    Then what's the issue? 
-    Essentially, even though to each source symbol is assigned a distinct codeword,
-    these are not prefix-free, meaning that some of the codewords are prefix of others
-    (eg. the codeword for \(s_{1}\) is prefix of the codeword for \(s_{3}\)).
-    From what just stated, a natural solution to the problem is to define codes 
-    that are prefix-free.
-        One can also prove that, prefix-free (or simply prefix) codes are also instataneous (each 
-    source symbol can be decoded without reading further in the string).
+    Then, what is the issue? 
+        Essentially, even though each source symbol is assigned a distinct codeword,
+        these codewords are not prefix-free, meaning that some are prefixes of others
+        (e.g., the codeword for \(s_{1}\) is a prefix of the codeword for \(s_{3}\)).
+        From this observation, a natural solution is to define codes that are prefix-free.
+        One can also prove that prefix-free (or simply prefix) codes are also instantaneous;
+        that is, each codeword can be immidiately decoded without ambiguity.
+
     \begin{theorem*}
-        Let \(C\) be a prefix-free code, then \(C\) is \gls{ud}.
+        Let \(C\) be a prefix-free code; then \(C\) is UD.
     \end{theorem*}
+
     \begin{proof*}
-        It follows from \emph{Theorem \ref{Thm:1}}.
+        It follows directly from \emph{Theorem \ref{Thm:1}}.
     \end{proof*}
 \end{document}

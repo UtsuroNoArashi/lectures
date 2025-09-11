@@ -1,32 +1,32 @@
 \documentclass{subfiles}
 \begin{document}
-    In the previous section, we've introduced prefix codes. 
-    The question now is, given two distinct prefix-free codes,
-        which one is more convenient?
-        A good choice would be the one that, on average,
-        has the shortest length.
+
+    In the previous section, we introduced prefix codes. 
+        The question now is: given two distinct prefix-free codes, which one is more efficient?
+        A good choice is the code that, on average, has the shortest length.
 
     \begin{definition*}[\Gls{acl}]
-        Let \(C\) be a code with a source alphabet \(S = \set{s_{1}, \ldots, s_{n}}\)
-        and a code alphabet \(X = \set{x_{1}, \ldots, x_{m}}\). 
-        Let \(\set{c_{1}, \ldots, c_{n}}\) be the codewords with lengths 
-        \(l_{1}, \ldots, l_{n}\) respectively. And let \(\set{p_{1}, \ldots, p_{n}}\)
-        be the probabilities for the source symbols. 
+        Let \(C\) be a code with source alphabet \(S = \set{s_{1}, \ldots, s_{n}}\)
+            and code alphabet \(X = \set{x_{1}, \ldots, x_{m}}\). 
+            Let \(\set{c_{1}, \ldots, c_{n}}\) be the codewords with lengths \(l_{1}, \ldots, l_{n}\), respectively.
+            Let \(\set{p_{1}, \ldots, p_{n}}\) be the probabilities of the source symbols. 
             Then, we define the quantity
             \[
                 L_{S}(C) = \sum_{i = 1}^{n}{p_{i} l_{i}}
             \]
             as the average code length of the code \(C\).
     \end{definition*}
-    From what above, it makes sense to look for the \gls{ud} code with the lowest average code length.
-    That is, among all the \gls{ud} codes for the same source and with the same code alphabet,
-    the one with the lowest \gls{acl}. But how do we find such codes?
-    A good starting point is the entropy of the source. Once again, 
-    thanks to Shannon, we have the following result.
+
+    From the above, it makes sense to look for the UD code with the lowest average code length.
+        That is, among all UD codes for the same source and with the same code alphabet,
+        the one with the lowest ACL. But how do we find such codes?
+        A good starting point is the entropy of the source. 
+        Once again, thanks to Shannon, we have the following result.
+
     \begin{theorem*}[Shannon]
-        Let \(C\) be a \gls{ud} code for a memoryless source \(S\),
+        Let \(C\) be a UD code for a memoryless source \(S\), 
         whose probabilities are \(\set{p_{1}, \ldots, p_{n}}\),
-        and alphabet code \(X\) with a size \(d\). 
+        and code alphabet \(X\) of size \(d\). 
         Then 
         \[
             L_{S}(C) \ge \frac{\entropy{S}}{\log_{b}{d}}

@@ -1,41 +1,36 @@
 \documentclass{subfiles} 
 \begin{document}
     Let's now focus our attention onto the source itself.
-    In general, the alphabet these use may not be suitable for transmission,
-        for some reason or another. For this particular reason, 
-        an \emph{encoder} is used to convert the source alphabet,
-        to a new one, which is more suitable for transmission.
-        On the recieving side, 
-        a \emph{decoder} is used to convert back to the original alphabet.
+        In general, the alphabets they use may not be suitable for transmission for various reasons. 
+        For this reason, an \emph{encoder} is used to convert the source alphabet into a new one, 
+        which is more suitable for transmission.
+        On the receiving side, a \emph{decoder} is used to convert back to the original alphabet.
         This process is called \emph{source encoding/decoding}.
 
     Formally, given a source \(S\) defined on some alphabet, 
-        and \(X\) a new alphabet, called \emph{input alphabet}, 
+        and \(X\) a new alphabet, called the \emph{input alphabet}, 
         we define a function \(C : S \to X\) that maps sequences of symbols of \(S\)
         to sequences of symbols in \(X\). 
         A sequence of symbols in \(X\) is called a \emph{codeword}.
 
     Before we consider any particular \emph{code},
         let us consider the general case. 
-        Let's \(C\) be a generic mapping from a source \(S\) to some new alphabet \(X\).
-        Since we have imposed no condition on \(C\), 
-        one may define it in such a way that two, or more,
+        Let \(C\) be a generic mapping from a source \(S\) to some new alphabet \(X\).
+        Since we have imposed no conditions on \(C\), one may define it in such a way that two or more
         source symbols share the same codeword.
-        It easy to observe that, in doing so,
-        the decoded message may not be correct or even unique.
+        It is easy to observe that, in doing so, the decoded message may not be correct or even unique.
 
-    \begin{example*}
-        Let's consider the code shown below.
-        \subfile{../../extra/TikZ/Figure * - Example of non non-singular codes}
-        How should we decode the text 000111? 
-            We have two possibilities: 
-                either as \(s_{1}s_{1}s_{3}s_{2}\) or as \(s_{1}s_{1}s_{3}s_{4}\).
-        As said before, the decoded message might not be unique. 
-        Also, unless context is given, there's no way to know which one is correct.
+   \begin{example*}
+        Consider the following alphabet: \(\Sigma = \set{s_{1}, s_{2}, s_{3}, s_{4}}\).
+            Assume the code \(C = \set{0, 11, 01, 11}\) was defined for \(\Sigma\).
+            How should we decode the text 000111? There are two possible interpretations: 
+            either as \(s_{1}s_{1}s_{3}s_{2}\) or as \(s_{1}s_{1}s_{3}s_{4}\).
+            As noted above, the decoded message may not be unique. 
+            Moreover, without additional context, there is no way to determine which interpretation is correct.
     \end{example*}
 
     From the above example, we can conclude that a ``good'' code must encode each 
-    source symbols with a unique codeword. 
+    source symbol with a unique codeword. 
     We call such codes \emph{non-singular codes}.
   
     \subsubsection{\Gls{ud}}\label{Sec:1.2.1}
@@ -43,7 +38,7 @@
 
     \subsubsection{Sardinas-Patterson algorithm}
     \subfile{../subsub/1.2.2 - Sardina-Patterson}
-    %
-    % \subsubsection{Prefix codes}
-    % \subfile{../subsub/1.2.3 - Prefix codes}
+
+    \subsubsection{Prefix codes}
+    \subfile{../subsub/1.2.3 - Prefix codes}
 \end{document}

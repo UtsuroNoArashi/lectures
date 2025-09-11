@@ -1,21 +1,21 @@
 \documentclass{subfiles}
 \begin{document}
-    We have disscussed what prefix-free codes are, 
-        and what the average code length represents.
-    We now provide a necessary and sufficient condition for the existence of 
-    a prefix code: the \emph{Kraft-McMillan inequality}.
+    We have discussed what prefix-free codes are, and what the average code length represents.
+        We now provide a necessary and sufficient condition for the existence of a prefix code:
+        the \emph{Kraft-McMillan inequality}.
+
     \begin{theorem}[Kraft-McMillan]\label{Thm:2}
-        Let \(S = \set{s_{1}, \ldots, s_{n}}\) be a source alphabet
-        and \(X =\set{x_{1}, \ldots, x_{d}}\) a code alphabet.
-        Let \(l_{1}, \ldots, l_{n}\) be a set of lengths.
-        Then, necessary and sufficient condition for the existence of a 
-        prefix-free code \(C\) over the alphabet \(X\) with codewords lenghts 
+        Let \(S = \set{s_{1}, \ldots, s_{n}}\) be a source alphabet and \(X = \set{x_{1}, \ldots, x_{d}}\) a code alphabet.
+            Let \(l_{1}, \ldots, l_{n}\) be a set of lengths.
+            Then, a necessary and sufficient condition for the existence of a 
+        prefix-free code \(C\) over the alphabet \(X\) with codeword lengths 
         \(l_{1}, \ldots, l_{n}\) is that 
         \[
-            \sum_{i = 1}^{n}{d^{-l_{i}}} \le 1
+            \sum_{i = 1}^{n}{d^{-l_{i}}} \le 1,
         \]
-        with \(d\) size of the code alphabet.
+        where \(d\) is the size of the code alphabet.
     \end{theorem}
-    In other terms, if a set of lengths satisfies the inequality then,
-        there exist at least a way to arrange the codewords into a prefix code.
+
+    In other words, if a set of lengths satisfies the inequality, then
+        there exists at least one way to arrange the codewords into a prefix code.
 \end{document}

@@ -1,62 +1,57 @@
 \documentclass{subfiles}
 \begin{document}
-    When talking about information we all have a general notion of what it represents,
-        but how is it defined formally? 
-        Also, is there a way to measure information?
+    When discussing information, we all have a general notion of what it represents, 
+        but how is it defined formally? Is there a way to quantify information?
 
     The first to answer these questions was \emph{Claude Shannon}, 
-        by many condsidered the father of information theory.
-    In \cite{shannon1948} Shannon analizes various communication systems:
-        from the discrete noiceless one to the continous noisy one.
-        A general structure of these systems is shown below.
-        \subfile{../../extra/TikZ/Figure * - Communication system structure.tex}
+        widely considered the father of information theory.
+        In \cite{shannon1948}, Shannon analyzes various communication systems:
+        from the discrete noiseless one to the continuous noisy one.
+    A general structure of such systems is shown below.
+    \subfile{../../extra/TikZ/Figure * - Communication system structure.tex}
 
     Here:
     \begin{itemize}
-        \item The \emph{Source} or, more precisely, 
-            the \emph{Information Source} referes to some entity
-            (a human, a computer, etc) that produces messages.
+        \item The \emph{Source}, or more precisely, 
+            the \emph{Information Source}, refers to some entity
+            (a human, a computer, etc.) that produces messages.
 
-        \item The \emph{Encoder} encodes the messages coming from the source,
-            and transmits them trough the channel.
-.
-        \item The \emph{Channel} is the physical mean trough which the messages
+        \item The \emph{Transmitter} encodes the messages coming from the source
+            and transmits them through the channel.
+
+        \item The \emph{Channel} is the physical medium through which the messages
             are transmitted.
 
-        \item The \emph{Decoder} has the opposite role of the \emph{Encoder}.
-        \item The \emph{Destination} is the entity to which the messages are meant for.
+        \item The \emph{Receiver} has the opposite role of the transmitter.
+
+        \item The \emph{Destination} is the entity to which the messages are intended.
     \end{itemize}
 
     \begin{remark*}
-        What follows in this section, and the those following,
-        refers just to the discrete noiceless case. 
-        We also assume the source to be memoryless, 
-        meaning that each symbol produced is indipendent from the previous one.
+        We note that, henceforth, we refer to the noiseless source.
+        We also assume that the source is memoryless; 
+        that is, each symbol produced is independent of the previous one.
     \end{remark*}
 
     Let \(S\) be a source of information. 
-    Let \(\Sigma\) be the alphabet of symbols used by the source,
-    and for each symbols let \(p_{i} = \Pr(S = \sigma_{i})\) at any given time.
-    What we are looking for is some function \(H\), if it exists,
-    that measures the uncertainty we have about \(S\).
+        Let \(\Sigma\) be the alphabet of symbols used by the source,
+        and for each symbol let \(p_{i} = \Pr(S = \sigma_{i})\) at any given time.
+        We seek a function \(H\), if it exists, 
+        that quantifies the uncertainty associated with \(S\).
 
-    As we will show in \emph{Section \ref{Sec:1.1.1}}, 
-        the only form \(H\) can assume is the following:
-    \begin{equation}\label{Eq:1}
-        H = -K \sum_{i = 1}^{n = \abs[\Sigma]}{p_{i} \log_{b} p_{i}}.
-    \end{equation}
-    where \(K\) is a positive constant and \(b \text{ is usually } 2\).
+    One can prove (see \cite[Appendix 2]{shannon1948}) that
+        the only form that \(H\) can take is the following:
+        \begin{equation}\label{Eq:1}
+            H = -K \sum_{i = 1}^{\abs{\Sigma}}{p_{i} \log_{b} p_{i}}\text{.}
+        \end{equation}
+        Here, \(K\) is a positive constant, and \(b\) is usually 2.
 
-    \note{
-        In this context, 
-        by ``event'' we refer to the symbol produced by the source at a given time.
-    }
     We define \(H(S)\) to be the \emph{entropy} of \(S\). 
-    Formally, the entropy measures the average amount of information stored 
+    Formally, entropy measures the average amount of information contained 
         in each symbol of the source output.
-        Thus, we can define the information as the quantity of uncertainty lost
-        once the outcome of a given event is known.
+        Thus, the information associated with an event\footnotemark can be defined
+        as the reduction in uncertainty once the outcome is observed.
 
-    \subsubsection{Entropy: an axiomatic definition}\label{Sec:1.1.1}
-    \subfile{../subsub/1.1.1 - Entropy axiomatically defined}
+    \footnotetext{In this context, by ``event'' we refer to the symbol produced 
+    by the source at a given time.}
 \end{document}
