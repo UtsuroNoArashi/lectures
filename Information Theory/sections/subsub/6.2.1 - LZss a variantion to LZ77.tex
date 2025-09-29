@@ -1,0 +1,56 @@
+\documentclass{subfiles}
+\begin{document}
+    In 1982, \emph{Storer \emph{and} Szymanski} observed that,
+    while compressing with LZ77 two situation may occur: a match is found, or it has not.
+    In either case the use of a third component makes no sense.
+    In \cite{storer1982} they propose a variant of LZ77, the LZss,
+    that instead of the triples, make use of pairs of the type: 
+    \(<d, \abs{\alpha}>\) when a match is found, or \(<0, c>\) for when it has not.
+
+    Besides this change, the rest of the algorithm is analogous to LZ77.
+    
+    \paragraph{Comparison of LZ77-type parsings}
+    Let us denote by \(z\) the number of phrases in LZ77 encoding, and by \(z'\) those of LZss.
+    Define LZ77-/LZss-type parsings, respectively, as follow.
+
+    \begin{description}
+        \item [\textbf{LZss-type parsing}] Let \(S = t_{1}t_{2}\ldots t_{r}\) be a decomposition of 
+            \(S\) into non-empty strings \(t_{1},t_{2}, \ldots, t_{r}\). 
+            We say that \(t_{1},t_{2}, \ldots, t_{r}\) is an LZss-type parsing 
+            if of each \(i \in [1, r]\), the string \(t_{i}\) is either a letter or 
+            has an occurence in the string \(s[1,\abs{t_{1},t_{2}, \ldots, t_{r}} - 1]\).
+
+        \item [\textbf{LZ77-type parsing}]  Let \(S = t_{1}t_{2}\ldots t_{r}\) be a decomposition of 
+            \(S\) into non-empty strings \(t_{1},t_{2}, \ldots, t_{r}\). 
+            We say that \(t_{1},t_{2}, \ldots, t_{r}\) is an LZ77-type parsing
+            if of each \(i \in [1, r]\), the string \(t_{i}[1, \abs{t_{i}} - 1]\) 
+            has an occurence in the string \(s[1,\abs{t_{1},t_{2}, \ldots, t_{r}} - 2]\).
+    \end{description} 
+
+    We get the following results.
+    \begin{lemma*}[see \cite{lempel1976}]
+        For any string \(S\):
+        \begin{enumerate}
+            \item \(z' = \abs{LZss(S)}\) is smaller or equal to the size of any LZss-type
+                factorizations.
+            \item \(z = \abs{LZ77(S)}\) is smaller or equal to the size of any LZ77-type 
+                factorizations.
+        \end{enumerate}
+    \end{lemma*}
+
+    \begin{lemma*}[\cite[Lemma 3]{kosolobov2019}]
+        For any string \(S\), it holds 
+        \[
+            \frac{1}{2}z' < z \le z'
+        \]
+    \end{lemma*}
+
+    \begin{proof*}
+        Let us consider the following: given \(S\) a string, let \(f_{1}f_{2}\ldots f_{z}\)
+        be its LZ77 parsing. Consider \(f_{1}t_{2}t_{2}'\ldots t_{z}t_{z}'\) where 
+        \(t_{i} = f_{i}[1, \abs{f_{i}} - 1]\) and \(t_{i}' = f_{i}[\abs{f_{i}}]\).
+        One can easily observe that the latter is a LZss-type parsing of size at most \(2z - 1\).
+        Hence \(z' < 2z\). Moreover, the LZss parsing of \(S\) is a LZ77-type factorizations,
+        therefore \(z \le z'\).             
+    \end{proof*}
+\end{document}

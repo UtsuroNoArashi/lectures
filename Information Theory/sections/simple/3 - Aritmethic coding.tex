@@ -1,27 +1,26 @@
 \documentclass{subfiles}
 \begin{document}
-    Let us recall that, given \(C\) a code, 
-        \(L_{S}(C)\) represents the average code length of the codewords in \(C\).
+    Let us recall that, given a code \(C\), 
+    \(L_{S}(C)\) denotes the average code length of the codewords in \(C\).
 
-    From it, we can define two other important quantities: 
+    From this, we can define two other important quantities: 
         the efficiency and the redundancy of the code.
-        Formally, we define the efficiency as 
+        Formally, the efficiency is defined as 
         \[
-            \vartheta(C) = \frac{\entropy{S}[n]}{L_{S}(C)}
+            \vartheta(C) = \frac{\entropy{S}[n]}{L_{S}(C)},
         \]
-        which, from Shannon's theorem, is a value in the range \([0, 1]\).
-        We define the redundancy of the code as 
+        which, according to Shannon's theorem, takes values in the range \([0, 1]\).
+        The redundancy of the code is defined as 
         \[
-            \rho(S) = 1 - \vartheta(C)\text{.}
+            \rho(C) = 1 - \vartheta(C),
         \]
-        When considering Huffman, 
-            one can prove that its redundancy approaches 1 when the most 
-            frequent symbol probability approaches 1.
+        where, when considering Huffman coding, 
+            one can show that the redundancy approaches \(1\) as the probability 
+            of the most frequent symbol approaches \(1\).
 
-        The question then is: can we do better than Huffman?
-            The answer is yes, but we have to use a completely different approach:
-            instead of assigning a codeword to each symbol, 
-            we assign one to the whole text.
+        This naturally leads to the question: can we do better than Huffman?
+            The answer is affirmative, but it requires a completely different approach:
+            instead of assigning a codeword to each symbol, we assign one to the entire text.
             The method we are about to present is known as \emph{\gls{ac}}.
 
         \subsection{The encoding}
@@ -29,10 +28,8 @@
 
         \subsection{The decoding}
         \subfile{../sub/3.2 - AC decoding}
-
+       
         \subsection{The adaptive version}
         \subfile{../sub/3.3 - Adaptive AC}
-
-        \subsection{Exercises}
-        \subfile{../sub/3.4 - AC exercises}
+        \subfile{../exercise/Exercises - Arithmetic coding}
 \end{document}

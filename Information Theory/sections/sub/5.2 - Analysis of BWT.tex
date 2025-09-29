@@ -1,54 +1,72 @@
 \documentclass{subfiles}
 \begin{document}
-    From the discussion of the BWT, a question might arise naturally: 
-        how much does the compression improve by preprocessing the string using the BWT?
-        The question to this question can be found in \cite{manzini2001}.
-        Here Manzini analyzes the compression of BWT-based algorithm,
-        in terms of their \emph{empirical entropy\footnotemark[4]}.
-        Even though the paper referes just to the 0-th order empirical entropy,
-        defined as follow,
+    From the discussion of the BWT, a natural question arises: how much does 
+        the compression improve by preprocessing the string using the BWT? This 
+        question is addressed in \cite{manzini2001} by Manzini. Here,
+        Manzini analyzes the compression of BWT-based algorithms in terms of the 
+        \emph{empirical entropy} of the input string. 
+        The use of empirical entropy instead of Shannon's entropy is to search 
+        in the fact that the former is defined in terms of occurrences of a symbol 
+        or a group of symbols. Therefore, it is defined for any string without requiring 
+        any assumption on the underlying probability distribution, 
+        which makes it suitable for a worst case analysis.
+
+    Let \(S\) be a string of lenght \(n\) over the alphabet \(\Sigma = \set{\sigma_{1}, \ldots, \sigma_{m}}\),
+        and let \(n_{i}\) be the number of occurrences of \(\sigma_{i}\) in \(S\).
+        The zeroth order empirical entropy of the string \(S\) is defined as 
         \[
-            \entropy{s}[0] = - \sum_{c \in \Sigma}
-                \frac{n_{c}}{n} \log \frac{n_{c}}{n}  
+            \entropy{S}[0] = - \sum_{i = 1}^{m} {\frac{n_{i}}{n} \log \frac{n_{i}}{n}}.
         \]
-        where \(n_{c}\) is the number of occurences of \(c \text{ in } s\);
-        one could generalize the idea to a k-th order empirical entropy as follow
-        \begin{equation}\label{Eq:2}
-            \entropy{s}[k] = \frac{1}{\abs[s]} 
-                \sum_{w \in \Sigma^{k}} \abs[w_{s}] \entropy{w_{s}}[0]
-        \end{equation}
-        where \(w_{s}\) is the concatenation of symbols that follow \(w \text{ in } s\).
-    \footnotetext[4]{Due to the way it's defined, see \eqref{Eq:2},
-        empirical entropy is perfect for a worst-case analysis.}
+        We use the convention that \(0 \log 0 = 0\). As can be easily understood,
+        \(\abs{S} \entropy{S}[0]\) represent the output size of an ideal compressor which 
+        uses \(- \log \frac{n_{i}}{n}\) bits for coding symbols \(\sigma_{i}\).
+        If we consider the \(k\) preciding symbols in defining the codewords, 
+        a better compression ratio can be achived. For any string \(\omega \in \Sigma^{*}\)
+        define \(\omega_{S}\) to be the concatenation of the single symbol following \(\omega\) in \(S\).
+        Then, the quantity
+        \[
+            \entropy{S}[k] = \frac{1}{\abs{S}} \sum_{\omega \in \Sigma^{*}}
+            \abs{\omega_{s}} \entropy{S}[0] 
+        \]
+        represents the \(k\)-th order empirical entropy.
+        
+    Manzini also introduces the concept of \emph{modified} empirical entropy \(H_{k}^{*}(S)\),
+        (see \cite[Definition 2.1]{manzini2001} for the mathematical formulation),
+        which is defined by imposing the additional requirement that the encoding of \(S\)
+        takes at least the number of bits needed to represent \(S\) in binary.
 
-        In the paper Manzini provides also the following results.
+    Among all the other things discussed throughout the paper, of interest are the following results
+        for the proves of which, once again, we remind to the paper.
         \begin{theorem*}[Manzini]
-            For any string \(s\) over some alphabet \(\Sigma\) and for any \(k \ge 0\),
-            it holds that 
+            For any string \(S\) over an alphabet \(\Sigma\) and for any \(k \ge 0\), 
+            it holds that
             \[
-                BW_{0} = \le 8 \abs[s] \entropy{s}[k] +
-                    \left\lparen \mu + \frac{2}{25} \right\rparen \abs[s] + 
-                    h^{k} (2h \log h + 9)
+                BW_{0} \le 8 \abs{S} \entropy{S}[k] + 
+                    \left( \mu + \frac{2}{25} \right) \abs{S} + 
+                    h^{k} (2h \log h + 9),
             \]
-            where \(h = \abs[\Sigma] \text{ and } \mu = 1\).
+            where \(h = \abs{\Sigma}\) and \(\mu = 1\).
         \end{theorem*}
-        Let us point out that \(BW_{0} = Order_{0} + MTF + BWT\), 
-        where \(Order_{0}\) is some 0-order compressor.
+        Here, \(BW_{0} = Order_{0} + MTF + BWT\), where \(Order_{0}\) denotes 
+        a 0-th order compressor.
+
         \begin{theorem*}
-            For any string \(s\) over some alphabet \(\Sigma\) and for any \(k \ge 0\),
-            there exists some constant \(g_{k}\), such that it holds
+            For any string \(S\) over an alphabet \(\Sigma\) and for any \(k \ge 0\), 
+            there exists a constant \(g_{k}\) such that
             \[
-                BW_{0} + RL \le (5 + 3\mu)\abs[s] H_{k}^{*}(s) + g_{k}
+                BW_{0} + RL \le (5 + 3\mu)\abs{S} H_{k}^{*}(S) + g_{k},
             \]
-            where \(RL\) is the run length encoding of the string.
+            where \(RL\) denotes the run-length encoding of the string.
         \end{theorem*}
 
-        To conclude this section, 
-            let us observe that the bottleneck of the BWT is
-            given by the sorting of the cyclic rotations.
-            We should show, in the following section, 
-            that the problem can be reduced to the sorting of suffixes.
+    To conclude this section, observe that the primary bottleneck of the BWT 
+        is the sorting of cyclic rotations. In the following section, we show how 
+        this problem can be reduced to the sorting of suffixes.
 
-        \subsubsection{Efficient computation of the BWT}
-        \subfile{../subsub/5.2.1 - Efficient BWT computation}
+    \begin{remark*}
+        Both MFT and RLE will be briefly discussed in \emph{Section \ref{Sec:7.1}}
+    \end{remark*}
+
+    \subsubsection{Efficient computation of the BWT}
+    \subfile{../subsub/5.2.1 - Efficient BWT computation}
 \end{document}

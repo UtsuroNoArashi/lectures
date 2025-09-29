@@ -1,4 +1,7 @@
-\documentclass[moon, colormath]{lectures2}
+\documentclass[moon, draft]{lectures2}
+
+\title{Notes on Information Theory}
+\author{Riccardo Lo Iacono}
 
 \addbibresource{../extra/Bib/other.bib}
 \addbibresource{../extra/Bib/papers.bib}
@@ -10,9 +13,10 @@
 \newacronym{ac}{AC}{aritmethic coding}
 \newacronym{bwt}{BWT}{Burrows-Wheeler Transform}
 \newacronym{sa}{SA}{suffix array}
+\newacronym{lz}{LZ}{Lempel-Ziv}
 
 \begin{document}
-    \maketitle{Information Theory notes}{Riccardo Lo Iacono}{Unipa}
+    \maketitle
 
     \section{Basics of information theory} 
     \subfile{../sections/simple/1 - Basics of IT}
@@ -28,9 +32,13 @@
 
     \section{Compression optimization}
     \subfile{../sections/simple/5 - Compression optimization}
-    %
-    % \section{Dictionary based compressors}
-    % \subfile{../sections/simple/6 - Dictionary based compressors}
-    \clearpage\printbibliography
-    \clearpage\printglossaries
+
+    \section{Dictionary based compressors}
+    \subfile{../sections/simple/6 - Dictionary based compressors}
+
+    \section{Pattern matching on compressed indexes}
+    \subfile{../sections/simple/7 - PM and CI}
+
+    \printbibliography
+    \printglossaries
 \end{document}

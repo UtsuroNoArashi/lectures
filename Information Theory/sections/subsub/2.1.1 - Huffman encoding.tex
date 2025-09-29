@@ -1,55 +1,49 @@
 \documentclass{subfiles}
-\begin{document} 
-    Let \(\omega\) be a string to encode, 
-    produced by some source \(S\).
-    To encode such string we have to:
-        \begin{enumerate}
-            \item Scan \(\omega\) to get the probabilities of each symbol.
-                Unless these are known a priori.
-            \item Sort the symbols non-increasingly according to their probabilities.
-            \item Build a (binary) tree where the leaves are the source symbols,
-                and each node is the sum of the (two) lowest probabilities.
-                Repeat the process until a root is formed.
-            \item Build the code by traversing the tree from the root to a leaf,
-                and assigning a 0 to the left paths, a 1 to the right one.
-        \end{enumerate}
+\begin{document}
+    Let \(\omega\) be a string to encode, produced by some source \(S\).
+    To encode such string, one must perform the following steps:
+    \begin{enumerate}
+        \item Scan \(\omega\) to get the probabilities of each symbol, 
+            unless these are known a priori.
 
-        \begin{example*}
-            To ease things out, the example skips the scanning step.
+        \item Sort the symbols non-increasingly according to their probabilities.
 
-            Let \(S = \set{a, b, c, d, e}\) whose probabilities are
-            \(\set*{\tfrac{1}{3}, \tfrac{1}{6}, \tfrac{1}{3},
-            \tfrac{1}{12}, \tfrac{1}{12}}\), respectively. 
-            Applying the steps above we have the following.
-            \begin{description}
-                \item [\textbf{Step 1.}] 
-                    Sorting the symbols according to the probabilities,
-                    we get the following order: \(a, c, b, d, e\).
+        \item Build a (binary) tree where the leaves are the source symbols,
+            and each node is the sum of the two lowest probabilities.
+            Repeat this process until a root is formed.
+            
+        \item Build the code by traversing the tree from the root to each leaf,
+            assigning 0 to left paths and 1 to right paths.
+    \end{enumerate}
 
-                \item [\textbf{Step 2.}] 
-                    To build the tree let's consider the 
-                    two least probable symbols, in this case \(d \text{ and } e\).
-                    The sum of their probabilities will define a new node \(x\) in the
-                    tree (the \Csquare{rpIris} one in the figures below).
-                    The next node \(y\) (the \Csquare{rpFoam} one) is given by \(x\) 
-                    and the third least probable symbol \(b\).
-                    At this point we can make two choices to define the node \(z\):
-                    we can either merge \(a \text{ and } c\) or merge \(c \text{ and } y\).
-                    Both will build a optimal code. 
-                    
-                    For the sake of this example, let's merge \(c \text{ and } y\),
-                    the other choice is shown in \emph{Figure \ref{Fig:2.b}}.
-                    Lastly, we merge the last two symbols, 
-                    leading to the tree in \emph{Figure \ref{Fig:2.a}}.
-                    \subfile{../../extra/TikZ/Figure 1 - Example of Huffman encoding}
+    \begin{example*}
+        Let \(S = \set{1, 2, 3, 4, 5}\) whose probabilities are
+            \(\set*{\sfrac{1}{3}, \sfrac{1}{6}, \sfrac{1}{3},
+            \sfrac{1}{12}, \sfrac{1}{12}}\), respectively. 
+        Applying the steps above yields:
+        \begin{description}
+            \item [\textbf{Step 1.}] 
+                Sorting the symbols according to the probabilities gives the order: \(1, 3, 2, 4, 5\).
 
-                \item [\textbf{Step 3.}] Traversing the tree we get 
-                    \(C = \set{0, 10, 110, 1110, 1111}\) for tree in 
-                    \emph{Figure \ref{Fig:2.a}} or \(C = \set{00, 01, 10, 110, 111}\)
-                    for the one in \emph{Figure \ref{Fig:2.b}}.
-            \end{description}   
-        \end{example*}
+            \item [\textbf{Step 2.}] 
+                Consider the two least probable symbols, \(d\) and \(e\).
+                Their sum defines a new node \(x\) in the tree (the \Ccircle{rpIris} one in the figures).
+                The next node \(y\) (the \Ccircle{rpFoam} one) is formed by \(x\) 
+                and the third least probable symbol \(b\).
+                At this point, node \(z\) (the \Ccircle{rpPine} one) can be obtained by 
+                either merging \(a\) and \(c\) or merging \(c\) and \(y\),
+                both resulting in an optimal code. 
+                
+                In this example, \(c\) and \(y\) are merged; the alternative is shown in (\subref{Fig:1.b}).
+                Finally, the last two symbols are merged to form the tree (\subref{Fig:1.a}).
+                \subfile{../../extra/TikZ/Figure 1 - Example of Huffman encoding}
+                
+            \item [\textbf{Step 3.}] Traversing the tree produces 
+                \(C = \set{0, 10, 110, 1110, 1111}\) for tree (\subref{Fig:1.a}) and
+                \(C = \set{00, 01, 10, 110, 111}\) for tree (\subref{Fig:1.b}).
+        \end{description}   
+    \end{example*}
 
-        From the steps above, it's obvious that the slowest part of the encoding
-        is given by the neccessity to scan the text twice. 
+    From the steps above, it is evident that the slowest part of the encoding
+    is the necessity to scan the text twice.
 \end{document}

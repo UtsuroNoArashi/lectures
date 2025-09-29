@@ -1,0 +1,30 @@
+\documentclass{subfiles}
+\begin{document}
+    \begin{figure*}[!hb]
+        \centering
+        \begin{tikzpicture}
+            [
+                every node/.style={font=\small\ttfamily}
+            ]
+
+            \node (s0) ["$S=$" above left] {};
+            \foreach \symbol/\index/\prev in {a/1/0, a/2/1, b/3/2, b/4/3, a/5/4} {
+                \node (s\index) [right=0.125 of s\prev, "\symbol"] {}; 
+                \node [above=0.5 of s\index, "\index"] {}; 
+            }
+
+            \node (s6) [right=0.125 of s5, "a" rpIris] {};
+            \node (s7) [right=0.125 of s6, "a" rpIris] {};
+            \node (s8) [right=0.125 of s7, "b" rpIris] {};
+            \node [right=0.125 of s8, "a" rpFoam] {};
+            
+            \draw [ |-| ] (s1.north) ++ (-0.125, 0) -- ($(s5.north) + (0.2, 0)$); 
+            \node at ($(s1.north) ! 0.5 ! (s5.north)$) 
+                [anchor=north, text width=1cm, align=center] {Search Buffer};
+
+            \draw [ -| ] (s5.north) ++ (0.2, 0) -- ($(s5.north) + (2.5, 0)$); 
+            \node at ($ (s5.north) + (1.25, 0)$) 
+                [anchor=north, text width=1cm, align=center] {Lookahead Buffer};
+        \end{tikzpicture}
+    \end{figure*}
+\end{document}

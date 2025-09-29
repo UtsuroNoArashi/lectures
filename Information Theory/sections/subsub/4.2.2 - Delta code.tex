@@ -1,23 +1,35 @@
 \documentclass{subfiles}
 \begin{document}
-    Let \(x\) be a positive Integer, 
-        its delta code (\(\delta(x)\)) is a binary sequence composed by:
+    Let \(x\) be a positive integer. Its delta code, denoted \(\delta(x)\), 
+        is a binary sequence composed of the following elements:
         \begin{itemize}
-            \item the delta code of \(\abs{B(x)}\)
-            \item the binary representation of \(x\) excluding the most significant bit
+            \item the gamma encoding of \(\abs{B(x)}\), and
+            \item the binary representation of \(x\) with the most significant 
+                  bit excluded.
         \end{itemize}
 
+    Decoding is straightforward: count the number of zeros up to the first 1, 
+        say they are \(k\); treat the next \(k + 1\) bits as the integer \(h\);
+        interpret the following \(h\) bits as the integer \(x\).
+
     \begin{example*}
-        Let \(x = 11\), then its delta code is:
-            \[
-                \delta(x) = 001 00 011
-            \]
-        where \(00100\) is the gamma encoding of \(\abs{B(x)}\) and 
-            \(011\) the binary encoding of \(x\), most significant bit excluded.
+        For \(x = 11\), the delta encoding is
+        \[
+            \delta(x) = 00100 011,
+        \]
+        where \(00100\) corresponds to the gamma encoding of \(\abs{B(x)}\) 
+        and \(011\) represents the binary encoding of \(x\) with the most 
+        significant bit excluded.
     \end{example*}
-    
-    As before, the decoding is trivial, so we skip it.
-    Once can prove that the code uses at most \(1 + \log x + 2 \log \log x\) bits.
-    Also, and most importantly,
-        gamma codes are reasonable when \(p(x) = \tfrac{1}{2x (\log x)^{2}}\).
+
+    It can be shown that 
+        the delta code requires at most 
+        \[
+            1 + \log x + 2 \log \log x
+        \] 
+        bits. Importantly, delta codes are efficient when the probability 
+        distribution is 
+        \[
+            p(x) = \frac{1}{2 x (\log x)^{2}}.
+        \]
 \end{document}

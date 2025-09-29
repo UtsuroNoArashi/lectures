@@ -1,16 +1,23 @@
 \documentclass{subfiles}
 \begin{document}
-    Deconding a text compressed via the \gls{ac} encoding,
-        is straightforward as its encoding.
+    Decoding a text compressed via AC, is as straightforward as its encoding.
         In fact, the decoding proceeds similarly to the encoding.
-        We just 
+        The procedure, shown in \emph{Figure \ref{Fig:5}}, is as follows:
         \begin{enumerate}
             \item Initialize the range \([0, 1]\).
-            \item We divide the subrange according to the probabilities,
-                as done for the encoding.
-            \item At each step we select as current interval the one where the 
-                encoded text fall in to.
+
+            \item Divide the subrange according to the symbol probabilities,
+                as done during encoding.
+
+            \item At each step, select as the current interval the one in which the 
+                encoded text falls.
         \end{enumerate}
-        Algorithmically speaking we proceed applying the procedure in \emph{Figure \ref{Fig:5}}.
-        \subfile{../../extra/TikZ/Figure 4 - AC decoding snippet}
+        \subfile{../../extra/TikZ/Figure 5 - AC decoding snippet}
+
+        \begin{example*}
+            Let \(x = 0.3047\). Let the alphabet and the probabilities be those of the previous example.
+            \subfile{../../extra/TikZ/Figure 6 - Example of AC decoding}
+
+            \noindent Applying the decoding steps to \(x\) yields what shown in \emph{Figure \ref{Fig:6}}.
+        \end{example*}
 \end{document}

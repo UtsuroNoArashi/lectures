@@ -1,27 +1,26 @@
 \documentclass{subfiles}
 \begin{document}\label{Sec:2}
-    The first to solve the problem of creating optimal code was \emph{D.A. Huffman},
-       who in \cite{huffman1952} provides a method to create compact codes.
+    The first to solve the problem of creating optimal codes was \emph{D.~A. Huffman},
+        who in \cite{huffman1952} provided a method to construct compact codes.
 
-        Before we actually analyze such method, 
-            it's of intrest to point out some properties that optimal codes 
-            must satisfy.
-        Let \(S\) be a source with some probability distribution,
-        let's also assume that \(p_{1} \ge p_{2} \ge \ldots \ge p_{n}\).
-        Let \(C\) be a compact prefix code for \(S\) such that \(c_{i}\) is 
-            the codeword associated to \(p_{i}\). Then:
+    Before analyzing this method, it is of interest to point out some properties that optimal codes must satisfy.
+        Let \(S\) be a source with probability distribution \(\{p_{1}, p_{2}, \ldots, p_{n}\}\),
+        ordered such that \(p_{1} \ge p_{2} \ge \ldots \ge p_{n}\).
+        Let \(C\) be a compact prefix code for \(S\), 
+        and let \(c_{i}\) denote the codeword associated with symbol of probability \(p_{i}\).
+        Then:
+
         \begin{enumerate}
-            \item To reduce the expected code length, 
-                the shortes codewords are associated to the symbols with the higtest
-                probability. This means that 
+            \item To reduce the expected code length, the shortest codewords are associated with the most probable symbols. 
+                That is,
                 \[
-                    p_{i} \ge p_{j} \implies \abs[c_{i}] \le \abs[c_{j}]
+                    p_{i} \ge p_{j} \implies \abs{c_{i}} \le \abs{c_{j}}.
                 \]
-                If this was not the case, 
-                swapping the codewords would result in a code with a lower \gls{acl}.
+                If this were not the case, swapping the codewords would result in a code with a lower average code length ACL.
 
-            \item The least probable symbols have codewords with the same length.
-            \item The longest codewords differ only by the last symbol.
+            \item The least probable symbols have codewords of equal length.
+
+            \item The longest codewords differ only in their final symbol.
         \end{enumerate}
 
         \subsection{The algorithm}
@@ -29,4 +28,5 @@
 
         \subsection{Canonical Huffman}
         \subfile{../sub/2.2 - Canonical Huffman}
+        \subfile{../exercise/Exercises - Huffman encoding.tex}
 \end{document}

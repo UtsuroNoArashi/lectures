@@ -1,0 +1,18 @@
+\documentclass{subfiles}
+\begin{document}
+    Initially posposed by \emph{A. Lempel \emph{and} J. Ziv} in \cite{lempel1976, lempel1977, lempel1978},
+        these are a type of dictionary based compressors in which the dictionary is built dinamically;
+        that is, instead of having a pre-defined codebook, we create it while the text is being read.
+        The reason this works is simple: with an high degree of probability,
+        the text previously encoded is a great soure of patterns 
+        (it shares the same language, style and structure of the upcoming text).
+
+    One of the most important aspects of LZ-based compressors
+        is the fact that there's no need to transmit the dictionary, 
+        as we shall see shortly.
+
+    \begin{remark*}
+        Though other variants exists, 
+            in the next few sections we'll focus on LZ-77, LZss, LZ-78 and LZW.
+    \end{remark*}
+\end{document}

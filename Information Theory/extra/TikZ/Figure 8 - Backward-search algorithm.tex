@@ -1,0 +1,26 @@
+\documentclass{subfiles}
+\begin{document}
+    \begin{figure}[!hb]
+        \centering
+        \begin{subfigure}{0.6\textwidth}
+            \centering
+            \begin{lstlisting}
+                Backward_search(P[1, p], C) {
+                    i = p 
+                    c = P[p]
+                    First = C[c] + 1 
+                    Last = C[c + 1]
+                    while ((First <= Last) and (i >= 2)) {
+                        c = P[i - 1]
+                        First = C[c] + Occ(c, First - 1) + 1
+                        Last = C[c] + Occ(c, Last)
+                        i = i + 1
+                    }
+                    if (Last < First) then "No patter found" else <First, Last>
+                } 
+            \end{lstlisting}
+        \end{subfigure}
+        \caption{Pseudo code for the implementation of Backward-search.}
+        \label{Fig:8}
+    \end{figure}
+\end{document}

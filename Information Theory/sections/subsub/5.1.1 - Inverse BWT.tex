@@ -1,41 +1,40 @@
 \documentclass{subfiles}
 \begin{document}
-    Since the BWT is a transform, we want it to be reversible.
-    As obvious, the BWT is indeed reversible, 
-        and actually it has two distinct, yet equivalent, inverse transform:
-        the FL-mapping and the FL-mapping.
+    Since the BWT is a transform, it is desirable for it to be reversible. 
+    Indeed, the BWT is reversible and admits two distinct but equivalent 
+    inverse transforms: the FL-mapping and the LF-mapping.
 
-    Let us use the BWT of the previous example as input to the inverse transforms.
+    We illustrate these inverse transforms using the BWT of the previous 
+    example as input.
 
     \paragraph*{FL-mapping}
-    Let \(L = BWT(aleph) \text{ and } I = 0\) the index of the original string.
-    We construct \(F\) by lexicographically sorting \(L\).
-    Let's define the permutation that maps the symbols in \(F\) 
-    to those in \(L\) as 
+    Let \(L = BWT(aleph)\) and \(I = 0\) be the index of the original 
+    string. We construct \(F\) by lexicographically sorting \(L\). 
+    Define the permutation that maps the symbols in \(F\) to those in \(L\) 
+    as
     \[
         \tau = \begin{pmatrix}
             0 & 1 & 2 & 3 & 4 \\ 
-            3 & 4 & 0 & 1 & 2 \\
+            3 & 4 & 0 & 1 & 2
         \end{pmatrix}\text{.}
     \]
-    We recover \(\omega\) by computing 
-        \(\omega[i] = F[\tau^{i}[I]]\), for \(i = 0, 1, \ldots, 4\).
-        In fact, we have: \(\omega[0] = F[I] = a, \omega[1] = F[\tau[0]] = F[3] = l\),
-        and so on.
+    We recover \(\omega\) by computing \(\omega[i] = F[\tau^{i}[I]]\) for 
+    \(i = 0, 1, \ldots, 4\). Concretely, 
+    \(\omega[0] = F[I] = a\), \(\omega[1] = F[\tau[0]] = F[3] = l\), and 
+    so forth.
 
     \paragraph*{LF-mapping}
-    Let \(L = BWT(aleph) \text{ and } I = \) the index of the original string.
-    We construct \(F\) by lexicographically sorting \(L\). 
-    Let's define the permutation that maps the symbols in \(L\) 
-    to those in \(F\) as 
+    Let \(L = BWT(aleph)\) and \(I = 0\) be the index of the original string. 
+    We construct \(F\) by lexicographically sorting \(L\). Define the 
+    permutation that maps the symbols in \(L\) to those in \(F\) as
     \[
         \sigma = \begin{pmatrix}
             3 & 4 & 0 & 1 & 2 \\
-            0 & 1 & 2 & 3 & 4 \\ 
+            0 & 1 & 2 & 3 & 4
         \end{pmatrix}\text{.}
     \]
-    We recover \(\omega\) by computing 
-        \(\omega[n - 1 - i] = L[\sigma^{i}[I]]\), for \(i = 0, 1, \ldots, 4\).
-        In fact, we have: \(\omega[4] = L[I] = h, \omega[3] = L[\sigma[0]] = L[2] = p\) 
-        and so on.
+    We recover \(\omega\) by computing \(\omega[n - 1 - i] = L[\sigma^{i}[I]]\) 
+    for \(i = 0, 1, \ldots, 4\). Concretely, 
+    \(\omega[4] = L[I] = h\), \(\omega[3] = L[\sigma[0]] = L[2] = p\), and 
+    so forth.
 \end{document}

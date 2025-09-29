@@ -1,24 +1,23 @@
 \documentclass{subfiles}
 \begin{document}
-    \begin{figure}[!h]
+    \begin{figure}[!ht]
         \centering
-        \begin{subfigure}{0.75\textwidth}
-            \begin{lstlisting}
-                double AC_encode(char* S, double* cumFun, double* Prob){
-                    double high = 1;
-                    double low = 0;
-                    int i = 1;
-                    double range;
+        \begin{subfigure}{0.5\textwidth}
+            \begin{lstlisting}[language=PSEUDO]
+                procedure AC_encode(S, n, P[--|\(\sigma\)|--], --|\(f_{\sigma}\)|--){
+                    --|\(s_{0}\)|-- = 1
+                    --|\(l_{0}\)|-- = 0
+                    i = 1
                     while (i <= n)  {
-                        range = high - low;
-                        low = low + range * cumFun[S[i]];
-                        high = low + range * (cumFun[S[i]] + Prob[S[i]]);
+                        --|\(s_{i} = s_{i - 1}\)|-- * P[S[i]];
+                        --|\(l_{i} = l_{i - 1} + s_{i - 1} * f_{S[i]}\)|--
+                        i = i + 1
                     }
-                    return high - low;
+                    return (--| x \(\in (l_{n}, l_{n} + s_{n}) \)|--)
                 }
             \end{lstlisting}
         \end{subfigure}
-        \caption{C implementation of the \gls{ac} encoding.}
-        \label{Fig:4}
+        \caption{Pseudo code for encoding strings using AC.}
+        \label{Fig:3}
     \end{figure}
 \end{document}

@@ -1,0 +1,32 @@
+\documentclass{subfiles}
+\begin{document}
+    As previously noted, 
+        the main limitation of the classic Huffman approach 
+        is the necessity to scan the text twice, which slows down encoding.
+    Additionally, proper operation requires knowledge of the symbol probabilities in advance,
+        which is not always feasible.
+    To address these issues, a new method has been developed, 
+        known as \emph{Adaptive Huffman}.
+
+    The key feature of this approach is that the tree is built and updated dynamically.
+    The procedure can be summarized as follows:
+    \begin{itemize}
+        \item Start with an initially empty tree,
+            or one containing only a special \textbf{Not Yet Transferred} (\textbf{NYT}) node.
+
+        \item For each symbol in the text: 
+            \begin{itemize}
+                \item If the symbol has already been encoded, encode it using the existing code.
+
+                \item If it is a new symbol:
+                    encode the \textbf{NYT} node first, 
+                    then encode the symbol itself and add it to the tree as a leaf.
+
+                \item After encoding a symbol, update the tree:
+                    increment the frequency of the symbol and its ancestors,
+                    and reorganize the tree to maintain the Huffman properties.
+            \end{itemize}
+    \end{itemize}
+
+    It can be shown that the adaptive approach exhibits better locality than the classic one.
+\end{document}

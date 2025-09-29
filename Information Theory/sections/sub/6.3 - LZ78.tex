@@ -1,0 +1,34 @@
+\documentclass{subfiles}
+\begin{document}
+    Mainly differs from LZ77 by the fact that the dictionary is explicitly built.
+    Formally speaking, LZ78 outputs a sequence of pairs of the form \(<index, nextchar>\),
+    where 
+    \begin{itemize}
+        \item \emph{index} is the position of the prefix in the dictionary, and 
+        \item \emph{nextchar} is the character following the known prefix.
+    \end{itemize}
+    Each phrase formed this way is then added to the dictionary.
+
+    A question arise naturally: how do we store such phrases? One of the main features
+    that we look for in such a data structure is a fast look up. For this reason,
+    in general, we use trie\footnotemark.
+
+    \footnotetext{We assume the reader to be familiar with such data structure.}
+    \clearpage
+    \begin{example*}
+        Let \(S = aabbaaabaca\) and let \(D = \set{ }\) be the current dictionary.
+            When trying to encode the first \(a\) we observe that \(D = \varnothing\)
+            meaning there is no phrase to encode \(a\); thus, the pair \(<0, a>\)
+            is formed and added to \(D\). When encoding the second \(a\) a phrase is found,
+            thus the pair \(<1, a>\) is formed and added to \(D\). 
+            At this point \(D\) contains the phrases \(a, aa\) at position 1 and 2,
+            respectively. We proceed similarly to encode the whole string.
+    \end{example*}
+
+    \begin{remark*}
+        There exist a version of LZ78, knwon as LZW proposed by \emph{Terry A. Welch} in \cite{welch1984}.
+        This variant differs from LZ78 by the absence of \(nextchar\). 
+        Precisely, each new phrase is obtained by appending the first character of the following phrase
+        to the current one.
+    \end{remark*}
+\end{document}

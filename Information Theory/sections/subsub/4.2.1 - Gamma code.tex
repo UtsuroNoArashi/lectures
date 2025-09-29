@@ -1,22 +1,26 @@
 \documentclass{subfiles}
 \begin{document}
-    Let \(x\) be a positve Integer.
-        Its gamma code (\(\gamma(x)\)) is a binary sequence composed by:
-        \begin{itemize}
-            \item the unary encoding of \(\abs[B(x)]\)
-            \item the binary representaion of \(x\) minus the most significant bit.
-        \end{itemize}
+    Let \(x\) be a positive integer. Its gamma code, denoted 
+    \(\gamma(x)\), is a binary sequence composed of the following elements:
+    \begin{itemize}
+        \item the unary encoding of \(\abs{B(x)}\), and
+        \item the binary representation of \(x\) with the most significant bit removed.
+    \end{itemize}
+    Decoding is straightforward: count the nomber of zeros up to the first 1, 
+        say they are \(k\), treat the next \(k + 1\) bits (1 included) as the integer \(x\).
 
     \begin{example*}
-        If \(x = 11\), then its gamma encoding is:
-            \[
-                \gamma(x) = 0001011
-            \]
-        where \(0001\) is the unary encoding of \(\abs[B(x)]\) and \(011\)
-        the binary representaion of \(x\) minus the most significant bit.
+        For \(x = 11\), the gamma encoding is
+        \[
+            \gamma(x) = 0001011,
+        \]
+        where \(0001\) corresponds to the unary encoding of \(\abs{B(x)}\) 
+        and \(011\) represents the binary representation of \(x\) with the 
+        most significant bit removed.
     \end{example*}
 
-    The decoding is trivial, so we skip it.
-    It's easy to prove that with this kind of code, we need at most \(2 \floor[\log x] + 1\)
-    bits. Also, most importantly, this encoding is reasonable when \(p(x) = 2x^{-2}\).
+    It can be shown that this 
+    encoding requires at most \(2 \lfloor \log x \rfloor + 1\) bits. Most 
+    importantly, this code is particularly efficient when the probability 
+    distribution is \(p(x) = 2 x^{-2}\).
 \end{document}

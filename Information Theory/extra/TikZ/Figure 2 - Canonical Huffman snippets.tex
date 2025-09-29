@@ -1,0 +1,33 @@
+\documentclass{subfiles}
+\begin{document}
+    \begin{figure}[!ht]
+        \centering
+        \begin{subfigure}{0.35\textwidth}
+            \centering
+            \begin{lstlisting}
+                fc[MAX] = 0;
+                for (int l = MAX - 1; l >= 1; l--) {
+                    fc[l] = (fc[l + 1] + num[l + 1] >> 1);
+                }
+            \end{lstlisting}
+            \phantomcaption\label{Fig:2.a}
+        \end{subfigure}
+        \hskip 0.15\textwidth
+        \begin{subfigure}{0.35\textwidth}
+            \centering
+            \begin{lstlisting}
+                char v = next_bit();
+                int l = 1;
+                while (v < fc[l]) {
+                    v = v << 1 + next_bit();
+                    l++
+                }
+                return symb[l, v - fc[l]];
+            \end{lstlisting}
+            \phantomcaption\label{Fig:2.b}
+        \end{subfigure}
+        \caption{(a) (on the left) implements the \lstinline{fc} construction;
+        (b) (on the right) implementats the Canonical Huffman decoding.}
+        \label{Fig:2}
+    \end{figure}
+\end{document}

@@ -1,22 +1,22 @@
 \documentclass{subfiles}
 \begin{document}
-    Let's assume we recieve a text encoded using Huffman, how do we decode it?
-    We shall remark that to decode the text we need to know either the Huffman tree, 
-        or the source probabilities, which represent in both cases an overhead
-        to the bare encoding.
-    Assuming that such overhead is know, the decoding is immediate.
-    In fact, we read the recieved text and traverse the tree accordingly 
-    until reaching a leaf. Repeating the process for the whole text.
+    Let's assume we receive a text encoded using Huffman. How can we decode it?
+    We remark that decoding requires knowledge of either the Huffman tree 
+        or the source probabilities, which in both cases constitute an overhead
+        relative to the bare encoding.
+    Assuming this overhead is known, decoding is straightforward.
+    Specifically, one reads the encoded text and traverses the tree accordingly 
+    until reaching a leaf. This process is repeated until the entire text is decoded.
 
     \begin{example*}
         Let \(\omega = 00101111100001\) be a text encoded using Huffman.
-        Let's assume that the tree used is the one in \emph{Figure \ref{Fig:2.b}}.
-        Starting from the root, we read a zero as first symbol of the encoded text,
-        thus we consider the left subtree. 
-        Since we are not at a leaf we keep reading the encoded text.
-        We read another zero, so once again we consider the left subtree.
-        Since we reached a leaf we stop and decode \(00\) as \(a\). 
-        We move back to the root and repeat the process. 
-        After few steps we decode \(\omega = abedac\).
+        Assume the tree used is the \textbf{(\subref{Fig:1.b})} one of \emph{Figure \ref{Fig:1}}.
+        Starting from the root, the first symbol in the encoded text is zero,
+        so the left subtree is considered. 
+        Since the current node is not a leaf, reading continues.
+        Reading another zero, we again follow the left subtree.
+        Upon reaching a leaf, we decode \(00\) as \(a\). 
+        The traversal then returns to the root, and the process is repeated. 
+        After a few iterations, the decoded text is \(\omega = abedac\).
     \end{example*}
 \end{document}

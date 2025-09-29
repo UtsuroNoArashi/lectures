@@ -1,0 +1,27 @@
+\documentclass{subfiles}
+\begin{document}
+    \begin{figure}[!h]
+        \centering
+        \begin{subfigure}{0.75\textwidth}
+            \begin{lstlisting}[language=ALGOL]
+                procedure AC_decode (binaryS, n, P[--|\(\sigma\)|--], --|\(f_{\sigma}\)|--){
+                    --|\(s_{0} = 1\)|--
+                    --|\(l_{0} = 0\)|--
+                    i = 0
+                    while (i <= n) {
+                        subdivide the current interval into subranges according to the probabilities
+                        return the symbol x associated to the current range 
+                        
+                        S = S::--|\(\sigma\)|-- 
+                        --|\(s_{i} = s_{i - 1} * P[\sigma]\)|--
+                        --|\(l_{i} = l_{i - 1} + s_{i - 1} * f_{\sigma}\)|--
+                        i = i + 1
+                    }
+                    return S
+                }
+            \end{lstlisting}
+        \end{subfigure}
+        \caption{Pseudo code for decoding AC encoded strings.}
+        \label{Fig:5}
+    \end{figure}
+\end{document}

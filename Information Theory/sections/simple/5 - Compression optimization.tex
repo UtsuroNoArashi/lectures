@@ -1,14 +1,14 @@
 \documentclass{subfiles}
 \begin{document}
-    So far, we've discussed of a few compression techniques 
-        assuming that the input of such compressors was ``optimal''\footnotemark[2].
-        But what if, this was not the case? 
-        Can we preprocess the string in such a way that,
-            once it reaches the compressor, this is optimal?
-        The answer is yes and this section introduced a few of such optimization.
 
-    \footnotetext[2]{In this context by ``optimal'', 
-        we mean that the string has the lowest possible entropy.}
+    So far, we have discussed several compression techniques under the assumption
+    that the input to such compressors is ``optimal''\footnotemark. However, what
+    if this is not the case? Can we preprocess the string in such a way that, once
+    it reaches the compressor, it becomes optimal? The answer is affirmative, and
+    this section introduces one of such optimizations.
+
+    \footnotetext{In this context, ``optimal'' refers to a string with the
+    lowest possible entropy.}
 
     \subsection{Burrows-Wheeler Transform}
     \subfile{../sub/5.1 - BWT}

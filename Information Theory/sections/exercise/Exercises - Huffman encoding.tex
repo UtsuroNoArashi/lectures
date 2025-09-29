@@ -1,0 +1,45 @@
+\documentclass{subfiles}
+\begin{document}
+    \begin{exercises*}
+        \begin{enumerate}
+            \item Given the following strings, compute both the standard and the 
+                canonical Huffman encodings, and compare the results in terms of code length.
+                \begin{itemize}
+                    \item \(\omega_{0} = abbaca\)
+                    \item \(\omega_{1} = cabbab\)
+                \end{itemize}
+
+            \item Decode the following strings assuming they have been encoded 
+                with standard Huffman coding, and the alphabet is \(\Sigma = \{a, b, c\}\). 
+                Also reconstruct the Huffman tree for each string.
+                \begin{itemize}
+                    \item \(s_{0} = 1010110\), with symbol frequencies inferred from the string
+                    \item \(s_{1} = 1100101\), with symbol frequencies inferred from the string
+                \end{itemize}
+
+            \item Compute the adaptive Huffman encoding for the following strings,
+                updating the tree after each symbol. 
+                Compare the final code length with the standard Huffman encoding.
+                \begin{itemize}
+                    \item \(\omega_{0} = abacb\)
+                    \item \(\omega_{1} = bbaca\)
+                \end{itemize}
+
+            \item Decode the following strings assuming adaptive Huffman coding was used,
+                and reconstruct the tree step by step.
+                \begin{itemize}
+                    \item \(s_{0} = 0110101\), with initial alphabet \(\Sigma = \{a, b, c\}\)
+                    \item \(s_{1} = 1101010\), with initial alphabet \(\Sigma = \{a, b, c\}\)
+                \end{itemize}
+
+            \item Decode the following canonical Huffman encoded strings,
+                given the symbol lengths for each alphabet. 
+                Ensure that the decoded text matches the original string.
+                \begin{itemize}
+                    \item \(s_{0} = 000110101\), with symbol lengths \(\{a:2, b:3, c:3\}\)
+                    \item \(s_{1} = 0110010\), with symbol lengths \(\{a:2, b:3, c:3\}\)
+                \end{itemize}
+        \end{enumerate}
+    \end{exercises*}
+    \cleardoublepage
+\end{document}

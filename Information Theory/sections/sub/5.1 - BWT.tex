@@ -1,35 +1,35 @@
 \documentclass{subfiles}
 \begin{document}
-    The \gls{bwt}, introduced by \emph{M. Burrows \emph{and} D. Wheeler} in \cite{burrows1994},
-    is a simple, yet efficient tool to enhance the compressibility of a given string.
+    The \gls{bwt}, introduced by \emph{M. Burrows and D. Wheeler} in 
+    \cite{burrows1994}, is a simple yet efficient tool to enhance the 
+    compressibility of a given string.
 
-    Let \(\omega\) be a string we want to compress, thus preprocess using BWT.
-    First step of the transform, is to compute all the cyclic rotations of \(\omega\).
-    Then, we sort them lexicographically\footnotemark[3] and lastly, 
-    we return the last column. 
-    \note{By last column we mean the concatenation of the last symbol of each rotation.} 
-    and the index (starting from 0) of the inital string.
-
+    Let \(\omega\) be the string to be compressed and thus preprocessed 
+    using the BWT. The first step of the transform is to compute all 
+    lexicographically\footnotemark, and finally, the last column\footnotemark is 
+    returned together with the index (starting from 0) of the original string.
     \begin{example*}
         Let \(\omega = aleph\). Its cyclic rotations, already sorted, are
         \[
-            aleph \;, ephal\;, halep\;, lepha\;, phale 
+            aleph \;, ephal \;, halep \;, lepha \;, phale
         \]
         Thus, we return the pair \((hlpae, 0)\).
     \end{example*}
 
-    Let us point out some interesting properties of the BWT.
-        \begin{enumerate}
-            \item \(\forall i \ne I \text{, where } I\) is the index of the inital string,
-                we have that \(F[i]\) follows \(L[i]\) in \(\omega\).
-            \item \(F[I]\) is the first symbol of \(\omega\).
-            \item For any character \(x\), the i-th occurence of \(x \text{ in } F\),
-                corresponds to the i-th occurence of \(x \text{ in } L\).
-        \end{enumerate}
+    We now highlight some important properties of the BWT.
+    \begin{enumerate}
+        \item \(\forall i \ne I\), where \(I\) is the index of the original 
+              string, \(F[i]\) follows \(L[i]\) in \(\omega\).
+        \item \(F[I]\) is the first symbol of \(\omega\).
+        \item For any character \(x\), the \(i\)-th occurrence of \(x\) in \(F\)
+              corresponds to the \(i\)-th occurrence of \(x\) in \(L\).
+    \end{enumerate}
 
-    \footnotetext[3]{For the sake of our disscussion, 
-            assume that the lexicographic order is the usual alphabetical one.
-            This is, in general, not true.}
+    \footnotetext{For the sake of this discussion, assume that the 
+    lexicographic order is the usual alphabetical one. This is, in general, 
+    not true.}
+    \footnotetext{By last column we mean the concatenation of the last symbol of each rotation.},
+    cyclic rotations of \(\omega\). Next, these rotations are sorted 
 
     \subsubsection{Inverse of the BWT}
     \subfile{../subsub/5.1.1 - Inverse BWT}

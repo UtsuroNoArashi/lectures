@@ -1,34 +1,36 @@
 \documentclass{subfiles}
 \begin{document}
-    It's easy to observe from \emph{Figure \ref{Fig:4}}, 
-    that the necessity to know the probabilities a priori,
-    slows down the encoding. 
-    The question then is: can we improve the AC encoding? 
-    The answer is yes, by assuming an initial equality in the probabilities.
-    Briefly, before any symbol is read, 
-    we assume that each of the alphabet symbol has the same probability to appear within the text.
-    Then, at each step, we simply apply the same procedure in \emph{Figure \ref{Fig:4}}
-    and then update the probabilities.
 
-    What about the decoding? We can apply the same logic, with a little differce:
-    instead of updating the probabilities after a symbols is read, we update them,
-    each time a symbol is decoded by applying the procedure in \emph{Figure \ref{Fig:5}}.
+    It is easy to observe from \emph{Figure \ref{Fig:3}} 
+        that the necessity of knowing the probabilities a priori slows down the encoding. 
+    The question then arises: can we improve arithmetic coding? 
+    The answer is affirmative, by assuming initially equal probabilities.
+    Briefly, before any symbol is read, 
+        we assume that each symbol in the alphabet has the same probability of appearing in the text.
+    Then, at each step, we apply the procedure in \emph{Figure \ref{Fig:3}}
+        and update the probabilities accordingly.
+
+    What about decoding? We can apply the same logic, with a slight difference:
+        instead of updating the probabilities after a symbol is read, 
+        we update them each time a symbol is decoded using the procedure in \emph{Figure \ref{Fig:4}}.
 
     \begin{example*}
         Let \(\omega = abcb\) be the text to encode. 
-        Before any character is read, we have the following probabilities: 
-        \(p_{a} = p_{b} = p_{c} = \tfrac{1}{3}\).
-        Once the first character (\(a\)) is read we select as current range 
-        the \([0, \tfrac{1}{3}]\) then we update the probabilities as 
-        \(p_{a} = \tfrac{1}{2}, p_{b} = p_{c} = \tfrac{1}{4}\).
-        We repeat the same process until the end of the text,
-            and encode \(\omega\) as \([\tfrac{43}{180}, \tfrac{11}{45}]\).
-        \subfile{../../extra/TikZ/Figure 5 - Adaptive AC encoding}
+        Before any character is read, the probabilities are: 
+        \(p_{a} = p_{b} = p_{c} = \sfrac{1}{3}\).
+        Once the first character (\(a\)) is read, we select the range 
+        \([0, \sfrac{1}{3}]\) and update the probabilities as 
+        \(p_{a} = \sfrac{1}{2}, p_{b} = p_{c} = \sfrac{1}{4}\).
+        We repeat this process until the end of the text,
+            encoding \(\omega\) as \([\sfrac{43}{180}, \sfrac{11}{45}]\).
+        \subfile{../../extra/TikZ/Figure * - Example of adaptive AC encoding}
 
-        Let's now decode \(0.2416\), with \(n = 4\).
-        Again we assume equality in the probabilities, 
-            and thus, we decode (\(a\)) and update the probabilities.
-        \subfile{../../extra/TikZ/Figure 6 - Adaptive AC decoding}
-        Repeating the process, we decode the text \(abcb\).
+        Now, let us decode \(0.2416\) with \(n = 4\).
+        Again, we assume equal initial probabilities, 
+            decode the first symbol (\(a\)), and update the probabilities.
+        \subfile{../../extra/TikZ/Figure * - Example of adaptive AC decoding}
+        
+        \noindent Repeating the process, we successfully decode the text \(abcb\).
     \end{example*}
+    \clearpage
 \end{document}

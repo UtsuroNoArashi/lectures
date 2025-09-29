@@ -1,20 +1,20 @@
 \documentclass{subfiles}
 \begin{document}\label{Sec:4}
-    What happens when the source to encode uses positive integers as symbols?
-        How can we find a universal representaion? 
-        Meaning, how can we find a code that is prefix free,
-        and whose \gls{acl} is \bigO{\ln x}, for any \(x\).
+    What occurs when the source to be encoded employs positive integers as 
+    symbols? How can one determine a universal representation? More precisely, 
+    how can we construct a code that is prefix-free and whose ACL is 
+    \bigO{\ln x} for any \(x\)?
 
-    Can we still use the codes seen so far, or do we need new ones?
-        The answer is we can do both depending on the case.
-        For instance, if we know the distribution of such integers and the range is
-        relatively small, we can still use Huffman. 
-        If not, we need to use some new codes: those we are about to discuss.
+    Is it possible to employ the previously discussed codes, or is it necessary 
+    to develop new ones? The answer depends on the context. For example, if 
+    the distribution of the integers is known and the range is relatively small, 
+    Huffman coding remains applicable. Otherwise, alternative coding schemes, 
+    which will be discussed in the subsequent sections, are required.
 
     \begin{remark*}
-        We can relax the constrain on the positiveness, 
-            by mapping any positive integers \(x \text{ to } 2x + 1\) and 
-            any negative integers \(y \text{ to} -2y\).
+        The restriction to positive integers can be relaxed by mapping any 
+        positive integer \(x\) to \(2x + 1\) and any negative integer \(y\) 
+        to \(-2y\).
     \end{remark*}
 
     \subsection{Simple approaches}
@@ -25,7 +25,6 @@
 
     \subsection{Fibonacci code}
     \subfile{../sub/4.3 - Fibonacci code}
-
-    \subsection{Exercises}
-    \subfile{../sub/4.4 - IE exercises}
+    \subfile{../exercise/Exercises - Integer Encoding}
+    \cleardoublepage
 \end{document}

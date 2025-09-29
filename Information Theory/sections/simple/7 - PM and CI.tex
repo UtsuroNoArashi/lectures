@@ -1,0 +1,66 @@
+\documentclass{subfiles}
+\begin{document}
+    Let us consider the following problem: given a document, 
+        can we search for a pattern in it efficiently? 
+        It is well known that several algorithms exist to solve this problem,
+        the most notable of which is the \emph{Knuth-Morris-Pratt (KMP)} algorithm. 
+
+    A natural question then is whether similar efficiency can be achieved when the 
+        document is compressed; that is, whether both space and time efficiency are attainable
+        in pattern matching on compressed texts. 
+        An affirmative answer was provided by Ferragina and Manzini through a novel data structure
+        they defined: the \emph{FM-index}.
+
+    The remainder of this section will describe the algorithm to build the FM-index for a given text, 
+        though we refer the reader to \cite{ferragina2000} for further details.
+        We first discuss the \emph{Backward-search} algorithm applyied to text compressed using
+        BWT-based compressors, we then discuss the results of Ferragina and Manzini.
+
+    We recall that for any given string \(S\), the output of BWT(\(S\)) is the last colunm L 
+        and the index I correspondig to the position S in the list of permutions.
+        To work properly the Backward-search requires, alongside L, 
+        two auxiliaries data structure:
+        \begin{itemize}
+            \item \lstinline{C[1, ..., n]} (n begin the size of the alphabet) that at
+                \lstinline{C[c]} stores the number of characters lexicographically smaller the c in T, and 
+            \item \lstinline{Occ(c, q)} stroring the occurencies of c in the prefix L[1, q].
+        \end{itemize}
+
+        Let \(P\) be the pattern we are interested in. 
+        The algorithm proceeds as follow: we first read the right-most character in \(P\),
+        say it's c, we then we consider \lstinline{First = C[c] + 1} and \lstinline{Last = C[c + 1]}. 
+        We continue updating the value of c, \lstinline{First} and \lstinline{Last} accordingly 
+        until either First > Last or we have reached the end of the pattern.
+        The full algorithm is shown in \emph{Figure \ref{Fig:8}}.
+        \subfile{../../extra/TikZ/Figure 8 - Backward-search algorithm}
+
+        \begin{example*}
+            Consider \(L = BTW(\omega) = ipssm\$pissii\) for some string \(\omega \in \Sigma^{*}\),
+            and let \(P = pssi\). Since \(L\) is the output of the BWT of some string,
+            we know how to compute the \(F\) column\footnotemark; thus we get \(F = \$ iiiimppssss\).
+            We summarize the example in \emph{Figure \ref{Fig:9}}.
+            \subfile{../../extra/TikZ/Figure 9 - Example of BS}
+
+            By the algorithm in \emph{Figure \ref{Fig:8}}, we begin by considering 
+            \(c = P[4] = i\) and, since \(C\) is known (we can easily compute it from \(F\)),
+            we compute \(First = 2\) and \(Last = 5\). Since no halt condition is met,
+            we proceed reading the next symbol in the pattern and update both \(First\) and \(Last\).
+            Hence, we have \(c = P[3] = s\) and \(First = 9\) and \(Last = 10\). 
+            Again, the looping conditions are met, thus we update \(c, First \text{ and } Last\)
+            once again. Proceeding analogously for the reminder of \(P\), 
+            we find the \(P\) does not appear in \(\omega\).
+
+        \end{example*}
+        \footnotetext{We use \(F\) to visualize what \(C\) actually represents.}
+
+        Let us observe that the number of iteration as strictly depending on the lenght of the pattern;
+            additionally it is strongly affected from the computation of \lstinline{OCC}.
+            Thus, if we can construct a \lstinline{OCC} array such that \lstinline{OCC[c][q]} = \(Occ(c, q)\),
+            then the backward-search would take \bigO{\abs{P}}.
+            This idea allowed Ferragina and Manzini to create a compressed index -- the FM-index -- 
+            by using an implementation of the backward-search that works in \bigO{\abs{P}} and requires just 
+            \(5n \ \entropy{T}[k] + o(n)\) bits.
+
+        \subsection{FM-index}\label{Sec:7.1}
+        \subfile{../sub/7.1 - FM-index}
+\end{document}

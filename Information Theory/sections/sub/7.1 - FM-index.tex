@@ -1,0 +1,40 @@
+\documentclass{subfiles}
+\begin{document}
+    The FM-index has several applications in computational biology and many other scientific fields.
+        The reason behind its success is due the fact that it allows to search and index 
+        all the occurences of a given pattern \(P\) efficiently. In fact, as we should show, 
+        it takes time \bigO{\abs{P}} to count all the occurences of the pattern, 
+        time \bigO{\abs{P} \log^{1 + \varepsilon} n}, where \(\varepsilon\) is an arbitrary positive constant chosen 
+        during the construction of the index, to locate them and at most 
+        \(5n \ \entropy{T}[k] + \bigO{\sfrac{n}{\log^{\varepsilon} n}}\) bits of space.
+
+    The algorithm operates under the assumption that the input text has been compressed through 
+        a specific sequence of preprocessing steps. First, the BWT is applied to the original text.
+        The resulting sequence is then processed using the MTF transform, followed by RLE. 
+        Finally, a variable-length prefix coding scheme is employed to produce the compressed representation.
+        We refer to such a compressor as \lstinline{BW_RLX}, keeping the same notation used by Ferragina and Manzini.
+
+    We briefly recall how MTF and RLE work.
+    \begin{description}
+        \item [\textbf{MTF:}] Consider the array \(MTF[0, \abs{\Sigma} - 1]\) lexicographically sorted. 
+            Replace character \(c\) in the text with the number of distinct characters seen since the previous occurence of \(c\).
+            Move \(c\) to the front of the \(MTF\) array.
+            For instance, let \(MTF[0, 3]\), let \(S = abbcdcdb\) and assume the lexicographic order to be the alphabetical one
+            (\(a < b < c < d\)). Applying the MTF to \(S\), we denote it by \(S_{MTF}\), we have \(S_{MTF} = 01023112\).
+
+        \item [\textbf{RLE:}] Consider a string \(S\) with some runs\footnotemark in it.
+            Replace each run with its length and the character. For instance,
+            let \(S = \$iiiimppssss\), its RLE is \(S_{RLE} = \$4im2p4s\).
+            
+            Let us consider a variant. We use such variant for the rest of this section. 
+            Consider a string with runs of zeros. Any such sequence can be wrote as \(0^{k}, k \in \Z^{+}\).
+            Consider the representation of \(k + 1\) in binary. Swap the most and the least significant bits,
+            after that drop the new least significant bit. Replace the run with this representation of \(k + 1\).
+    \end{description}
+
+    \footnotetext{In this context, by ``run'' we refer to a sequence of the same symbol.}
+\end{document}
+
+%% BT_i are the partitions of BWT(T).
+%% BT^{MTF}_i are the partitions induced by the one above on MTF(BWT(T))
+%% BZ_i partitions of the compressed text. 

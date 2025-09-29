@@ -1,0 +1,81 @@
+\documentclass{subfiles}
+\begin{document}
+    \begin{figure}[!hb]
+        \centering
+        \begin{tikzpicture}
+            [
+                every node/.style={font=\small\ttfamily}
+            ]
+
+            \node (1-l0) ["$L$" left] {};
+            \node (1-f0) ["$F$" left, below=0.375cm of 1-l0] {};
+
+            \foreach \iter/\nextIter in {1/2, 2/3, 3/4} {
+                \foreach \symbol/\index/\prev in {i/1/0, p/2/1, s/3/2, s/4/3, m/5/4, 
+                    \textdollar/6/5, p/7/6, i/8/7, s/9/8, s/10/9, i/11/10, i/12/11}{
+
+                        \node (\iter-l\index) [right=0.25 of \iter-l\prev] {\symbol};
+                }
+
+                \foreach \symbol/\index/\prev in {\textdollar/1/0, i/2/1, i/3/2, i/4/3, i/5/4, 
+                    m/6/5, p/7/6, p/8/7, s/9/8, s/10/9, s/11/10, s/12/11}{
+
+                        \node (\iter-f\index) [right=0.25 of \iter-f\prev] {\symbol};
+                        \node [below=0.4 of \iter-f\index, "\index"] {};
+                }
+
+                \node (\nextIter-l0) ["$L$" left, below=2 of \iter-f0] {};
+                \node (\nextIter-f0) ["$F$" left, below=0.375 of \nextIter-l0] {};
+
+
+                \draw (\iter-l1.north west) rectangle (\iter-f12.south east);
+            }
+
+            \foreach \symbol/\index/\prev in {i/1/0, p/2/1, s/3/2, s/4/3, m/5/4, 
+                \textdollar/6/5, p/7/6, i/8/7, s/9/8, s/10/9, i/11/10, i/12/11}{
+
+                \node (4-l\index) [right=0.25 of 4-l\prev] {\symbol};
+            }
+
+
+            \foreach \symbol/\index/\prev in {\textdollar/1/0, i/2/1, i/3/2, i/4/3, i/5/4, 
+                m/6/5, p/7/6, p/8/7, s/9/8, s/10/9, s/11/10, s/12/11}{
+
+                    \node (4-f\index) [right=0.25 of 4-f\prev] {\symbol};
+                    \node [below=0.4 of 4-f\index, "\index"] {};
+            }
+
+            \draw (4-l1.north west) rectangle (4-f12.south east);
+
+            %% Arrows
+
+            \draw [Latex-] (1-f2.south) ++(0, -0.375) -- ++(0, -0.5);
+            \node ["First" {left, rpIris}] at ($(1-f2.south) + (0, -0.5)$) {};
+
+            \draw [Latex-] (1-f5.south) ++(0, -0.375) -- ++(0, -0.5);
+            \node ["Last" {right, rpIris}] at ($(1-f5.south) + (0, -0.5)$) {};
+
+            \draw [Latex-] (2-f9.south) ++(0, -0.375) -- ++(0, -0.5);
+            \node ["First" {left, rpFoam}] at ($(2-f9.south) + (0, -0.5)$) {};
+
+            \draw [Latex-] (2-f10.south) ++(0, -0.375) -- ++(0, -0.5);
+            \node ["Last" {right, rpFoam}] at ($(2-f10.south) + (0, -0.5)$) {};
+
+            \draw [Latex-] (3-f11.south) ++(0, -0.375) -- ++(0, -0.5);
+            \node ["First" {left, rpPine}] at ($(3-f11.south) + (0, -0.5)$) {};
+
+            \draw [Latex-] (3-f12.south) ++(0, -0.375) -- ++(0, -0.5);
+            \node ["Last" {right, rpPine}] at ($(3-f12.south) + (0, -0.5)$) {};
+
+            \draw [Latex-] (4-f9.south) ++(0, -0.375) -- ++(0, -0.5);
+            \node ["First" {right, rpGold}] at ($(4-f9.south) + (0, -0.5)$) {};
+
+            \draw [Latex-] (4-f8.south) ++(0, -0.375) -- ++(0, -0.375);
+            \node ["Last" {left, rpGold}] at ($(4-f8.south) + (0, -0.5)$) {};
+        \end{tikzpicture}
+        \caption{Backward-search on \(L = ipssm\$pissii\). 
+.           We use the colors \Csquare{rpIris}, \Csquare{rpFoam}, \Csquare{rpPine},
+            \Csquare{rpGold} to show each value of \(c, First\) and \(Last\).}
+        \label{Fig:9}
+    \end{figure}
+\end{document}

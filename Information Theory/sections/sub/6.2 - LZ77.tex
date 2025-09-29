@@ -1,0 +1,43 @@
+\documentclass{subfiles}
+\begin{document}
+    The idea is to divide the text in two parts: 
+        a \emph{search buffer} -- a fixed size portion of the text already processed --
+        and a \emph{lookahead buffer} -- the portion of text not yet seen;
+        which are identified by two pointers \(i, j\) as shown in \emph{Figure \ref{Fig:7}}.
+        \subfile{../../extra/TikZ/Figure 7 - LZ text splitting}
+        
+        Basically, we look for the longest existing pattern in the search buffer,
+        that is prefix of the lookahead buffer.
+    The compression produces a set of triplets \(<f, l, c>\) where 
+        \(f\) is the distance between \(i \text{ and } j\),
+        \(l\) is the length of the found prefix and \(c\) is the symbol after the prefix.
+
+        \begin{example*}
+            Let \(S = aabbaaabaca\). Let's assume we are in the situation below.
+                \subfile{../../extra/TikZ/Figure * - Example of LZ77 compression}   
+            
+            \noindent Since the search buffer contains a patter that is prefix of the lookahead,
+                we return the triplet \(\ <5, 3, a>\).
+        \end{example*}
+
+    The decompression is easy, and, as stated previously, 
+        doesn't require the dictionary to be transmitted.
+        In fact, after reciveing a triplet, 
+        we look \(f\) characters deep into the search buffer (that is initially empty),
+        copy \(l\) symbols into the lookahead buffer 
+            (which at this point represent the text being decoded at each step) and 
+            concatenate \(c\) to it.
+        If needed, we move the search buffer.
+
+        \begin{example*}
+            Let us consider the triplet \(<5, 3, a>\) of the previous example.
+            Again, we assume we are in a situation like the one below. 
+                \subfile{../../extra/TikZ/Figure * - Example of LZ77 decompression}
+            
+            \noindent We look \(5\) characters deep into the search buffer, 
+                copy \(3\) symbols (abb) into the lookahead buffer and add an \(a\) at the end.
+        \end{example*}
+
+    \subsubsection{LZss: a variation to LZ77}
+    \subfile{../subsub/6.2.1 - LZss a variantion to LZ77.tex}
+\end{document}

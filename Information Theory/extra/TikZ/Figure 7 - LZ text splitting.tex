@@ -1,0 +1,32 @@
+\documentclass{subfiles}
+\begin{document}
+    \begin{figure}[!hb]
+        \centering
+        \begin{tikzpicture}
+            [
+                every node/.style={font=\small\ttfamily}
+            ]
+
+            \node (s0) ["$S =$" above left] {};
+            \foreach \index/\prev in {1/0, 2/1, 3/2, 4/3, 5/4} {
+                \node (s\index) [right=0.1 of s\prev, "$s_{\index}$"] {};
+            }
+            \node (d0) [right=0.125 of s5, "$\cdots$"] {};
+            \foreach \index/\prev in {1/0, 2/1, 3/2, 4/3} {
+                \node (d\index) [right=0.2 of d\prev, "$\cdots$"] {};
+            }
+            \node (sn) [right=0.1 of d4, "$s_{n}$"] {};
+
+            % Buffers
+            \draw [thick, |-| ] (s1.north) ++(-0.125, 0) -- (d0.north);
+            \node at ($(s1.north) ! 0.5 ! (d0.north)$)
+                [text width=1cm, align=center, anchor=north] {Search Buffer};
+
+            \draw [thick, |- ] (sn.north) ++(0.125, 0) -- (d0.north);
+            \node at ($(sn.north) ! 0.5 ! (d0.north)$)
+                [text width=1cm, align=center, anchor=north] {Lookahaed Buffer}; 
+        \end{tikzpicture}
+        \caption{LZ buffers.}
+        \label{Fig:7}
+    \end{figure}
+\end{document}

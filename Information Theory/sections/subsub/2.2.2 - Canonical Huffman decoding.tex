@@ -1,11 +1,52 @@
 \documentclass{subfiles}
 \begin{document}
-    Let's assume \(\omega\) to be a a encoded text via the Canonical Huffman encoding.
-    To decode such text, we simply apply the following procedure.
-    \subfile{../../extra/TikZ/Figure * - Example of Canonical Huffman decoding.tex}
+    Let \(\omega\) be a text encoded using the Canonical Huffman encoding.
+        Let \(l = 1\) be a counter and \(v\) the first bit read from \(\omega\).
+        To retrieve \(\omega\)'s content we check whether \(v <\) \lstinline{fc[l]};
+        if so, we shift \(v\) by one to the left and scan the next bit and increment \(l\) by one,
+        if not we return the symbol \lstinline{symb[l,  v - fc[l]]}.
+
+    \emph{Figure \ref{Fig:2}.\subref{Fig:2.b}} shows a C implementation of the procedure just described:
+        here we assume \lstinline{next_bit} to be some existing primitive.
+    We note that the procedure shown in (\subref{Fig:2.a}) builds \lstinline{fc}
+        using a reverse approach; this, in general, produces a \lstinline{fc} array that 
+        differs from one built using the forward approach.
+        \clearpage
+        \subfile{../../extra/TikZ/Figure 2 - Canonical Huffman snippets}
     \begin{example*}
-        Let \(\omega = 01 10 000 001 10 11\) be a text encoded using the Canonical Huffman encoding,
-            and let \lstinline{symb} and \lstinline{fc} be those computed in the previous example.
-        Applying the snippet above, one can verify that \(\omega = acdecb\).
+        Let \(C\) be the Huffman code obtained from the tree in \emph{Figure \ref{Fig:1.b}}.
+        \begin{enumerate}
+            \item Let \(l_{i}\) denote the length of the \(i\)-th codeword:
+                \(l_{0} = l_{1} = l_{2} = 2, \; l_{3} = l_{4} = 3\).
+
+            \item Computing \lstinline{num} yields:
+                \lstinline{num[1] = 0}, 
+                \lstinline{num[2] = 3}, and 
+                \lstinline{num[3] = 2}.
+
+            \item Computing \lstinline{symb} gives:
+                \lstinline{symb[1] = null}, 
+                \lstinline{symb[2, 0] = a}, 
+                \lstinline{symb[2, 1] = c}, 
+                \lstinline{symb[2, 2] = b}, 
+                \lstinline{symb[3, 0] = d}, and 
+                \lstinline{symb[3, 1] = e}.
+                For convenience, a second index is used to navigate within a list when needed.
+
+            \item Computing \lstinline{fc} yields:
+                \lstinline{fc[1] = 2} 
+                (used in the decoding process),
+                \lstinline{fc[2] = 1}, and
+                \lstinline{fc[3] = 0}.
+
+            \item Observe that \lstinline{symb[1] = null}, 
+                indicating that there are no codewords to assign.
+                For \lstinline{symb[2]}, assign \(01\) to \(a\), \(10\) to \(c\), and \(11\) to \(b\). 
+                For \lstinline{symb[3]}, assign \(000\) to \(d\) and \(001\) to \(e\).
+        \end{enumerate}
+            
+            Now let \(\omega = 01 10 000 001 10 11\) be a text encoded using the Canonical Huffman encoding,
+                and let \lstinline{symb} and \lstinline{fc} be those just computed.
+            Applying the procedure in (\subref{Fig:2.b}), one can verify that \(\omega = acdecb\).
     \end{example*}
 \end{document}

@@ -30,6 +30,6 @@ this means that papers, datasets, and everything else used as source material
 that is not publicly available will not be present.
 
 ### The bibliography
-Tho the motive above, each project will have a referece to all the souces.
+Tho the motive above, each project will provided the DOI for each of the souces.
 For those publicly available (at date of publication) a link to the paper will also be provided,
 for the other just the references to the author/s and the title.

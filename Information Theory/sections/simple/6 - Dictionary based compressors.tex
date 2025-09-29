@@ -1,4 +1,33 @@
 \documentclass{subfiles}
 \begin{document}
-    \todo{Start it.}
+    The compression schemas we've seen so far use a statistical approach to compress the text.
+    This is, in some case an issue: 
+        the source distribution may be unknown, 
+        it may change with time, etc.
+        If that's the case, compressors based on Huffman or the arithmetic encoding lose their strenght.
+
+    To solve this issue a new class of compressors was developed: 
+        the class of \emph{dictionary based} compressor.
+        Formally, a dictionary \(D\) is defined as the set of pairs \((f,c),
+        f \in F , c \in c\) where \(F \text{ and } C\) are, respectively,
+        the set of factor and the set of associated codewords.
+        \[
+            D = \set{(f, c)}[f \in F, c \in C].
+        \]
+        But how does the use of this dictionaries solve our issue?
+        Basically, these type of compressors use a dictionary as some sorta of look-up table.
+
+    Though we refer to these schemas as dictionary based compressors, 
+        more often then not, we actually refer to a sub-class: 
+        the \gls{lz} based compressors.
+
+    \subsection{Lempel-Ziv based compressors}
+    \subfile{../sub/6.1 - LZ compressors}
+
+    \subsection{LZ77}
+    \subfile{../sub/6.2 - LZ77.tex}
+    %
+    \subsection{LZ78}
+    \subfile{../sub/6.3 - LZ78.tex}
+    \cleardoublepage
 \end{document}

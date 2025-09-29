@@ -1,27 +1,24 @@
 \documentclass{subfiles}
 \begin{document}
     Let us consider some limitations of the Huffman encoding discussed so far.
-    One of the main problems, 
-        is the fact that the encoder has to transmit alongside the text,
-        the tree used for it: a not so trivial overhead.
+    One of the main issues 
+        is that the encoder must transmit, alongside the text,
+        the tree used for encoding, which constitutes a non-trivial overhead.
     Additionally, 
-        the decoding phase is slow due to the necessity to traverse the tree for each symbol.
+        the decoding phase is slow due to the necessity of traversing the tree for each symbol.
 
-    Let us observe that there exist codes, that are compact,
+    It should be noted that there exist compact codes
         that are not produced by the Huffman algorithm.
-        We now introduce the so called \emph{Canonical Huffman encoding},
-        which is a variant of Huffman, 
-        that solves the issues above by requiring the encoder to transmit the lengthts of the codewords.
+    We now introduce the so-called \emph{Canonical Huffman encoding},
+        a variant of Huffman that addresses the issues above by requiring the 
+        encoder to transmit only the lengths of the codewords.
 
-    Such new encoding, comes in handy when the source alphabet is large, 
-        and a fast decoding is mandatory.
+    This encoding is particularly useful when the source alphabet is large
+        and fast decoding is required.
 
     \subsubsection{The encoding}
     \subfile{../subsub/2.2.1 - Canonical Huffman encoding}
 
     \subsubsection{The decoding}
     \subfile{../subsub/2.2.2 - Canonical Huffman decoding}
-
-    \subsubsection{Exercises}
-    \subfile{../subsub/2.2.3 - Canonical Huffman exercises}
 \end{document}
