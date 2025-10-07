@@ -1,0 +1,34 @@
+\documentclass{subfiles}
+
+\begin{document}
+    \gls{krr} is a branch of Artificial Intelligence focused on understandig how 
+        knowledge, whose meaning will be soon clarified, 
+        can be represented symbolically and manipulated automatically by reasoning programs.
+
+    Formally, knowledge is defined as the relationship existing between a \emph{knower} and 
+        a proposition; that is, the idea expressed by a simple declarative sentence
+        (eg. ``Mark will come to the party'').
+        To represent and manipulate knowledge, which is our end goal, we have to understand 
+        what reasoning is.
+    Let \(p_{1}, p_{2}, \ldots, p_{n}\) be a sequence of premises;
+        we define \emph{reasoning} as the process which, from the premises \(p_{1}, \ldots, p_{n}\)
+        allows one to draw a conclusiion. Later on we discuss the logic formalization of reasoning.
+
+    Throughout this notes we use a ``logic language'', later discussed, known as \gls{fol}.
+        Similarly to any other language it has its own:
+        \begin{itemize}
+            \item \emph{syntax}: the set of symbols and rules of the language;
+            \item \emph{semanic}: the meaning of syntactically correct sentences; and
+            \item \emph{pragmatics}: how contex and habits contribute to the meaning.
+        \end{itemize}
+
+    The next two sections cover all the type of reasoning. 
+        Precisely, we first discuss of all those aspects of the human reasoning that lead to an incorrect reasoning,
+        we then focus on the three main types of correct reasoning.
+
+    \subsection{Sources of incorrect reasoning}
+    \subfile{../sub/1.1 - Sources of incorrect reasoning}
+
+    \subsection{Correct forms of reasoning}
+    \subfile{../sub/1.2 - Correct forms of reasoning}
+\end{document}

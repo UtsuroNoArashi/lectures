@@ -18,10 +18,10 @@ Each directory will have the following structure:
 ```
 Here `root` referes to the project directory, `main` will store the PDF and the 
 main TeX document from wich the all project should be built; `sections`
-is will store all the different sections from the `simple` ones 
+will store all the different sections from the `simple` ones 
 (in terms of TeX this are the `\section`), then the `sub` ones (`\subsection`),
 and so on. This is done because the `subfile` package is used.
-Lastly, `extras` will store all additional files, from `Tikz` pictures to images 
+Lastly, `extras` will store all additional files, from `Tikz` pictures to `BibTeX` files 
 or anything else might be needed.
 
 ### About extras
@@ -30,6 +30,6 @@ this means that papers, datasets, and everything else used as source material
 that is not publicly available will not be present.
 
 ### The bibliography
-Tho the motive above, each project will provided the DOI for each of the souces.
-For those publicly available (at date of publication) a link to the paper will also be provided,
-for the other just the references to the author/s and the title.
+Despite we don't provide papers directly, this should be avoided, 
+each of the refereces will provide the correspoing DOI. This is done for two reason:
+avoid any legal issues with unauthorized use of the papers and to properly credit the authors. 
