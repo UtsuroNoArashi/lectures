@@ -1,0 +1,70 @@
+\documentclass{subfiles}
+\begin{document}
+    What follows, assumes that the FM-index is constructed while encoding the text. 
+        The reason of this will be clear in a moment.
+
+    Let \(L = BTW(S)\) and let \(Z\)  be the compressed version of \(L\).
+        Ferragina and Manzini observed that \(L\) can be partioned into buckets of size 
+        \(l = \floor{\log n} + 1\), where \(n\) is the length of \(S\).
+        Denote these partitions as \(BL_{i} = L[(i -1)l + 1, il]\) for \(i = 0, \ldots, \sfrac{n}{l}\). 
+        Such partition induces a partition on \(Z\)\footnotemark of compressed buckets, 
+        each of size \(l\) too. Denote these as \(BZ_{i} = PC(RLE(BL_{i}))\).
+
+    The computation of \lstinline{Occ[c, 1, k]} is based on the decomposition of \(L\) in three substrings:
+        \begin{enumerate}
+            \item The longest prefix of \(L[1, k]\) of length a multiple of \(l^{2}\);
+            \item The longest prefix of the remaining suffix with length a multiple of \(l\); and 
+            \item The remainder of the string.
+        \end{enumerate}
+        Then the value of \lstinline{Occ[c, 1, k]} is then simply given by the sum of the occurences of
+            \(c\) in each of these substrings. 
+            To achive time \bigO{1}, Ferragina and Manzini make use of the following structures. 
+
+        \begin{itemize}
+            \item To count the occurences in the substrings of point (1.):
+                \begin{itemize}
+                    \item Let \(NO_{i}[1, \abs{\Sigma}]\) be an array that at the entry \(NO_{i}[c]\)
+                        stores the number of occurences of \(c\) in \(BT_{1}\cdots BT_{il}\), 
+                        for \(i = 1, \ldots, \sfrac{u}{l^{2}}\).
+
+                    \item Let \(W[1, \sfrac{u}{l^{2}}]\) be an array that stores the sum of the sizes of 
+                        the buckets \(BZ_{1}\cdots BZ_{il}\) in the entry \(W[i]\).
+                \end{itemize}
+
+            \item To count the occurences in the substrings of point (2.):
+                \begin{itemize}
+                    \item Let \(NO'_{i}[1, \abs{\Sigma}]\) be an array that at the entry \(NO'_{i}[c]\)
+                        stores the number of occurences of \(c\) in \(BT_{i^{*} + 1}\cdots BT_{i - 1}\), 
+                        where \(i^{*} = \floor{\frac{k - 1}{l^{2}}}\), for \(i = 1, \ldots, \sfrac{u}{l^{2}}\).
+
+                    \item Let \(W'[1, \sfrac{u}{l^{2}}]\) be an array that stores the sum of the sizes of 
+                        the buckets \(BZ_{i^{*} + 1}\cdots BZ_{i - 1}\) in the entry \(W'[i]\).
+                \end{itemize}
+
+            \item For the computation on the compressed buckets:
+                \begin{itemize}
+                    \item Let \(MTF[1, \sfrac{u}{l}]\) be an array that at the entry \(MTF[i]\)
+                        stores the state of the MTF-list at the beginning of the encoding of \(BT_{i}\).
+
+                    \item Let \(S[c, h, BZ_{i}, MTF[i]]\) store the number of occurences of 
+                        \(c\) within the first \(h\) character of \(BT_{i}\). 
+                        The use of \(BZ_{i}\) and \(MTF[i]\) is needed to determine \(BT_{i}\) in \bigO{1} time.
+                \end{itemize}
+        \end{itemize}
+        
+        Now, since each of these structure is computed while compressing is in the process, 
+            we can assume that, at time of indexing, these are available.
+            At this point to determine \lstinline{Occ[c, 1, k]} we compute:
+            \begin{enumerate}
+                \item The bucket \(BT_{i}\) containing \(c = T_{BW}[k]\), knowing that \(i = \ceil{\sfrac{k}{l}}\).
+                \item The position \(j = k - (i - 1)l\) of \(c\) within \(BT_{i}\) and the parameter \(i^{*}\).
+                \item The number of occurences of the character in \(BT_{1} \cdots BT_{li^{*}}\) and
+                    in the substring \(BT_{li^{*}} \cdots BT_{i - 1}\).
+                \item The bucket \(BZ_{i}\) in \(Z\), (\(W[i] + W'[z] + 1\) is its starting position),
+                    and the occurences of the character in \(BT_{i}\) using \(S\).
+            \end{enumerate}
+            The sum of the three quantities computed this way is \(\lstinline{Occ[c, 1, k]}\).
+
+        \footnotetext{This is true if and only if each run of zeros falls within a bucket.
+        Troughout these notes we use this hypotesis. For the general case see \cite[Sec. 4]{ferragina2000}.}
+\end{document}
