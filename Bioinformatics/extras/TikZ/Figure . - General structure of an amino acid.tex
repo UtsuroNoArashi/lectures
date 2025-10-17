@@ -1,0 +1,19 @@
+\documentclass{subfiles}
+\begin{document}
+    \begin{figure*}[!hb]
+        \centering
+        \begin{tikzpicture} 
+            \node (H2N) {$H_{2}N$};
+            \node (Ca) [right= 1cm of H2N] {$C_{\alpha}$};
+            \node (COOH) [right= 1cm of Ca] {$COOH$};
+            \node (H) [below= 1cm of Ca] {$H$};
+            \node (R-group) [above= 1cm of Ca] {$R$};
+
+            \draw (H2N) -- (Ca) -- (COOH);
+            \draw (H) -- (Ca) -- (R-group);
+
+            \node [draw, fit=(H2N)(Ca)(H)(COOH), rpIris, semithick] {};
+            \node [draw, fit=(R-group), rpPine, semithick] {};
+        \end{tikzpicture}
+    \end{figure*}
+\end{document}

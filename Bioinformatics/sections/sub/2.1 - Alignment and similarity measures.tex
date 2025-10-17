@@ -1,0 +1,69 @@
+\documentclass{subfiles}
+\begin{document}
+    Sequence alignment is the process trough which we search for patterns 
+        within the given sequences. The process can be either applied locally,
+        we discuss in details \cite{smith1981}, or globally, we present a variant of \cite{needleman1970}.
+        Before doing so, we consider the na\"ive approach; that is, 
+        we just take in consideration mismatches and matches. 
+
+    Considering two sequences, essentially, we consider all the possible alignments 
+        and choose the one with the highest number of matches.
+        \begin{example*}
+            Let \(s_{1} = ACCAC\) and \(s_{2} = ACGGC\). Consider all possible alignments:
+            {\setlength{\jot}{0pt}
+            \begin{minipage}{0.45\textwidth} 
+            \[\begin{aligned}
+                    & ACCAC \\
+                    & ACGGC \\ 
+                            \\ 
+                    & ACCAC \\ 
+                    A &CGGC \\
+                            \\ 
+                    & ACCAC \\ 
+                    AC &GGC \\ 
+                            \\ 
+                    & ACCAC \\ 
+                    ACG& CA \\ 
+                            \\ 
+                    & ACCAC \\
+                    ACGG &C \\
+            \end{aligned}\]
+            \end{minipage}
+            \begin{minipage}{0.45\textwidth}
+                \[\begin{aligned}
+                    A& CCAC \\
+                    & ACGGC \\ 
+                            \\
+                    AC &CAC \\ 
+                    & ACGGC \\
+                            \\
+                    ACC &GC \\
+                    & ACGGC \\ 
+                            \\ 
+                    ACCG &C \\ 
+                    & ACGGC \\ 
+                \end{aligned}\]
+            \end{minipage}}
+            
+            It's easy to observe that the best one is the top-left one.
+        \end{example*}
+    This approach has a severe issue: it does not take in account gaps,
+        which, as we have said, are extremely frequent in nature. Therefore,
+        though easy to inplement, we should consider something different.
+    
+    The necessity to consider gaps lead to a question: how do we define ``the best alignment``
+        when gaps are involved? To solve the problem we define the so called \emph{similarity measure};
+        i.e., a measure that takes in account both matches/mismatches and gaps.
+        The one we use is the following
+        \[
+            S_{AB} = \sum_{i = 1}^{L}{s(a_{i}, b_{i})} - \sum_{k = 1}^{NG}{\delta +\gamma[l(k) - 1]}
+        \]
+        where \(\delta\) is said to be the \emph{opening penalty}, \(\gamma \le \delta\) is 
+        called \emph{extention penalty} and \(l(k)\) is the length of the \(k\)-th gap.
+    
+    Let us note that the concept of match/mismatch holds just for DNA and RNA sequences;
+        in the context of amino acids, and therefore proteins, we a different criterion:
+        the \emph{amino acid interconvertibility} criterion. In this case we make use of 
+        two special matrices (more correctly, substitution matrices) which tells us the value to assign
+        to any given pair of amino acid. The ones we consider are PAM-1 and BLOSOM-62.
+\end{document}
