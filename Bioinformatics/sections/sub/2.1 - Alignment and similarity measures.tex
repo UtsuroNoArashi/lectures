@@ -9,43 +9,46 @@
     Considering two sequences, essentially, we consider all the possible alignments 
         and choose the one with the highest number of matches.
         \begin{example*}
-            Let \(s_{1} = ACCAC\) and \(s_{2} = ACGGC\). Consider all possible alignments:
+            Let \(s_{1} = ACCAC\) and \(s_{2} = ACGGCC\). Consider all possible alignments:
             {\setlength{\jot}{0pt}
             \begin{minipage}{0.45\textwidth} 
-            \[\begin{aligned}
-                    & ACCAC \\
-                    & ACGGC \\ 
-                            \\ 
-                    & ACCAC \\ 
-                    A &CGGC \\
-                            \\ 
-                    & ACCAC \\ 
-                    AC &GGC \\ 
-                            \\ 
-                    & ACCAC \\ 
-                    ACG& CA \\ 
-                            \\ 
-                    & ACCAC \\
-                    ACGG &C \\
-            \end{aligned}\]
+                \[\begin{aligned}
+                    & ACCAC  \\
+                    ACGGC &C \\
+                    \\ 
+                    & ACCAC  \\ 
+                    ACGG &CC \\ 
+                    \\ 
+                    & ACCAC  \\ 
+                    ACG &GCC \\ 
+                    \\ 
+                    & ACCAC  \\
+                    AC &GGCC \\ 
+                    \\ 
+                    & ACCAC  \\ 
+                    A &CGGCC \\
+                \end{aligned}\]
             \end{minipage}
             \begin{minipage}{0.45\textwidth}
                 \[\begin{aligned}
-                    A& CCAC \\
-                    & ACGGC \\ 
-                            \\
-                    AC &CAC \\ 
-                    & ACGGC \\
-                            \\
-                    ACC &GC \\
-                    & ACGGC \\ 
-                            \\ 
-                    ACCG &C \\ 
-                    & ACGGC \\ 
+                    & ACCAC  \\
+                    & ACGGCC \\
+                    \\ 
+                    A &CCAC  \\ 
+                    & ACGGCC \\ 
+                    \\ 
+                    AC &CAC  \\ 
+                    & ACGGCC \\ 
+                    \\ 
+                    ACC &AC  \\
+                    & ACGGCC \\ 
+                    \\ 
+                    ACCA &C  \\
+                    & ACGGCC \\
                 \end{aligned}\]
             \end{minipage}}
             
-            It's easy to observe that the best one is the top-left one.
+            It's easy to observe that the best one is the top-right one.
         \end{example*}
     This approach has a severe issue: it does not take in account gaps,
         which, as we have said, are extremely frequent in nature. Therefore,
@@ -62,8 +65,9 @@
         called \emph{extention penalty} and \(l(k)\) is the length of the \(k\)-th gap.
     
     Let us note that the concept of match/mismatch holds just for DNA and RNA sequences;
-        in the context of amino acids, and therefore proteins, we a different criterion:
-        the \emph{amino acid interconvertibility} criterion. In this case we make use of 
-        two special matrices (more correctly, substitution matrices) which tells us the value to assign
-        to any given pair of amino acid. The ones we consider are PAM-1 and BLOSOM-62.
+        in the context of amino acids, and therefore proteins, a different criterion is needed. 
+        Throuhgout this notes we use the \emph{amino acid interconvertibility} criterion.
+        In this case we make use of two special matrices (more correctly, substitution matrices) 
+        which tells us the value to assign to any given pair of amino acid. 
+        The ones we consider are PAM-1 and BLOSOM-62.
 \end{document}
