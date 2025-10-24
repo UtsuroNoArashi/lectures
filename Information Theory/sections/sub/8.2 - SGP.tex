@@ -1,0 +1,27 @@
+\documentclass{subfiles}
+\begin{document}
+    Kolmogorov complexity is defined as the smallest program a Turing machine has to execute 
+        to produce a string \(x\). This model is way too powerful to be exploited fully;
+        can we therefore use some other model, and if so, which one?
+        Answer to this question are the \gls{cfg}, since these allow to capture regularities 
+        within a text.
+
+    The use of CFG leads to the following problem, known as \emph{smallest grammar problem}:
+        given a string \(x\), which is the smallest grammar that produces exactly \(x\)?
+        In this context, the complexity is given by the size of the grammar, which in turns,
+        is given by the number of symbols on the right-hand side of all rules; that is,
+        given \(G = (\Sigma, V, P, S)\) a CFG, with \(P = \set{A_{1} \to v_{1}, \ldots, A_{k} \to v_{k}}\),
+        \(\abs{G} = \sum_{i=1}^{k}{\abs{v_{i}}}\).
+
+    Let us observe that going from the Turing machine model to the CFG one has reduced the complexity
+        to mere intractability; in fact, one can prove that SGP is NP-complete.
+        Therefore, the best we can hope for is an approximation of the ``grammatical complexity''.
+
+    Let \(A\) be algorithm such that \(A(x)\) is a grammar. We define 
+        \[
+            \rho_{A}(n) = \max\limits_{x \in \Sigma^{n}} \frac{\abs{A(x)}}{\abs{G_{min}(x)}}
+        \]
+        where \(G_{min}(x)\) is the smallest grammar that produces \(x\).
+        In \cite{charikar2005} , Charikar et al. proved that, unless P = NP, \(\rho_{A}(n) < \sfrac{8569}{8568}\).
+        At date, the best algorithm to approximate the SGP are SEQUITUR (\cite{witten1997}) and RE-PAIR (\cite{larsson2000}).
+\end{document}

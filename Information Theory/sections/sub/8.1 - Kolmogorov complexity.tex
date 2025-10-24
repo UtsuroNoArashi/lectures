@@ -1,0 +1,36 @@
+\documentclass{subfiles}
+\begin{document}
+    To begin with, let us consider some string \(\omega \in \Sigma^{*}\) for some 
+        alphabet \(\Sigma\). When would we define \(\omega\) to be random?
+        Intuitively, when no pattern shows with it. Thus,
+        if we would like to describe \(\omega\), we should use \(\omega\) itself,
+        because this is the best we can do; that is, no simpler description exists.
+
+    This same idea is at the base of what is known as \emph{Kolmogorov complexity};
+        i.e., the shortest computer program need to describe some mathematician object.
+        More rigorousely, fixed some model of computation, the Turing machine in our case,
+        the Kolmogorov complexity of a string \(S\) is defined as 
+        \[
+            K_{U}(S) = \min \set{l(p)}[U(p) = S]
+        \]
+        where \(p\) is a program, \(l(p)\) its length and \(U(p)\) the string produced 
+        by the TM \(U\) when runnin \(p\).
+
+    We now provide two theorems related to Kolmogorov complexity.
+    \begin{theorem}\label{Thm:8.1}
+        Let \(U, V\) be two universal Turing machines. For any string \(x\)
+        it holds that \(\abs{K_{U}(x) - K_{V}(x)} \le C(U, V)\) where \(C(U, V)\)
+        depends only on \(U\) and \(V\).
+    \end{theorem}
+
+    \begin{theorem}\label{Thm:8.2}
+        For any arbitrary string \(x\), \(K(x)\) is not computable.
+    \end{theorem}
+
+    \emph{Theorem \ref{Thm:8.1}} tells us that Kolmogorov complexity is invariant,
+        while the proof of \emph{Theorem \ref{Thm:8.2}} follows directly from the relationship 
+        between G\"odel's incompleteness theorems and the halting problem for a Turing machine.
+
+
+
+\end{document}
