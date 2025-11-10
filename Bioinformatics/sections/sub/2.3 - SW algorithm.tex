@@ -1,0 +1,40 @@
+\documentclass{subfiles}
+\begin{document}
+    Proposed in \cite{smith1981}, the Smith-Waterman algorithm allows one to find 
+        the best local alignment in \bigO{n^{2}} time (we assume the two sequences to have
+        approximately the same length).
+
+    Let \(s_{1}\) and \(s_{2}\) be the sequences to align, and let \(n, m\) be 
+        their lengths. We proceed as follow:
+        \begin{enumerate}
+            \item Create an \(n \times  m\) matrix: each entry represents the intersection of the 
+                \(i\)-th symbol of \(s_{1}\) with the \(j\)-th symbol of \(s_{2}\).
+            \item Set the inital value of each entry of the chosen substitution matrix; 
+                either PAM or BLOSUM.
+            \item Update the value of each entry using the following relation:
+                \[
+                    M(i, j) = \max \begin{cases}
+                        0, \\ 
+                        M(i - 1, j - 1) + M(i, j), \\
+                        M(i - 1, j) - \delta \text{ or } \gamma, \\ 
+                        M(i, j -1) - \delta \text{ or } \gamma.
+                    \end{cases}
+                \]
+                If \(M(k, l)\) does not exists, i.e., either \(k \text{ or } l\)
+                are negative, assume that entry to be zero.
+            \item Within the whole matrix, find the maximum\footnotemark score/s and from it track
+                back the best path/s. 
+        \end{enumerate}
+    In the above relation, the choice between \(\delta \text{ and } \gamma\)
+        depends on the gap; i.e., if the gap just opened use \(\delta\), 
+        use \(\gamma\) otherwise.
+
+    See that if we limit the search of the maximum score to the last row and column, 
+        we get the Needleman-Wunsh algorithm discussed previously; that is,
+        the Needleman-Wunsh algorithm we described is a particular case of the 
+        Smith-Waterman algorithm.
+
+    \footnotetext{Alternatively, one could set a threshold and consider the path
+        starting at each entry above said threshold.}
+
+\end{document}

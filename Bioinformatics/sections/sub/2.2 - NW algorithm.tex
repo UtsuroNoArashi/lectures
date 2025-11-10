@@ -1,10 +1,11 @@
 \documentclass{subfiles}
 \begin{document}
-    Proposed in 1970, the Needleman-Wunsh algorithm allows one to compute the best alignment 
+    Proposed in 1970, the Needleman-Wunsh algorithm allows one to compute the best global alignment 
     in \bigO{n^{2}} time (we assume the two sequences to have approximately the same length).
     The version we discuss is a slight variant of the algorithm proposed in \cite{needleman1970}.
 
-    Let \(s_{1}\) and \(s_{2}\) be the sequences to align. The algorithm proceeds as follow:
+    Let \(s_{1}\) and \(s_{2}\) be the sequences to align, also let \(n, m\) be the respective lengths.
+        The algorithm proceeds as follow:
     \begin{enumerate}
         \item Create an \(n \times m\) matrix \(M\): each entry represents the intersection of the 
             \(i\)-th symbol of \(s_{1}\) with the \(j\)-th symbol of \(s_{2}\).
@@ -17,12 +18,13 @@
         \item Update the values of each entry as follow:
             \[
                 M(i, j) = \max \begin{cases}
-                    M(i - 1, j - 1) + M(i, j) \\ 
-                    M(i - 1, j) - \delta \\ 
-                    M(i, j - 1) - \delta \\
+                    M(i - 1, j - 1) + M(i, j), \\ 
+                    M(i - 1, j) - \delta, \\ 
+                    M(i, j - 1) - \delta. \\
                 \end{cases}
             \]
             If any of the index is negative, that entry has value equal to zero.
-        \item Find the cell with the maximum score; from it track the best path/s proceeding backwards.
+        \item Within the last row, or column, dind the cell with the maximum score/s;
+            from it track the best path/s proceeding backwards.
     \end{enumerate}
 \end{document}
