@@ -1,0 +1,47 @@
+\documentclass{subfiles}
+\begin{document}
+    \begin{definition*}
+        Let \(F\) be a formula. We say that \(F\) is a literal if 
+            it's either an atomic formula, or the negation of an atomic formula.
+    \end{definition*}
+
+    \begin{definition*}
+        Let \(F\) be a formula. We say that \(F\) is in \gls{cnf}
+            if it can be written as conjunction of disjunctions. That is, if 
+            \[
+                F = \bigwedge_{i = 1}^{n} 
+                    \left\lparen \bigvee_{j = 1}^{m} L_{i, j}\right\rparen
+            \]
+            where \(L_{i, j}\) is a literal.
+    \end{definition*}
+
+    It easy to understand that not all formulas are given in CNF. Thankfully there exists 
+        an algorithm that allows one to convert each non-CNF formulas into the 
+        equivalent CNF. We illustrate such algorithm in the following.
+
+        Let \(F\) be a non-CNF formula, to get the equivalent CNF:
+        \begin{description}
+            \item [\textbf{Step 1:}] Replace each subformula of the form 
+                \(G \implies H\) and \(G \iff H\) with their expanded counterparts. 
+                That is, replace each \(G \implies H\) with \(\lnot G \lor H\) and 
+                all \(G \iff H\) with \((\lnot G \lor H) \land (\lnot H \lor G)\).
+
+            \item [\textbf{Step 2:}] Get rid of all double negations and apply 
+                De Morgan's rules. That is, replace 
+                \[\begin{aligned}
+                    & \lnot\lnot G \text{ with } G, \\ 
+                    & \lnot(G \land H) \text{ with } \lnot G \lor \lnot H, \text{ and} \\ 
+                    & \lnot(G \lor H) \text{ with } \lnot G \land \lnot H.
+                \end{aligned}\]
+
+            \item [\textbf{Step 3:}] Distibute over \(\land\). That is, given 
+                \(G \land (H \lor K)\) replace it with \((G \land H) \lor (G \land K)\).
+        \end{description}
+
+    If a formula \(F\) is in CNF and every disjunction has at most one positive literal,
+        that is, all literals but one are negated, we say that \(F\) is a Horn formula.
+        Among other things, Horn formulas admits a solution to the satisfiability problem.
+
+    \subsubsection{Resolution}
+    \subfile{../subsub/2.4.1 - Resolution}
+\end{document}

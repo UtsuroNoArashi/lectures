@@ -1,0 +1,23 @@
+\documentclass{subfiles}
+\begin{document}
+    Let \(P = \set{p_{1}, \ldots, p_{n}}\) be a set of atomic formulas, 
+        let \(\Fam(P)\) be the set of all formulas that can be derived 
+        from atomic propositions in \(P\).
+    
+    We say that a function \( A : P \to \set{\mathbf{0}, \mathbf{1}}\) is an assignment of \(P\);
+        that is, \(A\) is an assignment of truth values to each atomic formula in \(P\).
+        The extension of \(A\) to \(\Fam(P)\) is immediate.
+        Given \(F \in \Fam(P)\) and \(A\) an assignment of \(P\), 
+        we say that \(A\) is a model of \(F\) if \(A(F) = \mathbf{1}\);
+        we write \(A \models F\) to denote this concept. 
+        If \(A(F) = \mathbf{1}\) for all \(A\), we say that \(F\) is a tautology;
+        and we write \(\models F\) to denote it. 
+        Viceversa, if \(A(F) = \mathbf{0}\) for all \(A\), we say that \(F\) is a contradiction. 
+        In this case we write \(\models \lnot F\) to denote it. 
+        If \(A(F) = \mathbf{1}\) for some \(A\), we say that \(F\) is satisfiable.
+
+    As the reader may be aware of, the satisfiability problem, i.e., the problem of 
+        enstablishing if a given formula is true, is NP-complete\footnotemark.
+
+    \footnotetext{Throught this notes we assume the reader to have a background in complexity theory.}
+\end{document}

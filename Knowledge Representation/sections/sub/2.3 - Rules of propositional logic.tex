@@ -1,0 +1,26 @@
+\documentclass{subfiles}
+\begin{document}
+    Since Propositional Logic is, before everything, a logic it has rules 
+        which allows to deduce the truth of a sentence given another.
+        Such rule system is a system of formal proof. In particular, we are 
+        interested in the relationship between the notion of formal proof and that 
+        of consequence; that is, we want our rule system to be \emph{sound}.
+
+        \begin{definition*}[soundness and completeness]
+            Let \(P = \set{p_{1}, p_{2}, \ldots}\) be a set ot atomic propositions,
+            and let \(\Fam(P)\). We say that our rule system is sound 
+            if every formula derived from \(\Fam\) is a consequence of 
+            some proposition in \(\Fam\). That is, if
+            \[
+                \set*{G}[\Fam \vdash G][:] \subseteq \set*{G}[\Fam \models G][:].
+            \]
+
+            If it holds that
+            \[
+                \set*{G}[\Fam \models G][:] \subseteq \set*{G}[\Fam \vdash G][:],
+            \]
+            we say that our rule system is complete.
+        \end{definition*}
+
+    It can be shown that Propositional Logic is both sound and complete.
+\end{document}

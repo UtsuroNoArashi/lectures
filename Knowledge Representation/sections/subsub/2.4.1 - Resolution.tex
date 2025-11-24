@@ -1,0 +1,23 @@
+\documentclass{subfiles}
+\begin{document}\label{Sec:2.4.1}
+    Resolution is a theorem-proving technique based on refutation, i.e., 
+        we try to get a contradiction. To work properly, 
+        we have to write any given formula in a clause form, that is,
+        we have to write the formula as disjunction of literals.
+        Therefore, each disjunction in a CNF is a clause. 
+        To ease the notation we represent clauses as sets, where the clause \(\set{ }\) 
+        means false.
+
+    \begin{example*}
+        Consider \(F = (\lnot p \lor q) \land (q \lor r)\), with our notation 
+        we write \(F\) as the set of sets \(\set{ \set{\lnot p, q}, \set{q, r}}\).
+    \end{example*}
+
+    But how do we proceed? Essentially, given a formula in clause form 
+        we repeatedly apply the \emph{resolution rule}; i.e., 
+        given two clauses \(C_{1} \cup \set{A}\) and \(C_{2} \cup \set{\lnot A}\) 
+        we get \(C_{1} \cup C_{2}\). That is, we look for pairs of clauses
+        with two opposing literals and we merge them. 
+        We proceed this way until either we have no more clauses satisfing the above, 
+        or we get the empty clause, in which case we get the wanted contradiction.
+\end{document}

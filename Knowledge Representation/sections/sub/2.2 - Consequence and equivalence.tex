@@ -1,0 +1,17 @@
+\documentclass{subfiles}
+\begin{document}
+    Let \(F\) and \(G\) be two formulas; we say that \(G\) is a consequence of 
+        \(F\) if for every \(A\) such that \(A \models F\), it holds \(A \models G\).
+        If it holds that \(F\) is a consequence of \(G\) and \(G\) a consequence of \(F\),
+        we say that \(F\) and \(G\) are equivalent; we write \(F \equiv G\) to denote this.
+
+    Let \(\Fam = \set{F_{1}, F_{2}, \ldots}\) be a set of formulas.
+        Given a formula \(G\), can we determine if \(\Fam \models G\)?
+        Observe that if \(\Fam\) is finite, one could simply check whether
+        \[
+            \bigwedge_{i = 1}^{n} \Fam \implies G,
+        \]
+        that is, if \(F_{1} \land F_{2} \land \cdots \land F_{n} \implies G\).
+        In the case \(\Fam\) is infinite such approach wont work at all. 
+        In this case we try to derive \(G\) from \(\Fam\); we denote this by \(\Fam \vdash G\).
+\end{document}

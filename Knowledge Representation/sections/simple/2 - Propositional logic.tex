@@ -1,0 +1,31 @@
+\documentclass{subfiles}
+\begin{document}
+    At the core of Propositional Logic are atomic proposition, 
+        that are, any simple assertion. This means that, questions or
+        meaningless sentences do not correspond to a proposition.
+
+    To build up more complex proposition we make use of connectives,
+        that, up to a degree, have the same meaning to the English counterparts.
+        Such connectives are: \(\lnot\) (not) and \(\land\) (and).
+        From these two, three additional connectives can be derived, 
+        though the latter are more a shorthand. Such additional connectives are:
+        \(\lor\) (or), which is equivalent to \(\lnot(\lnot p \land \lnot q)\),
+        \(\implies\) (implies), equivalent to \(\lnot p \lor q\)
+        and \(\iff\) (if and only if), which corresponds to 
+        \(p \implies q \land q \implies p\), where \(p\) and \(q\) are atomic propositions.
+        We use the symbol \textbf{1} and \textbf{0}, to indicate, respectively,
+        a true and a false statement.
+
+    \subsection{Validity, satisfiability and contradiction}
+    \subfile{../sub/2.1 - Validity of PL}
+
+    \subsection{Consequence and equivalence}
+    \subfile{../sub/2.2 - Consequence and equivalence}
+
+    \subsection{Rules, soundness and completeness of propositional logic}
+    \subfile{../sub/2.3 - Rules of propositional logic}
+
+    \subsection{Horn formulas and resolution}
+    \subfile{../sub/2.4 - Horn formulas and resolution}
+    \clearpage
+\end{document}
