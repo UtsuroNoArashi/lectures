@@ -1,0 +1,40 @@
+\documentclass{subfiles}
+\begin{document}
+    In the case of Propositional Logic we show how to use the resolution rule 
+        to derive the empty clause. The same principle can be extended to Prepositional 
+        Logic with a caveat; since prepositions are made up of terms, wich in turns,
+        could be made up of other terms, i.e., they are n-dimensional functions of terms,
+        we need a way to be sure that the prepositions we are working with refer to the same terms.
+        To achive such requirement we use \emph{substitution \emph{and} unification}, 
+        described in the following. Let us note that, if both substitution and unification are 
+        used, the system can be proved to be both sound and refutation-complete.
+
+    Let \(P(x, y)\) and \(Q(w, z)\) be two prepositions. A substitution is an equality of the form 
+        \(x = f(x)\) such that the resuting prepositions look alike; that is, 
+        we replace each occurence of a given variable with another value,
+        in such a way that after the substitution the prepositions look alike.
+        For instance, in the case of the prepositions \(P, Q\) above, 
+        we can make the substitutions \([x/w, y/z]\), which reads as x replaces w and y replaces z,
+        and get \(P(x, y)\) and \(Q(x, y)\). In the above case, if we assume that \(Q = \lnot P\) 
+        and that both are clauses, we could immediately derive the empty clause.
+
+    Let \(C_{1}\) and \(C_{2}\) be clauses. We use unification to determine when two clauses are equivalent
+        for variable substitutions, and can be therefore resolved.
+        For instance, let 
+        \[
+            C_{1} = \set{P(x, z), \lnot Q(y, z)} \text{ and } C_{2} = \set{R(x, y, z), Q(f(x), z)}.
+        \]
+        If we consider \(C_{1}\) and \(C_{2}\) with no substitution, we cannot find any resolvent. 
+        On the other end, if we consider the substitution \([f(x)/y]\) we get the clauses
+        \[
+            C_{1} = \set{P(x, y), \lnot Q(f(x), z)} \text{ and } C_{2} = \set{R(x, f(x), z), Q(f(x), z)}
+        \]
+        for which a resolvent, namely \(\set{P(x, y), R(x, f(x), z)}\), does exist.
+        For our purpose we we indicate substitution by \(\sigma\) and by \(\text{dom}(\sigma)\) the set of variable 
+        substituted. Is somewhat obvious that substitutions can be composed and extended to literals. 
+        Given \(\sigma\) a substitution of terms, we say that \(\sigma\) is a unifier if it makes the terms 
+        syntactically identical. Lastly, to have achive completeness we need \emph{factoring}, that is,
+        we apply unification to literals within the same clause. 
+
+    Once all of this is applied to all clauses, our Logic can be proved to be refutation-complete.
+\end{document}

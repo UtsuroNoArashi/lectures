@@ -1,0 +1,58 @@
+\documentclass{subfiles}
+\begin{document}
+    In this section we show how the resolution algorithm presented in \emph{
+        Section \ref{Sec:2.4.1}} can be extended to formulas in FOL. 
+        As done in the case of Propositional Logic, we need to convert each formula 
+        into its clause form. But as we are about to show, this is not so straightforward.
+
+    The procedure we are about to show is not unique; apart from the last two steps,
+        all other steps can be performed in any order. Since in general we deal with 
+        long formulas, we suggest as first step to remove any material condition, i.e.,
+        implications. Then move each negation inward, that is, replace each 
+        \[
+            \lnot \forall x \ P(x) \text{ with } \exists x \ \lnot P(x)
+        \]
+        and
+        \[
+            \lnot \exists x \ P(x) \text{ with } \forall x \ \lnot P(x).
+        \]
+
+    As third step, if needed, to avoid confusion, standardize variable apart, 
+        meaning that, if the same variable is bounded to two, or more, quantifiers,
+        one should introduce a new variables. For instance, take 
+        \[
+            \forall x \ \lnot Q(x, z) \lor \exists x \ P(x),
+        \]
+        here the second \(x\) can be replaced by the variable \(y\) to make more clear 
+        the distinction of the two parts; hence the formula becomes 
+        \[
+            \forall x \ \lnot Q(x, z) \lor \exists y \ P(y).
+        \]
+
+    As next step we introduce the \gls{pnf}, that is, a formula in the form 
+    \[
+        Q_{1} x_{1} \ Q_{2} x_{2} \ \cdots \ Q_{n} x_{n} \ P 
+    \]
+    where each \(Q_{i}\) is a quantifier and \(P\) is without quantifiers.
+    For instance: \(\exists x \ \lnot P(x) \lor \exists y \ Q(y)\) becomes 
+    \(\exists x \ \exists y \ \lnot P(x) \lor Q(y)\). We then transform the formula in PNF 
+    to its \gls{snf}, i.e., we remove all existential quantifiers. More specifically,
+    each quantifiers of the form \(\exists y\) is replaced by some functional symbol 
+    \(f(x_{1}, \ldots, x_{n})\) where each \(x_{i}\) is a universal quantified variable 
+    preceding \(y\), or a constant if none. Lastly, we remove all universal quantifiers
+    and assume the formula as universally quantified. 
+
+    Note that formulas in SNF are not equivalent to the original ones; 
+        despite this, thaks to the following theorem and the fact that the resolution
+        algorithm is refutation-complete, the problem does not exitst.
+
+    \begin{theorem*}[Skolem's theorem]
+        A formula is unsatisfiable if and only if the SNF of its universal 
+        closure is unsatisfiable.
+    \end{theorem*}
+    
+    Once the formula is in SNF the conversion to CNF and clause form is straightforward.
+
+    \subsubsection{The resolution rule}
+    \subfile{../subsub/3.2.1 - The resolution rule}
+\end{document}

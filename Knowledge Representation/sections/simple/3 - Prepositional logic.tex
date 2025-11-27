@@ -1,0 +1,43 @@
+\documentclass{subfiles}
+\begin{document}
+    We now discuss the concept of Prepositional Logic which, in its most general form, 
+        is at the core of the FOL introduced in \emph{Section \ref{Sec:1}}.
+
+    In Prepositional Logic formulas are made up of predicates, as the name suggests;
+        which are in turns made up of \(n\)-ary relations of terms\footnotemark. 
+        Formally speacking, a term is either a constant \(a, b, c\), a variable 
+        \(\mathit{x}, \mathit{y}, \mathit{z}\) or a \(n\)-ary function of terms.
+        In the case of Propositional Logic, formulas were made up of atomic propositions 
+        held together by connectives; similarly, formulas in Propositional Logic are held 
+        together by connectives in addiont to quantifiers \(\exists \) (exists) and \(\forall\) (for all),
+        whose meaning is pretty clear. Additionally, the following equivalences hold. 
+
+        \[\begin{aligned}
+            \exists x \ (P(x) \lor Q(x)) & \equiv \exists x \ P(x) \lor \exists x \ Q(x) \\ 
+            \forall x \ (P(x) \land Q(x)) & \equiv \forall x \ P(x) \land \forall x \ Q(x)
+        \end{aligned}\]            
+
+    Let \(F\) be a formula of the form \(\forall x P(x)\), where \(P(x)\) is some preposition;
+        we say that \(x\) is a bound variable, i.e., \(x\) is within the scope of a quantifier.
+        Viceversa, we say that a variable \(x\) is free, or unbounded, if no quantifier
+        is associated to it.
+
+    For what regards the complexity: in \cite{godel1931} \emph{G\"odel} proves that FOL is not 
+        decidable, while in \cite{church1936} \emph{Church} proves that it's semi-decidable.
+
+    We now introduce some definitions needed to undestand the remainder of this section.
+    Let \(F\) be a formula, we say that \(F\) is \emph{closed} if it contains no free variable,
+        we say it's \emph{open} otherwise. A close formula is also called a \emph{sentence}.
+        For any given open formula one could consider the \emph{universal closure} or the 
+        \emph{existential closure}; in both case a quantifier is assigned to each free variable.
+
+    \subsection{Semantic interpretation in FOL}
+    \subfile{../sub/3.1 - Semantic in FOL}
+
+    \subsection{Resolution in FOL}
+    \subfile{../sub/3.2 - Resolution in FOL}
+    \footnotetext{Think of a term as a name or a definite description, eg. ``Socrates'',
+    ``Alice's pen''.}
+
+    \clearpage
+\end{document}
