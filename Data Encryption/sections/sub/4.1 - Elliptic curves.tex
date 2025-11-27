@@ -1,0 +1,32 @@
+\documentclass{subfiles}
+\begin{document}
+    \begin{definition*}[Hyper elliptic curves]
+        Let \(n > 0\) be a positive integer. We call hyper elliptic curve on a field 
+        \(\F\) the set of points in \(\Ps^{2}(\F)\) satisfying the equation 
+        \[
+            y^{2} = x^{2n + 1} + ax + b.
+        \]
+        In the case of \(n = 1\), we talk about elliptic curves.
+    \end{definition*}
+
+    \begin{example*}
+        Let us consider the curve \(y^{2} = x^{3} - x\), and let \(\F = \R\). 
+        Then, the curve we get is the following.
+        \subfile{../../extra/Tikz/Figure . - Example of elliptic curve}
+    \end{example*}
+
+    We now show, given two point \(P_{1}\) and \(P_{2}\) on curve \(\mathcal{C}\),
+        how to compute the sum \(P_{1} + P_{2}\). Observe that given any two distinct point,
+        we can consider the line passing through them; that is, given \(P_{1} = (X_{1}, Y_{1})\) 
+        and \(P_{2} = (X_{2}, Y_{2})\), the line passing both has equation 
+        \begin{equation}\label{Eq:2}
+            Y - Y_{1} = \frac{Y_{2} - Y_{1}}{X_{2} - X_{1}}(X - X_{1}).
+        \end{equation}
+        Hence, combining the equation of the curve and the one above, we can 
+        easily compute the points in which these meet. We then consider the point that differ 
+        from the initial ones and consider the equation of the vertical line that passes through it.
+        Once again, we combine the latter and the curve equation and get the point \(R = P_{1} + P_{2}\).
+
+    \subsubsection{ElGamal on elliptic curves}
+    \subfile{../subsub/4.1.1 - Elgamal on elliptic curves}
+\end{document}

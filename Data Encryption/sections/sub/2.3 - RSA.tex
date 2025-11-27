@@ -1,0 +1,48 @@
+\documentclass{subfiles}
+\begin{document}
+    The RSA algorithm, named after its inventors \emph{R. Rivest, A. Shamir \emph{and} L. Adleman},
+        is a encryption algorithm based on the hard problem of integer factorization. In fact, 
+        is well known that for \(n \in \Z\) sufficiently large, computing its prime factors 
+        is not an easy task.
+
+    As for the Diffie-Hellman algorithm, assume A and B to be the entities 
+        involved into the communication. The algorithm proceeds as follow: 
+        one of the two entities, say A, chooses two prime numbers \(p\) and 
+        \(q, p \ne q\) with approximately the same length, and computes \(n = pq\)
+        and \(\lambda = \lcm{p - 1, q - 1}\).
+        Additionally they choose an integer \(e\) such that \(\gcd{e, \lambda} = 1\);
+        that is, \(e, \lambda\) are coprime. The pair \((n, e)\) is A's public key. 
+        Since \(e, \lambda\) are comprime Bezout's identity holds, therefore \(1 = ed + \lambda\mu\).
+        Let \(m\) be a message B wants to send to A, they cypher it as \(c \equiv m^{d} \mod{n}\)
+        and transmit \(c\) to A. On the receiving side, A takes \(c\) and decyphers it as 
+        \begin{equation}\label{Eq:1}
+            m = c^{d} \mod{n}
+        \end{equation}
+
+    Understanding why \emph{Equation \ref{Eq:1}} holds is not immediate, 
+        for this reason the remainder of this section will be used to show that \(m \equiv c^{d} \mod{n}\)
+        is indeed correct. Begin by observing that \(c \equiv m^{e} \mod{n}\), 
+        meaning that \(c^{d} \equiv (m^{e})^{d} \mod{n}\).
+        Recall that Bezout's identity holds, thus \(c^{d} \equiv m^{1 - \lambda\mu} \mod{n}\).
+        But \(\lambda = \lcm{p - 1, q - 1}\), thus \(m^{1 - \lambda\mu} = m^{1 - (p - 1)s\mu}\).
+        At this point there are two possibilities:
+        \[
+            c^{d} \equiv \begin{cases}
+                0 \mod{p}, \text{ if } m = 0, \text{ or} \\ 
+                m \mod{p}, \text{ if } m \ne 0. 
+            \end{cases}
+        \]
+        In fact, if \(m \ne 0\), we have that
+        \[\begin{aligned}
+            \left\lparen m^{p - 1} \right\rparen^{s} & \equiv m^{p} \mod{p} \\ 
+                & \implies m^{p - 1} \equiv 1 \mod{p} \\
+                & \implies m^{\lambda} \equiv 1 \mod{p} \\ 
+                & \implies m^{\lambda\mu} \equiv 1^{\mu} \mod{p}
+        \end{aligned}\]
+        Since a similar reasoning can be done for \(\lambda = (q -1)t\),
+            we can conclude that \(c^{d} \equiv m \mod{p} \land c^{d} \equiv m \mod{q}\).
+            Furthermore \(p \ne q\), therefore \(c^{d} \equiv m \mod{n}\).
+
+        \subsubsection{Complexity of RSA}
+        \subfile{../subsub/2.3.1 - Complexity of RSA}
+\end{document}

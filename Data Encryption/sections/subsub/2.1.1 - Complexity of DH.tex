@@ -1,0 +1,19 @@
+\documentclass{subfiles}
+\begin{document}
+    In our analisis of Diffie-Hellman complexity we distinguish two case: 
+        the complexity for A and B, and the complexity for E.
+
+    Consider A, they have to compute \(\alpha = \gamma^{a}\) 
+        and \(k = \beta^{a}\) which requires \bigO{n^{3}} time.
+        Similarly, B has to compute \(\beta = \gamma^{b}\) and \(k = \alpha^{b}\),
+        again in \bigO{n^{3}} time. 
+
+    If we consider E, they have to compute either \(a\) or \(b\).
+        Then, they can either try by bruteforce, which requires \bigO{e^{n} \cdot n^{2}} time;
+            or if they choose a randomised algorithm, it would take \bigO{\sqrt{e^{n} \cdot n^{2}}} time.
+
+    \begin{remark*}
+        Recall that with our notation, \(n = \floor{\log p} + 1\). 
+            In addition, we can assume that \(k \simeq p\). 
+    \end{remark*}
+\end{document}

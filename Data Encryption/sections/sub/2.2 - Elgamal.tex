@@ -1,0 +1,36 @@
+\documentclass{subfiles}
+\begin{document}\label{Sec:2.2}
+    ElGamal algorithm is somewhat an extention of the Diffie-Hellman protocol;
+        in fact, apart from the last additional step, both work the same.
+        More precisely, a TTP chooses a 128 bits, sometimes even 256 or 512 bits, 
+        prime \(p\) and fixes a \(\gamma \in \gf{p}\). 
+        As for Diffie-Hellman, both A and B choose a private key, say \(a\) and \(b\),
+        and compute their public key \(\alpha = \gamma^{a} \mod{p}\) and 
+        \(\beta = \gamma^{b} \mod{p}\) respectively.
+
+    Once \(k\) has been choosed, assuming B wants to send a text \(t\) to A,
+        they compute the cypher \(c = kt \mod{p}\), and sends it to A.
+        On the recieving side, A decodes \(t\) by computing \(t = k^{-1}c \mod{p}\),
+        where \(k^{-1}\) is the multiplicative inverse of \(k \mod{p}\).
+
+    \begin{example*}
+        Let \(p = 47\) and \(\gamma = 2\). We have that 
+        \[
+            \gf{47} = \set{0, 1, 2, \ldots, 46}.
+        \]
+
+        Say A chooses \(a = 17\), thus computing their public key,
+            they get \(\alpha = 2^{17}\).
+        Say B chooses \(b = 31\), therefore computing the public key,
+            they get \(\beta = 2^{31}\).
+
+        It's easy to see that \(k = 12 \mod{47}\). Hence, 
+            if \(t = 40\) is the text to encrypt,  
+            B cyphers it as \(c = km = 10\) and sends it to A.
+            A recieves \(c\) and decodes \(t = 40\) by computing 
+            \(k^{-1} = 33\).
+    \end{example*}
+
+    \subsubsection{Complexity of ElGamal}
+    \subfile{../subsub/2.2.1 - Complexity of ElGamal}
+\end{document}
