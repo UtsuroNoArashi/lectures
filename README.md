@@ -14,11 +14,12 @@ Each directory will have the following structure:
       |    ...
       |-extras/
       |     |-Tikz/
+      |     |-Bib/
       |    ...
 ```
 Here `root` referes to the project directory, `main` will store the PDF and the 
-main TeX document from wich the all project should be built; `sections`
-will store all the different sections from the `simple` ones 
+main TeX file from wich the all project should be built; `sections`
+stores all the different sections from the `simple` ones 
 (in terms of TeX this are the `\section`), then the `sub` ones (`\subsection`),
 and so on. This is done because the `subfile` package is used.
 Lastly, `extras` will store all additional files, from `Tikz` pictures to `BibTeX` files 
