@@ -1,0 +1,32 @@
+\documentclass{subfiles}
+\begin{document}
+    Multiple alignment is somewhat a generalization of the pair-wise alignment;
+        in fact what it does is align three or more sequences and give the best
+        possible alignment. Here the use of the word best is misleading,
+        as we are about to explain.
+
+    Consider the following: can we use dynamic programming to compute the best alignment,
+        as done in the case of two sequences? Assume we want to align three sequences.
+        If we proceed as done for the Needleman-Wunsh algorithm, we must 
+        consider the \(n^{3}\) matrix these form. Also, how shall we compute the scores?
+    
+    The acute reader might have seen how the problem is isomorphic to the problem
+        of computing the best path in an n-dimension Manhattan Cube.
+
+    Since the dimensions of the matrix increase with the number of sequences, 
+        a dynamic programming based approach should be avoided, 
+        as these require \bigO{n^k} time, with \(k\) the number of sequences.
+
+    \begin{remark*}
+        Despite the complexity, dynamic programming based algorithms exist,
+        but are only used in the case of few sequences with a relatively short length.
+    \end{remark*}
+
+    Hence, unless extreme precision is needed, (e.g. medical analysis), heuristic 
+        algorithms suffice our needs. We use the remainder of this section
+        to discuss several of such algorithms.
+
+    \subsection{FASTA}
+    \subfile{../sub/3.1 - FASTA}
+
+\end{document}

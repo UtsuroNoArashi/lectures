@@ -1,10 +1,14 @@
 \documentclass{subfiles}
 \begin{document}
     Sequence alignment is the process trough which we search for patterns 
-        within the given sequences. The process can be either applied locally,
-        we discuss in details \cite{smith1981}, or globally, we present a variant of \cite{needleman1970}.
-        Before doing so, we consider the na\"ive approach; that is, 
-        we just take in consideration mismatches and matches. 
+        within the given sequences. 
+        The process can be either applied locally or globally, depending on the needs.
+        We discuss the Needleman-Wunsh algorithm for the global alignment case 
+        and the Smith-Waterman algorithm for the local case, 
+        (see \cite{needleman1970, smith1981} for major details).
+
+    Before we proceed further, let us consider the na\"ive approach; that is, 
+        we just take in consideration mismatches and matches.
 
     Considering two sequences, essentially, we consider all the possible alignments 
         and choose the one with the highest number of matches.
