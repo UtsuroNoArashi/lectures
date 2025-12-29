@@ -1,10 +1,12 @@
 \documentclass[moon, draft]{lectures2}
 \usepackage{chemfig}
 
-\addbibresource{../extras/Bib/papers.bib}
-
 \title{Notes on Bioinformatics}
 \author{Riccardo Lo Iacono}
+
+\addbibresource{../extras/Bib/papers.bib}
+
+\makeglossaries
 \newacronym{dna}{DNA}{Deoxyribonucleic Acid}
 \newacronym{rna}{RNA}{Ribonucleic Acid}
 \newacronym{a}{A}{Adenine}
@@ -12,8 +14,8 @@
 \newacronym{g}{G}{Guanine}
 \newacronym{t}{T}{Thymine}
 \newacronym{u}{U}{Uracile}
+\newacronym{tu}{TU}{taxonomic units}
 
-\makeglossaries
 \begin{document}
     \maketitle
 
@@ -25,6 +27,12 @@
 
     \section{Multiple alignment}
     \subfile{../sections/simple/3 - Multiple alignment}
+
+    \section{Molecular evolution}
+    \subfile{../sections/simple/4 - Molecular evolution}
+
+    \section{Hidden Markov Models}
+    \subfile{../sections/simple/5 - HMM}
 
     \printbibliography
     \printglossaries
