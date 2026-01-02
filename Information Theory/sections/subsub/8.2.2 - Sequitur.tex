@@ -1,0 +1,43 @@
+\documentclass{subfiles}
+\begin{document}
+    SEQUITUR, introduced in \cite{witten1997} by Nevill-Manning et al., 
+        later improved by SEQUENTIAL (\cite{yang2000}),
+        is  one of the first algorithms that approaches the SGP.
+
+    The algorithm is very simple: read the input string left-to-right,
+        keep adding the symbols read to the grammar until a digram, is found twice.
+        Replace the duplicate with a new non-terminal symbol.
+        Repeat the procedure until the whole string is read. 
+
+    By applying the above procedure, it may happen that a non-terminal symbol is 
+        used only once; replace it with its definition.
+
+    In other words, SEQUITUR is based on the digram uniqueness (the digram substitution describe above)
+        and the rule utility, i.e. we define a new production if and only if this 
+        would be used more then once.
+
+    \begin{example*}
+        Let's assume that our input is the string \(\omega = abbabbc\). 
+        Applying the algorithm, We read the sequence \(abba\) without encountering
+        any duplicated digram. Upon reading an additional \(b\), we note that the
+        digram \(ab\) appear twice, hence, we proceede to update the grammar.
+        Therefore, we have 
+        \[\begin{aligned}
+            S & \to AbA \\ 
+            A & \to ab
+        \end{aligned}\]
+        We keep on reading and encounter a \(b\), which leads in the duplicate of 
+        the digram \(Ab\). We update the grammar once again and get 
+        \[\begin{aligned}
+            S & \to BB \\
+            A & \to ab \\ 
+            B & \to Ab 
+        \end{aligned}\]
+        Finally, we read the \(c\) reaching the end of the string. 
+        But we note that now \(A\) is used once, hence we update the grammar as 
+        \[\begin{aligned}
+            S & \to BBc \\ 
+            B & \to abb \\
+        \end{aligned}\]
+    \end{example*}
+\end{document}
