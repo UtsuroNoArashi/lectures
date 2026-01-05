@@ -1,0 +1,24 @@
+\documentclass{subfiles}
+\begin{document}\label{Sec:4.3}
+    So far it has been discussed on how we process DNA/RNA sequences;
+        a question arise naturally: how do we store such sequences, along
+        with all the indormations we derived? 
+        The obvious solution is by means of databases. 
+        
+    The not so trivial problem now is how to keep the data coherent across all 
+        these databases. We note that these are distributed all over the word 
+        since the amount of data to be stored doesn't allow a localized solution.
+        As in the case of classic databases, the best approach is that of 
+        updating each database once new inforamtions are available.
+        For this reason an agreement was made across all international institutes.
+
+    Focusing on the the structure of these databases, each usually focuses on 
+        a singular biological element (eg. only nucleotide, only amino acids, etc).
+        Note that the informations stored in different databases is the same,
+        the only diffence are in how these are stored (flat-files, fasta-format, etc).
+        
+    For the sake of completeness, a nucleotide centerd databases is often refferd to as 
+        a primary database, as it contains the essential informations of a given sequence;
+        whilest amino-acid centerd ones are refferd to as secondary databases.
+
+\end{document}

@@ -1,0 +1,43 @@
+\documentclass{subfiles}
+\begin{document}
+    FASTA (or FAST-All, see \cite{lipman1985} for mojor details) is a heuristic 
+        local alignment algorithm; that is, it finds the best possible alignment,
+        in the heuristic sense, in a relatively short amount of time. 
+
+    Assume we have a sequence \(s\) and we want to find the most similar sequence 
+        in a database\footnotemark. We proceed by pre-computing an index of positions as follow:
+        fix an integer \(k\) and compute all factors of \(s\) of lenght \(k\);
+        for each of these factors we store the possion where this occur in the database
+        sequences. For instance, let \(s = ACGGTYFF\) and let 
+        \[\begin{aligned}
+            w_{1} = ACCGFFNFG \\
+            w_{2} = DFCGFFNFG \\
+            w_{3} = LACGFFNFG \\
+        \end{aligned}\]
+        be the database sequences. Fix \(k = 2\), the factors of \(s\) then are: 
+        \(AC, CG, GG\), \(GY, TY, YF, FF\). Considering for example the factor \(AC\),
+        we have that it occurs at position 0 in \(w_{1}\), at position 1 in \(w_{3}\)
+        and does not occur in \(w_{2}\). We do the same for each of the factors.
+
+    Once the index is computed, we try to identify the diagonals, as done in the SW-algorithm;
+        note that in this case the diagonals is given by the diffence of the positions in the factors of 
+        \(s\) and their occurence in each of the \(w_{i}\).
+        We then recalculate the score of those regions of the longest segments by means of 
+        a substitution matrix, e.g. BLOSUM-62. For each of the databases sequences, 
+        consider the ten regions with highest score and compute their sum \emph{Init1}.
+        Sort the sequences by this value. It could happen that some of the initial regions
+        can be merged in the same alignment if gaps are added. If this happens,
+        we try adding such gaps and then sum the score of these region minus some penalty for the gaps.
+        Call such score \emph{InitN}. Lastly, consider the sequences with the highest 
+        InitN, apply a variant of SW to them.
+
+    It's easy to see that FASTA is really fast, up to 10 times faster then SW;
+        but some severe drowbacks are also evident: the heuristic nature of the algorithm 
+        makes it unsuitable for high precision alignments, also, the efficiency depends on the value 
+        of \(k\), the lower this is, the faster is the algorithm with the caveat that in the first phase 
+        an indenty criterion is used.
+
+
+    \footnotetext{By database we refer to biological databases, 
+        which we describe in \emph{Section:4.3}.}
+\end{document}

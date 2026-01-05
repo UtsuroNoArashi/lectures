@@ -1,0 +1,30 @@
+\documentclass{subfiles}
+\begin{document}
+    Among all possible scoring functions, the ones we care about are:
+        \begin{enumerate}
+            \item the \emph{sum of pairs}, 
+            \item the \emph{entropy}, and 
+            \item the \emph{multiple lsc}.
+        \end{enumerate}
+
+    We briefly overview each one. Let \(v_{i}, v_{j}\) be two sequences in the 
+        multiple alignment, for each pair of \(i, j\) we compute \(s^{*}(v_{i}, v_{j})\);
+        hence, the overall score \(s(v_{1}, \ldots, v_{n})\) is given by 
+        \[
+            s(v_{1}, \ldots, v_{n}) = \sum_{i \ne j} s^{*}(v_{i}, v_{j})
+        \]
+
+    One can also extend the computation of the score to the single column, and subsequentially 
+        sum these values.
+
+    In the case of entropy, we make use of Shannon's entropy (see \cite{shannon1948}
+        for all the details). Essentially we compute the probability of each nucleotide/acid 
+        in each column, then we compute the entropy of each column, lastly we proceed to sum 
+        all the computed entropies.
+
+    As for the multiple lsc, given \(k\) sequences we count as match a column in which
+        all symbols coincide, that is, the same nucleotide/acid appear in each sequence 
+        in that column. The overall multiple lsc is the number of mathes. 
+        Note that, by the way it's defined, this score is useful in the case of very similar 
+        sequences.
+\end{document}

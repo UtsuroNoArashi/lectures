@@ -1,0 +1,23 @@
+\documentclass{subfiles}
+\begin{document}
+    Proposed in \cite{sokal1958} by Sokal and Michener, is a phylogenetic 
+    tree building procedure based on a distance measure. It is,
+    in it's essence, a clusting algorithm. In more details (see the steps below), 
+    given the distance matrix of the \gls{tu}, it clusters 
+    the two with the minimal distance in a new TU and its distance is recomputed.
+    The process is repeated until one TU is left. That is, do 
+    \begin{enumerate}
+        \item For all \(i\), initialize \(C_{i} = \set{s_{i}}\), where \(s_{i}\)
+            is a TU.
+        \item Find the two clusters \(C_{i}, C_{j}\) with minimal distance \(D_{i, j}\).
+            Let \(n_{i}, n_{j}\) be the sizes of the two clusters.
+        \item Merge \(C_{i}, C_{j}\) into \(C_{ij}\); 
+            create a node with \(C_{i}, C_{j}\) as children with a path length of \(\sfrac{D_{i, j}}{2}\).
+        \item Update the distance matrix by the follwing rule:
+            \[
+                D_{ij, k} = \frac{n_{i}}{n_{i} + n_{j}} D_{i, k} + \frac{n_{j}}{n_{i} + n_{j}} D_{j, k} \forall k \ne i, j.
+            \]
+            Delete rows and columns \(i, j\).
+        \item Repeat (2) - (4) until a single TU is left.
+    \end{enumerate}
+\end{document}

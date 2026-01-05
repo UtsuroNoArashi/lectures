@@ -1,0 +1,18 @@
+\documentclass{subfiles}
+\begin{document}
+    BLAST, (see \cite{altschul1990} for all the details), is a tool to search 
+        the best local alignment of two strings.
+
+    As done for the FASTA algorithm, assume that \(s\) is our query sequence
+        and \(w_{1}, w_{2}, w_{3}\) are our database sequences. We begin by computing all 
+        factors of length \(k\), as done for FASTA. For each factor, 
+        by means of a substitution matrix, create a list of similar factors 
+        up to some threshold value \(t\). Then, within each \(w_{i}\)
+        look for one of the factors in the list created. 
+        We then try to extend in both direction our alignment. To do so we consider 
+        a new parameter, call it \(x\), that is used to tell the algorithm to persist 
+        in the extention even when a negative value is found.
+
+    Again, the use of this algorithm do not garantees the best possible alignment,
+        but with a high probability the result is close enough.
+\end{document}

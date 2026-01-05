@@ -1,0 +1,28 @@
+\documentclass{subfiles}
+\begin{document}
+    Presented in \cite{saito1987} by Saitou and Nei, Neighbor-Join is 
+        procedure that build unrooted trees in a similar manner to UPGMA.
+        The procedure is the following:
+        \begin{enumerate}
+            \item Let \(C_{i} = \set{s_{i}}\), for all \(i\),
+            \item Compute 
+                \[
+                    u_{i} = \sum_{k \ne i} \frac{D_{i, k}}{n - 2}
+                \]
+                where \(n\) is the number of TU, and \(D_{i, k}\) is an entry of 
+                the distance matrix \(D\).
+            \item Choose \(i, j\) such that \(D_{i, j} - u_{i} - u_{j}\) is minimal;
+                group \(C_{i}, C_{j}\) into \(C_{ij}\).
+            \item Compute the length of the branches for each cluster as follow:
+                \[\begin{aligned}
+                    l_{i} & = \frac{1}{2} D_{i, j} + \frac{1}{2} (u_{i} - u_{j}) \\
+                    l_{j} & = \frac{1}{2} D_{i, j} + \frac{1}{2} (u_{j} - u_{i}) \\
+                \end{aligned}\]
+            \item Update the distance matrix with the entries
+                \[
+                    D_{ij, k} = \frac{D_{i, k} + D_{j, k} - D_{i, j}}{2} \forall k \ne i,j,
+                \]
+                and delete rows and columns \(i, j\).
+            \item Repeat (2) - (5) until two TU remains; connect them by an edge equal to their distance.
+        \end{enumerate}
+\end{document}

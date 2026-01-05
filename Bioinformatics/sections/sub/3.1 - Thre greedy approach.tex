@@ -1,0 +1,26 @@
+\documentclass{subfiles}
+\begin{document}
+    As we saw, the use of dynamic programming is inconcivable for multiple alignment.
+        In this section we focus on heuristic algorithms that compute the best alignment 
+        in by means of a greedy approach. Roughly, algorithms procced as follow:
+        let \(w_{1}, w_{2}, w_{3}, \ldots, w_{n}\) be strings to align.
+        By some heuristical method choose \(w_{i}, w_{j}, i \ne j\) such that 
+        these are the most similar; combine them to reduce the alignment from \(n\)
+        sequences to \(n - 1\). For instance, let 
+        \[\begin{aligned}
+            w_{1} & = ABBBCALLTA \\ 
+            w_{2} & = GCGAVBGHAK \\ 
+            w_{3} & = LBBBJALLTA \\
+        \end{aligned}\]
+        be the sequences to align, then we can combine \(w_{1}, w_{3}\) in the string 
+        \(w_{1,3} = a/lBBBc\/jALLTA\), therefore reducing the alignment to the sequences 
+        \(w_{2}, w_{1,3}\).
+
+    algorithms that use this approach are known as progressive alignment algorithms.
+
+    \subsubsection{ClustalW}
+    \subfile{../subsub/3.1.1 - ClustalW}
+
+    \subsubsection{Scoring functions for multiple alignment}
+    \subfile{../subsub/3.1.2 - Scoring function for multiple alignment}
+\end{document}

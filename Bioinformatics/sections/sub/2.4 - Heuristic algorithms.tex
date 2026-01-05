@@ -1,0 +1,25 @@
+\documentclass{subfiles}
+\begin{document}
+    Consider the following: assume a new protein was just discovered;
+        hence, we would like to know which other known protein shares same 
+        similarities with it. To complete such task, we have to run a similarity 
+        test with all the proteins stored in a biological database, 
+        (we discuss databases in some later section).
+    
+    Observe that the use of SW or NW algorithms is not feasible. 
+        In fact, we would have to run a \bigO{n^{2}} algorithm for each sequences in the database.
+        Since these store thousands or hundred of thousands of sequences, 
+        such algorithms are clearly not suitable for the task. 
+        In this context the use of heuristic algorithms is preferred.
+        We recall that a heuristic algorithms do not garantee the correct/best 
+        solution, but they provide a good trade-off between efficiency and correctness.
+
+    In this section we focus on pair-wise alignment by means of heuristic algorithms;
+        we discuss FASTA and BLAST.
+
+    \subsubsection{FASTA}
+    \subfile{../subsub/2.4.1 - FASTA}
+
+    \subsubsection{BLAST}
+    \subfile{../subsub/2.4.2 - BLAST}
+\end{document}

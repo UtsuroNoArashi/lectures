@@ -1,0 +1,10 @@
+\documentclass{subfiles}
+\begin{document}\label{Sec:ClustalW}
+    Introduced in \cite{thompson1994} by Thompson et al., is a three step process 
+        that computes the best alignment. Let \(n\) be the number of sequences to 
+        align, the algorithm proceeds to compute all \(\binom{n}{2}\) pair-wise 
+        alignment. From the latters, it defines a similarity matrix by some 
+        scoring function, (we discuss these in the next section). 
+        From the similarity matrix, by some tree-building procedure (eg. neighbor join, 
+        see \emph{Section \ref{Sec:Nj}}) construct a guide tree; us this to define the alignment.
+\end{document}

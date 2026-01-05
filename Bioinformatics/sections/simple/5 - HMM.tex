@@ -1,0 +1,21 @@
+\documentclass{subfiles}
+\begin{document}
+    Let us consider one of the most notorious problems in biology: that of CG-islands.
+        The problem is the following: is well known that each neucleotide 
+        has probabily \(\sfrac{1}{4}\) of occurring within a gene;
+        hence, any dineucleotide should appear with a frequency of \(\sfrac{1}{16}\).
+        It turns out that this is not the case, in fact the CG dineucleotide is 
+        underrepresented.
+
+    The problem can be seen as an analogous to the \emph{Fair Bet Casino} one.
+        Therefore, to solve the problem we consider the so called \emph{\gls{hmm}}.
+
+    Formally, a HMM is defined by the 4-tuple \((Q, \Sigma, A, E)\) where \(Q\)
+        is a set of states with some unknown probabily distribution, \(\Sigma\)
+        is the output alphabet, \(A \subseteq Q \times Q\) stores the probabily
+        of going from state \(i\) to state \(j, i, j \in Q\) and \(E \subset Q \times E\)
+        stores the probabily of emmitting a symbol \(\sigma\) while in state \(k\).
+
+    \subsection{The decoding problem}
+    \subfile{../sub/5.1 - The decoding problem}
+\end{document}
