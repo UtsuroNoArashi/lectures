@@ -1,0 +1,19 @@
+\documentclass{subfiles}
+\begin{document}
+    Assume that \(A\) has already computed its public key \((e, n)\) and the private key \(d\). 
+        These, of course, must satisfy \(1 = ed + \lambda \mu\).
+
+    To sign the document \(A\) has to:
+    \begin{enumerate}
+        \item Compute the hash of its message \(m\), call it \(h = H(m)\), 
+            with \(H\) some hash function.
+        \item Sign \(h\) by computing \(f = h^{d} \mod{n}\).
+        \item Source the signed document (i.e. \(f\)) to a TTP.
+    \end{enumerate}
+
+    Let us consider the case in which one wants to check whether \(A\) produced \(h\).
+        Such entity has to compute \(f^{e} = (h^{d})^{e} \mod{n} = h\).
+        Hance, proving that \(A\) indeed produced \(h\), and therefore \(m\).
+        It's somewhat obvious that if someone tries to falsy claim the ownership of \(m\),
+        once asked to compute \(h\) this will fail.
+\end{document}

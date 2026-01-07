@@ -1,0 +1,23 @@
+\documentclass{subfiles}
+\begin{document}
+    As for the case of RSA, assume that \(A\) is an entity that wants to sign 
+        the messages these produce. Again, assume that it has already choosed its 
+        private key \(a\). Additionally assume that \(A\), or a TTP, chooses 
+        a hash function \(h : M \to \Z_{p - 1}\), where \(M\) is the set of all messages.
+
+    To sign a message \(m \in M, A\) computes \(\overline{m} = h(m) \in \Z_{p - 1}\).
+        It then chooses a value \(k\) such that there exist \(k^{-1} \in \Z_{p - 1}\).
+        Lastly, computes 
+        \[
+            s = k^{-1}(\overline{m} - ar) \mod{p - 1},
+        \]
+        where \(r = \gamma^{k} \mod{p}\). The pair \((r, s)\) is the signature of \(m\).
+
+    Say now \(A\) is asked to prove the ownership of \(m\), what it has to do is compute 
+        \[
+            v = \gamma^{\overline{m}} - r^{s}\alpha^{r} \mod{p}
+        \]
+        with \(\alpha\) being A's public key. Note that if \(A\) is the owner of 
+        the message, the above will give as a result zero. Following the same 
+        reasoning, if \(A\) doesn't own the message the decryption wont succed.
+\end{document}
