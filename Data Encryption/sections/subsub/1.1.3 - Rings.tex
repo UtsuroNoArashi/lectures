@@ -1,0 +1,48 @@
+\documentclass{subfiles}
+\begin{document}
+    \begin{definition*}[Ring]
+        A (associative) \emph{ring} is a triple \((R, +, \cdot)\) where \((R, +)\) is an abelian 
+            group with identity \(0\), and \(\cdot\) is a binary operation on \(R\) satisfying:
+        \begin{enumerate}
+            \item (Associativity of multiplication) \(a(bc) = (ab)c\) for all \(a, b, c \in R\).
+            \item (Distributivity) \(a (b + c) = ab + ac\) and \((a + b) c = ac + bc\) for all \(a, b, c \in R\).
+        \end{enumerate}
+        A ring is called \emph{commutative} if \(ab = ba\) for all \(a, b \in R\). 
+            A ring has \emph{unity} (or \(1\)) if there exists \(1 \in R\) with 
+            \(1 \cdot a = a \cdot 1 = a\) for all \(a \in R\).
+        \end{definition*}
+
+    \begin{definition*}[Field]
+        A \emph{field} is a commutative ring \((F, +, \cdot)\) with unity \(1 \neq 0\) 
+            such that every nonzero element has a multiplicative inverse. Equivalently,
+        \[
+            (F \setminus \set{0}, \cdot)
+        \]
+        is an abelian group.
+    \end{definition*}
+    We denote fields by \(\F\).
+
+    \begin{definition*}[Finite field / Galois field]
+        A \emph{finite field}, or \emph{Galois field}, is a field with finitely many elements.
+    \end{definition*}
+    We will consider multiplicative Galois fields of order a prime, which we denote as \(\gf{p}\).
+
+    Consider the field \(\gf*{p}[x]\), that is, 
+        the fields of polynomials with coefficients in \(\gf{p}\).
+        Take \(g \in \gf*{p}[x]\), we say that \(g\) is primitive (or irreducible)
+        if it cannot be factored as product of other polynomials in \(\gf{p}\). 
+
+    In our discussion the use of irreducible polynomials is due to some codes explained in 
+        \emph{Section \ref{Sec:6}}; what matter for the moment is that these allow to 
+        extend the field we are considering, to one with more elements. 
+        Precisely, let \(g \in \gf*{p}[x]\) be a primitive polynomial.
+        For the sake of our discussion assume \(\partial g\) to be at most 3,
+        then since it's irreducible, \(g\) also admits no roots. 
+        Impose \(i\) to a root for \(g\). 
+
+    In doing so, we've defined a new field \(\gf*{q}[x]\), whose elements are the set 
+    \[
+        \set{a + ib}[a, b \in \gf*{p}, i \text{ is a root for } g].
+    \]
+    We call such process, symbolic extension of \(\gf*{p}[x]\).
+\end{document}

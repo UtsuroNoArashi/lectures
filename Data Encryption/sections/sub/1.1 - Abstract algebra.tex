@@ -1,119 +1,17 @@
 \documentclass{subfiles}
 \begin{document}
-    Consider \(\Z\), and let \(a, b \in \Z, b \ne 0\). 
-        We say that \(a\) divides \(b\), and write \(\divides{a}{b}\), 
-        if exists \(q \in \Z\) such that \(aq = b\). Viceversa,
-        we say that \(a\) does not divide \(b\) and we write \(\ndivides{a}{b}\).
+    In the remainder of this section we recall some notions of abstract algebra 
+        needed later in the document; we begin by defining what divisibility, 
+        \gls{gcd} and \gls{lcm} are in \(\Z\), then describing what congruence modulo \(n\) is,
+        we continue with defining groups and rings and conclude with an overview on field extension.
 
-    From the above notion of divisibility, we derive the notion of \gls{gcd} and \gls{lcm} of two numbers.
-    \begin{definition*}[GCD]
-        Let \(a, b \in \Z\), we say that the integer \(d \in \Z, d > 0\) is the 
-            greatest common divisor of \(a\) and \(b\) if the following holds:
-            \begin{enumerate}
-                \item \(\divides{d}{a}\) and \(\divides{d}{b}\), and 
-                \item if \(\exists d' : \divides{d'}{a}\) and \(\divides{d'}{b}\) then \(\divides{d'}{d}\).
-            \end{enumerate}
-    \end{definition*}
+    \subsubsection{Divisibility}
+    \subfile{../subsub/1.1.1 - Divisibility in Z}
 
-    \begin{definition*}[lcm]
-        Let \(a, b \in \Z\), we say that the integer \(m \in \Z, m \ne 0\) is the 
-            least common multiple of \(a\) and \(b\) if the following holds:
-            \begin{enumerate}
-                \item \(\divides{a}{m}\) and \(\divides{b}{m}\), and 
-                \item if \(\exists m' : \divides{a}{m'}\) and \(\divides{b}{m'}\) then \(\divides{m}{m'}\).
-            \end{enumerate}
-    \end{definition*}
+    \subsubsection{Groups}
+    \subfile{../subsub/1.1.2 - Groups}
 
-    To compute the GCD we use the \emph{euclid algorithm}, which is based on the following remark. 
-        Given \(a, b \in \Z, b > 0\), it's always possible to write \(\gcd{a, b} = \alpha a + \beta b,
-        \alpha, \beta \in \Z\).
-        Back to the algorithm, given \(a, b \in \Z\) we proceed as follow\footnotemark:
-        \begin{enumerate}
-            \item Compute \(q_{i}, r_{i}\) such that \(a = q_{i}b + r_{i}\).
-            \item At step \(i\), let \(a = r_{i - 1}\).
-            \item Repeat until \(r_{i} = 0\).
-            \item Compute \(\alpha\) and \(\beta\) by replacing \(r_{i}\) at the step \(i - 1\).
-        \end{enumerate}
-        In \emph{Section \ref{Sec:3.1}} we show how 
-        euclid algorithm can be enhanced to be computationally more effient.
-
-        \footnotetext{The procedure described assumes \(a \ge b\).}
-
-    Let \(n \in \Z\) be a fixed integer. Then, for any \(a, b \in \Z\) 
-        \[
-            a \equiv b \mod n \iff \divides{n}{(a - b)}
-        \]
-        is an equivalence relation. In fact is:
-        \begin{itemize}
-            \item \emph{reflexive:} \(\forall a \in \Z, a \equiv a \mod{n} \implies \divides{n}{(a - a)} \implies \divides{n}{0}\).
-            \item \emph{simmetric:} \(\forall a, b \in \Z\), if \(a \equiv b \mod{n} \implies \divides{n}{(a - b)}\),
-                but then \(\divides{n}-(b - a) \implies b \equiv a \mod{n}\).
-            \item \emph{transitive:} by the same reasoning done for the simmetric property.
-        \end{itemize}
-    Since congruence modulo n is a equivalence relation, this means we can consider 
-        the equivalence classes it defines, denote these as \([a] = \set{b \in \Z}[a \equiv b \mod{n}]\).
-        One can prove that congruence modulo n defines exactly \(n\) distinct classes,
-        whose representatives are the integers \(0 \le k < n\).
-
-        \begin{remark*}
-            One can think of congruence modulo n, as the remainder of the division by \(n\) 
-            of same \(a \in \Z\).
-        \end{remark*}
-
-    We now define two of the most important algebraic structures: groups and rings;
-        we point out that many more things should be said about these structures,
-        but that's beyond the scope of our discussion.
-
-    \begin{definition*}[Group]
-        A \emph{group} is a pair \((G, \cdot)\) where \(G\) is a set and 
-            \[
-                \cdot : G \times G \to G
-            \]
-            is a binary operation satisfying:
-        \begin{enumerate}
-            \item (Associativity) For all \(a,b,c\in G\) we have \((a \cdot b) 
-                \cdot c = a \cdot (b \cdot c)\).
-            \item (Identity) There exists an element \(e\in G\) such that for all 
-                \(a \in G\) we have \(e \cdot a = a \cdot e = a\).
-            \item (Inverses) For every \(a\in G\) there exists \(a^{-1} \in G\) with
-                \(a \cdot a^{-1} = a^{-1} \cdot a = e\).
-        \end{enumerate}
-        If, in addition, \(a\cdot b=b\cdot a\) for all \(a,b\in G\), 
-            the group is called \emph{abelian} (or commutative).
-    \end{definition*}
-
-    \begin{definition*}[Cyclic group]
-        A group \((G, \cdot)\) is \emph{cyclic} if there exists an element 
-        \(g\in G\) such that 
-            \[
-                G=\set{g^n}[n \in \Z].
-            \]
-        Such an element \(g\) is called a \emph{generator} of \(G\). 
-    \end{definition*}
-
-    \begin{definition*}[Ring]
-        A (associative) \emph{ring} is a triple \((R, +, \cdot)\) where \((R,+)\) is an abelian 
-            group with identity \(0\), and \(\cdot\) is a binary operation on \(R\) satisfying:
-        \begin{enumerate}
-            \item (Associativity of multiplication) \(a(bc)=(ab)c\) for all \(a, b, c \in R\).
-            \item (Distributivity) \(a (b + c) = ab + ac\) and \((a + b) c = ac + bc\) for all \(a, b, c \in R\).
-        \end{enumerate}
-        A ring is called \emph{commutative} if \(ab=ba\) for all \(a, b \in R\). 
-            A ring has \emph{unity} (or \(1\)) if there exists \(1 \in R\) with 
-            \(1 \cdot a = a \cdot 1 = a\) for all \(a \in R\).
-        \end{definition*}
-
-    \begin{definition*}[Field]
-        A \emph{field} is a commutative ring \((\F, +, \cdot)\) with unity \(1 \neq 0\) 
-            such that every nonzero element has a multiplicative inverse. Equivalently,
-        \[
-            (\F \setminus \set{0}, \cdot)
-        \]
-        is an abelian group.
-    \end{definition*}
-
-    \begin{definition*}[Finite field / Galois field]
-        A \emph{finite field}, or \emph{Galois field}, is a field with finitely many elements.
-    \end{definition*}
-    We will consider multiplicative Galois fields of order a prime, which we denote as \(\gf{p}\).
+    \subsubsection{Rings}
+    \subfile{../subsub/1.1.3 - Rings}
 \end{document}
+

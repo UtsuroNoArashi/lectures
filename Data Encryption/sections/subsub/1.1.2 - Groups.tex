@@ -1,0 +1,55 @@
+\documentclass{subfiles}
+\begin{document}
+    \begin{definition*}
+        A \emph{group} is a pair \((G, \cdot)\) where \(G\) is a set and 
+            \[
+                \cdot : G \times G \to G
+            \]
+            is a binary operation satisfying:
+        \begin{enumerate}
+            \item (Associativity) For all \(a, b, c \in G\) we have \((a \cdot b) 
+                \cdot c = a \cdot (b \cdot c)\).
+
+            \item (Identity) There exists an element \(e \in G\) such that for all 
+                \(a \in G\) we have \(e \cdot a = a \cdot e = a\).
+
+            \item (Inverses) For every \(a \in G\) there exists \(a^{-1} \in G\) with
+                \(a \cdot a^{-1} = a^{-1} \cdot a = e\).
+        \end{enumerate}
+
+        If, in addition, \(a \cdot b = b \cdot a\) for all \(a, b \in G\), 
+            the group is called \emph{abelian} (or commutative).
+    \end{definition*}
+
+    \begin{definition*}
+        Let \(H \subseteq G\). We say that \(H\) is a subgroup of \(G\), if and only if 
+            \(H\) is non-empty and is a group under the operation inherited from \(G\).
+    \end{definition*}
+
+    \begin{definition*}
+        A group \((G, \cdot)\) is \emph{cyclic} if there exists an element 
+        \(g\in G\) such that 
+            \[
+                G = \set{g^n}[n \in \Z].
+            \]
+        Such an element \(g\) is called a \emph{generator} of \(G\). 
+    \end{definition*}
+
+    \begin{definition*}
+        Let \((G, \cdot)\) be a cyclic group, and let \(g \in G\). 
+            We call order of \(g\), and denote it as \(\ord{g}\) the smallest integer \(k \in \Z\) such that 
+            \(g^{k} = e\).
+    \end{definition*}
+
+    Groups are at the core of abstract algebra as they provide the ground of more
+        complex structures. We now recall on of the most fundamental theorems in 
+        group theory: Lagrange's theorem.
+
+    \begin{theorem*}[Lagrange]
+        Let \((G, \cdot)\) be a finite cyclic group, let \(g \in G\).
+            Then, 
+            \[
+                \divides{\ord{g}}{\ord{G}}.
+            \]
+    \end{theorem*}
+\end{document}
