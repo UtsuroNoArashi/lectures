@@ -1,12 +1,13 @@
 \documentclass{subfiles}
 \begin{document}
-    When discussing information, we all have a general notion of what it represents, 
+    When discussing information, we all have a general idea of what it represents, 
         but how is it defined formally? Is there a way to quantify information?
 
     The first to answer these questions was \emph{Claude Shannon}, 
         widely considered the father of information theory.
         In \cite{shannon1948}, Shannon analyzes various communication systems:
         from the discrete noiseless one to the continuous noisy one.
+
     A general structure of such systems is shown below.
     \subfile{../../extra/TikZ/Figure * - Communication system structure.tex}
 
@@ -26,25 +27,25 @@
 
     \begin{remark*}
         We note that, henceforth, we refer to the noiseless source.
-        We also assume that the source is memoryless; 
-        that is, each symbol produced is independent of the previous one.
+            We also assume that the source is memoryless; that is,
+            each symbol produced is independent of the previous one.
     \end{remark*}
 
     Let \(S\) be a source of information. 
         Let \(\Sigma\) be the alphabet of symbols used by the source,
-        and for each symbol let \(p_{i} = \Pr(S = \sigma_{i})\) at any given time.
+        and for each symbol let \(p_{i} = \Prob{S = \sigma_{i}}\) at any given time.
         We seek a function \(H\), if it exists, 
         that quantifies the uncertainty associated with \(S\).
 
     One can prove (see \cite[Appendix 2]{shannon1948}) that
         the only form that \(H\) can take is the following:
         \begin{equation}\label{Eq:1}
-            H = -K \sum_{i = 1}^{\abs{\Sigma}}{p_{i} \log_{b} p_{i}}\text{.}
+            H = -K \sum_{i = 1}^{\abs{\Sigma}}{p_{i} \log_{b} p_{i}}.
         \end{equation}
         Here, \(K\) is a positive constant, and \(b\) is usually 2.
 
     We define \(H(S)\) to be the \emph{entropy} of \(S\). 
-    Formally, entropy measures the average amount of information contained 
+        Formally, entropy measures the average amount of information contained 
         in each symbol of the source output.
         Thus, the information associated with an event\footnotemark can be defined
         as the reduction in uncertainty once the outcome is observed.

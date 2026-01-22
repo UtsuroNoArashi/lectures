@@ -1,31 +1,32 @@
 \documentclass{subfiles}
 \begin{document}
     The \emph{Sardinas-Patterson} algorithm provides a way to check whether a code is UD or not. 
-        Conceptually, the algorithm and its underlying theorem are based on the following remark: 
-        consider a string that is the concatenation of codewords.
-        If we try to construct two distinct factorizations, 
-        each word in one of the factorizations is either part of a word in the other factorization,
-        or it starts with a prefix that is a suffix of a word in the other factorization.
-        Hence, a code is non-UD if a suffix is itself a codeword.
+        Conceptually, the algorithm and its underlying theorem are based on the following remark:
+        if \(w\) is a string made up of codewords and we try to factorize it in, 
+        say two, distinct factorizations; each word in one factorization is 
+        either part of a word in the other factorization or starts with a prefix
+        that is suffix of a word in the other factorization.
+
+    Hence, a code is non-UD if a suffix is itself a codeword.
 
     As stated before, the algorithm is based on a theorem, given below.
     \begin{theorem}\label{Thm:1}
-        Given \(C\) a code on an alphabet \(\Sigma\), 
+        Given \(\C*\) a code on an alphabet \(\Sigma\), 
             consider the sets \(S_{0}, S_{1}, \ldots\) such that:
             \begin{itemize}
-                \item \(S_{0} = C\) 
+                \item \(S_{0} = \C*\) 
                 \item \(S_{i} = \set{\omega \in \Sigma^{*}}[
                     \exists \alpha \in S_{0}, \exists \beta \in S_{i - 1} : 
                     \alpha = \beta \omega \lor \beta = \alpha \omega
                 ]\)
             \end{itemize}
-        Then a necessary and sufficient condition for \(C\) to be a UD code is that
+        Then a necessary and sufficient condition for \(\C*\) to be a UD code is that
             \(\forall n > 0, S_{0} \cap S_{n} = \varnothing\).
     \end{theorem}
     \clearpage
 
     \begin{example*}
-        Consider the following code: \(C = \set{a, c, ad, abb, bad, deb, bbcde}\).
+        Consider the following code: \(\C* = \set{a, c, ad, abb, bad, deb, bbcde}\).
         Is it UD? Applying Sardinas-Patterson step by step, we get the following:
         \begin{description}
             \item [\textbf{Iteration 1}] Let \(\beta = a\). 

@@ -1,27 +1,28 @@
 \documentclass{subfiles}
 \begin{document}
     We consider the binary case; the extension to the general case is straightforward.
-    Let 
-    \[
-        S = \begin{pmatrix}
-            s_{1} & s_{2} & \cdots & s_{n} \\ 
-            p_{1} & p_{2} & \cdots & p_{n} 
-        \end{pmatrix}
-    \]
-    denote a source with probabilities arranged in non-increasing order.
-    Define \(R(S)\) as the \emph{reduced source}, 
-        obtained by replacing the two least probable symbols in \(S\)
-        with a single symbol whose probability is the sum of the merged symbols:
+        Let 
+        \[
+            S = \begin{pmatrix}
+                s_{1} & s_{2} & \cdots & s_{n} \\ 
+                p_{1} & p_{2} & \cdots & p_{n} 
+            \end{pmatrix}
+        \]
+        denote a source with probabilities arranged in non-increasing order.
+    
+    Define \(R(S)\) as the \emph{reduced source}, obtained by replacing the two least probable
+        symbols in \(S\) with a single symbol whose probability is the sum of the merged symbols:
         \[
             R(S) = \begin{pmatrix}
                 s_{1} & s_{2} & \cdots & (s_{n - 1}, s_{n}) \\ 
                 p_{1} & p_{2} & \cdots & p_{n - 1} + p_{n} \\
             \end{pmatrix}
         \]
-    Let \(C_{R}\) denote a binary prefix code for \(R(S)\), 
-        and let \(z\) be the codeword assigned to the merged symbol \((s_{n - 1}, s_{n})\).
-    A prefix code \(C\) for \(S\) can then be obtained from \(C_{R}\) by assigning 
-        the \(i\)-th symbol of \(S\) the \(i\)-th codeword in \(C_{R}\) for \(i \le n - 2\). 
+
+    Let \(\C*_{R}\) denote a binary prefix code for \(R(S)\), and let \(z\) be the codeword assigned to 
+        the merged symbol \((s_{n - 1}, s_{n})\).
+    A prefix code \(\C*\) for \(S\) can then be obtained from \(\C*_{R}\) by assigning 
+        the \(i\)-th symbol of \(S\) the \(i\)-th codeword in \(\C*_{R}\) for \(i \le n - 2\). 
         The codewords for \(s_{n - 1}\) and \(s_{n}\) are \(z0\) and \(z1\), respectively.
 
     \clearpage 

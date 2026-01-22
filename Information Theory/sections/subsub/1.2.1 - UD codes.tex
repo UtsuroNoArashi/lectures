@@ -1,21 +1,19 @@
 \documentclass{subfiles}
 \begin{document}
-    One might think that non-singular codes are sufficient, 
-        but in most they don't.
-        In fact, it can happen that a codeword is a prefix of another,
+    One might think that non-singular codes are sufficient, but in most cases they don't.
+        In fact, it can happen that a codeword is prefix of another,
         making decoding ambiguous or tedious.
+
     \begin{example*}
-        Consider the following code: \(C = \set{0, 1, 01, 11}\). 
+        Consider the following code: \(\C* = \set{0, 1, 01, 11}\). 
             Assume the alphabet of the previous example.
-            How should we decode the string 000111? 
-            Again, multiple decodings are possible:
-            for example \(s_{1}s_{1}s_{3}s_{2}s_{2}\) or \(s_{1}s_{1}s_{3}s_{4}\).
-            The correct decoding cannot be determined unless context is given.
+            How should we decode the string 000111? Again, multiple decodings are possible:
+            for instance, \(s_{1}s_{1}s_{3}s_{2}s_{2}\) or \(s_{1}s_{1}s_{3}s_{4}\) are both valid,
+            but not necessarily correct.
     \end{example*}
 
-    We say that a code is UD if and only if each sequence of codewords
-        corresponds to at most one sequence of source symbols.
-        From this definition, two questions follow:
+    We say that a code is UD if and only if each sequence of codewords  corresponds 
+        to at most one sequence of source symbols. From this definition, two questions follow:
         \begin{itemize}
             \item How do we construct such codes?
             \item How can we check whether a given code is UD?

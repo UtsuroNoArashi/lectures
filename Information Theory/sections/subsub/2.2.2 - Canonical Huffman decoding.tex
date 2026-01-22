@@ -1,8 +1,8 @@
 \documentclass{subfiles}
 \begin{document}
-    Let \(\omega\) be a text encoded using the Canonical Huffman encoding.
-        Let \(l = 1\) be a counter and \(v\) the first bit read from \(\omega\).
-        To retrieve \(\omega\)'s content we check whether \(v <\) \lstinline{fc[l]};
+    Let \(w\) be a text encoded using the Canonical Huffman encoding.
+        Let \(l = 1\) be a counter and \(v\) the first bit read from \(w\).
+        To retrieve \(w\)'s content we check whether \(v <\) \lstinline{fc[l]};
         if so, we shift \(v\) by one to the left and scan the next bit and increment \(l\) by one,
         if not we return the symbol \lstinline{symb[l,  v - fc[l]]}.
 
@@ -14,7 +14,7 @@
         \clearpage
         \subfile{../../extra/TikZ/Figure 2 - Canonical Huffman snippets}
     \begin{example*}
-        Let \(C\) be the Huffman code obtained from the tree in \emph{Figure \ref{Fig:1.b}}.
+        Let \(\C*\) be the Huffman code obtained from the tree in \emph{Figure \ref{Fig:1.b}}.
         \begin{enumerate}
             \item Let \(l_{i}\) denote the length of the \(i\)-th codeword:
                 \(l_{0} = l_{1} = l_{2} = 2, \; l_{3} = l_{4} = 3\).
@@ -45,8 +45,8 @@
                 For \lstinline{symb[3]}, assign \(000\) to \(d\) and \(001\) to \(e\).
         \end{enumerate}
             
-            Now let \(\omega = 01 10 000 001 10 11\) be a text encoded using the Canonical Huffman encoding,
+            Now let \(w = 01 10 000 001 10 11\) be a text encoded using the Canonical Huffman encoding,
                 and let \lstinline{symb} and \lstinline{fc} be those just computed.
-            Applying the procedure in (\subref{Fig:2.b}), one can verify that \(\omega = acdecb\).
+            Applying the procedure in (\subref{Fig:2.b}), one can verify that \(w = acdecb\).
     \end{example*}
 \end{document}

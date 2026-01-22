@@ -3,13 +3,11 @@
     The first to solve the problem of creating optimal codes was \emph{D.~A. Huffman},
         who in \cite{huffman1952} provided a method to construct compact codes.
 
-    Before analyzing this method, it is of interest to point out some properties that optimal codes must satisfy.
+    Before analyzing his method, it is of interest to point out some properties that optimal codes must satisfy.
         Let \(S\) be a source with probability distribution \(\{p_{1}, p_{2}, \ldots, p_{n}\}\),
         ordered such that \(p_{1} \ge p_{2} \ge \ldots \ge p_{n}\).
-        Let \(C\) be a compact prefix code for \(S\), 
-        and let \(c_{i}\) denote the codeword associated with symbol of probability \(p_{i}\).
-        Then:
-
+        Let \(\C*\) be a compact prefix code for \(S\), and let \(c_{i}\) denote the codeword 
+        associated with symbol of probability \(p_{i}\). Then:
         \begin{enumerate}
             \item To reduce the expected code length, the shortest codewords are associated with the most probable symbols. 
                 That is,

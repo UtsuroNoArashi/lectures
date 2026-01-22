@@ -6,7 +6,7 @@
         A good choice is the code that, on average, has the shortest length.
 
     \begin{definition*}[\Gls{acl}]
-        Let \(C\) be a code with source alphabet \(S = \set{s_{1}, \ldots, s_{n}}\)
+        Let \(\C*\) be a code with source alphabet \(S = \set{s_{1}, \ldots, s_{n}}\)
             and code alphabet \(X = \set{x_{1}, \ldots, x_{m}}\). 
             Let \(\set{c_{1}, \ldots, c_{n}}\) be the codewords with lengths \(l_{1}, \ldots, l_{n}\), respectively.
             Let \(\set{p_{1}, \ldots, p_{n}}\) be the probabilities of the source symbols. 
@@ -14,7 +14,7 @@
             \[
                 L_{S}(C) = \sum_{i = 1}^{n}{p_{i} l_{i}}
             \]
-            as the average code length of the code \(C\).
+            as the average code length of the code \(\C*\).
     \end{definition*}
 
     From the above, it makes sense to look for the UD code with the lowest average code length.
@@ -24,12 +24,12 @@
         Once again, thanks to Shannon, we have the following result.
 
     \begin{theorem*}[Shannon]
-        Let \(C\) be a UD code for a memoryless source \(S\), 
+        Let \(\C*\) be a UD code for a memoryless source \(S\), 
         whose probabilities are \(\set{p_{1}, \ldots, p_{n}}\),
         and code alphabet \(X\) of size \(d\). 
         Then 
         \[
-            L_{S}(C) \ge \frac{\entropy{S}}{\log_{b}{d}}
+            L_{S}(\C*) \ge \frac{\entropy{S}}{\log_{b}{d}}
         \]
     \end{theorem*}
 
