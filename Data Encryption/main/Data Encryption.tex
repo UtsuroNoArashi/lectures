@@ -5,32 +5,21 @@
 
 \addbibresource{../extra/Bib/papers.bib}
 
-\makeglossaries
-\newacronym{gcd}{GCD}{greatest common divisor}
-\newacronym{lcm}{lcm}{least common multiple}
-\newacronym{ttp}{TTP}{trusted third party}
-\newacronym{ecm}{ECM}{Elliptic Curves Method}
+% Acreonyms
+\makeglossaries 
+\newacronym{gcd}{GCD}{Greatest Common Divisor}
+\newacronym{lcm}{LCM}{Least Common Multiple}
 
+% Document specific options 
 \begin{document}
     \maketitle
 
-    \section{Introduction to Data Encryption} 
-    \subfile{../sections/simple/1 - Intro to DE}
+    \section{Introduction}
+    \subfile{../sections/simple/1 - Introduction}
 
-    \section{Public key encryption}
-    \subfile{../sections/simple/2 - Public key encryption}
+    \section{Mathematical background}
+    \subfile{../sections/simple/2 - Mathematical background}
 
-    \section[Integers factorization]{Integers factorization and fuzzy algorithms}
-    \subfile{../sections/simple/3 - Integers factorization and fuzzy algorithms}
-
-    \section[Elliptic curves based algorithm]{Projective geometry and elliptic curves based algorithms}
-    \subfile{../sections/simple/4 - Projective geometry}
-
-    \section{Digital signature}
-    \subfile{../sections/simple/5 - Digital signature}
-
-    \section{Code theory}
-    \subfile{../sections/simple/6 - Code theory}
     \printbibliography
     \printglossaries
-\end{document} 
+\end{document}
