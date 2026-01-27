@@ -1,0 +1,48 @@
+\documentclass{subfiles}
+\begin{document}
+    \begin{definition*}[Group]
+        Let \(G\) be a set. Assume \(\cdot : G \to G\) to be some function. 
+            We say that the pair \((G, \cdot)\), often simply as \(G\),
+            is a group if the following properties hold: 
+            \begin{itemize}
+                \item \(\forall a, b, c \in G, a \cdot (b \cdot c) = (a \cdot b) \cdot c\);
+                \item \(\exists e \in G \ \forall g \in G \text{ s.t. } g \cdot e = e \cdot g = g\);
+                \item \(\forall g \in G \ \exists g^{-1} \in G \text{ s.t. } g \cdot g^{-1} = g^{-1} \cdot g = e\).
+            \end{itemize}
+
+        If it also holds that \(\forall a, b \in G, a \cdot b = b \cdot a\), 
+            we say that \(G\) is an abelian (or commutative) group.
+    \end{definition*}
+
+    We consider finite groups: that is, group with finitely many elements.
+        Precisely, we are interested on the following class of groups.
+
+    \begin{definition*}[Cyclic group]
+        Let \(G\) be a group, and let \(g \in G\). Denote by \(g^{k}\) the application 
+            of \(\cdot\) on \(g, k\) times. Denote by \(\gen{g}\) the set of all 
+            powers of \(g\). We say that \(G\) is cyclic if \(\gen{g} = G\).
+    \end{definition*}
+
+    \begin{definition*}[Subgroup]
+        Let \(G\) be a group, and let \(H \subseteq G\). 
+            We say that \(H\) is a subgroup of \(G\), if \(H\) is a group under 
+            the operation inherited from \(G\).
+    \end{definition*}
+
+    \begin{theorem*}[Langrange's]
+        Let \(G\) be a group, and let \(H\) be one of its subgroups.
+            Let \(\ord{G}, \ord{H}\) denote the order (the number of elements) of 
+            \(G \text{ and } H\), respectively. Then, it holds
+            \[
+                \divides{\ord{H}}{\ord{G}}.
+            \]
+    \end{theorem*}
+
+    When the group in question is cyclic, Langrange's theorem can be states as follow:
+        let \(g \in G\) and denote by \(\ord{g}\) the smallest integer \(n\) such that \(g^{n} = 1\),
+        then, it holds \(\divides{\ord{g}}{\ord{G}}\).
+
+    We will implicitely use Langrange's theorem when we discuss RSA and ElGamal 
+        algorithms.
+
+\end{document}

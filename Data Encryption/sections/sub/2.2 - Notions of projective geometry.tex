@@ -1,0 +1,48 @@
+\documentclass{subfiles}
+\begin{document}
+    In what follows we assume that notions such as points, lines,
+        planes in the geometrical sense, in addition to the notion of vector spaces
+        are known to the reader.
+
+    \begin{definition*}[Ray]
+        Let \(\F\) be a field, and let \(\V\) be a vector space over \(\F\).
+            Let \(\mathbf{v} \in \V\) be non-zero. We call the set 
+            \[
+                [\mathbf{v}] = \set{k \mathbf{v}}[k \in \F^{*}]
+            \]
+            a ray.
+    \end{definition*}
+
+    \begin{definition*}[Projective plane]
+        Let \(\F\) be a field and let \(\V\) be a vector space over \(F\).
+            Let \(\dim{\V} = 3\). We define the projective plane \(\P^{2}\) as 
+            the set of rays of \(V\). An element \(X \in \P^{2}\) is called a point.
+    \end{definition*}
+
+    In our discussion we usually consider projective points in \emph{homogeneous}
+        coordinates; that is, if \(X = [x : y : z]\) is a projective point 
+        at least one of the \(x, y, z\) is non-zero.
+
+    The relation with ordinary plane geometry is done as follow:
+        \begin{itemize}
+            \item Any point \((x, y) \in \R^{2}\) becomes a projective point 
+                \([x : y : 1]\); and 
+            \item Any point \([x : y : 0] \in \P^{2}\), which do not belong to 
+                Euclidean geometry, are called point at infinity.
+        \end{itemize}
+
+    We now present \emph{elliptic curves} which are the main reason we discuss 
+        projective geometry.
+
+    \begin{definition*}[Elliptic curves]
+        Let \(\V\) be a vector over some field \(\F\). 
+            An elliptic curve \(\C*\) is the set of points of \(\P^{2}\),
+            that are solution to an equation of the form
+            \[
+                y^{2} = x^{3} + ax + b.
+            \]
+    \end{definition*}
+    
+    In our treating, we consider non-singular elliptic curves; that is, 
+        such that the discriminant is non zero, i.e., \(\Delta = -16(4a^{3} + 27b \ne 0)\).
+\end{document}

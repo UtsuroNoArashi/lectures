@@ -1,0 +1,54 @@
+\documentclass{subfiles}
+\begin{document}
+    In what follows, we assume the reader to have a basic understanding of number sets 
+    and equivalence relations.
+
+    \begin{definition*}[Divisibility]
+        Let \(a, b \in \Z\). We say that \(a\) divides \(b\), and write \(\divides{a}{b}\),
+        if 
+        \[
+            \exists q \in \Z \text{ s.t. } b = qa.
+        \]
+        Otherwise we say that \(a\) does not divide \(b\), and write \(\ndivides{a}{b}\).
+    \end{definition*}
+
+    Divisibility allows us to define two important concepts: LCM and GCD.
+    \begin{definition*}[LCM]
+        Let \(a, b \in \Z\). Let \(m \in \Z\). We say that \(m\) is the LCM for 
+            \(a \text{ and } b\) if, the following holds:
+            \begin{enumerate}
+                \item \(\divides{a}{m}\) and \(\divides{b}{m}\), and 
+                \item If \(\exists m' \in \Z\) such that \(\divides{a}{m'}\) and 
+                    \(\divides{b}{m'}\), then \(\divides{m}{m'}\).
+            \end{enumerate}
+    \end{definition*}
+
+    \begin{definition*}[GCD]
+        Let \(a, b \in \Z\). Let \(d \in \Z\). We say that \(d\) is the GCD for 
+            \(a \text{ and } b\) if, the following holds:
+            \begin{enumerate}
+                \item \(\divides{d}{a}\) and \(\divides{d}{b}\), and 
+                \item If \(\exists d' \in \Z\) such that \(\divides{d'}{a}\) and 
+                    \(\divides{d'}{b}\), then \(\divides{d'}{d}\).
+            \end{enumerate}
+    \end{definition*}
+
+    The computation of the GCD is done by the euclidean algorithm;
+        we present an efficient inpementation of it in \emph{Section \ref{Sec:4}}.
+        \todo{Add label in section 4.}
+
+    \begin{definition*}[Congruence modulo \(n\)]
+        Let \(a, b \in \Z\), and let \(n \in \Z\) be a fixed integer. 
+        We say that \(a\) is congruent \(b\) modulo \(n\), and write 
+        \(a \equiv b \mod{n}\) if and only if 
+        \[
+            \exists k \in \Z \text{ s.t. } a = kn + b.
+        \]
+    \end{definition*}
+
+    \subsubsection{A brief introduction to groups}
+    \subfile{../subsub/2.1.1 - Groups}
+
+    \subsubsection{A brief introduction to rings}
+    \subfile{../subsub/2.1.2 - Rings.tex}
+\end{document}
