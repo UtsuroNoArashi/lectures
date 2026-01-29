@@ -20,29 +20,59 @@
     \end{definition*}
 
     In our discussion we usually consider projective points in \emph{homogeneous}
-        coordinates; that is, if \(X = [x : y : z]\) is a projective point 
-        at least one of the \(x, y, z\) is non-zero.
+        coordinates; that is, if \(X = [x : y : z]\) is a projective point,
+        at least one of \(x, y, z\) is non-zero.
 
     The relation with ordinary plane geometry is done as follow:
         \begin{itemize}
             \item Any point \((x, y) \in \R^{2}\) becomes a projective point 
                 \([x : y : 1]\); and 
             \item Any point \([x : y : 0] \in \P^{2}\), which do not belong to 
-                Euclidean geometry, are called point at infinity.
+                Euclidean geometry, are called point at infinity, and 
+                we denote them as \(\mathcal{O}\).
         \end{itemize}
 
     We now present \emph{elliptic curves} which are the main reason we discuss 
         projective geometry.
 
     \begin{definition*}[Elliptic curves]
-        Let \(\V\) be a vector over some field \(\F\). 
+        Let \(\V\) be a vector space over a field \(F\). 
             An elliptic curve \(\C*\) is the set of points of \(\P^{2}\),
             that are solution to an equation of the form
             \[
-                y^{2} = x^{3} + ax + b.
+                y^{2} = x^{3} + ax + b
             \]
+            with \(a, b \in \F\).
     \end{definition*}
     
     In our treating, we consider non-singular elliptic curves; that is, 
         such that the discriminant is non zero, i.e., \(\Delta = -16(4a^{3} + 27b \ne 0)\).
+
+    In \emph{Section \ref{Sec:3.3.2}} we treat the ElGamal algorithm by means of 
+        elliptic curves; in this context given \(\C*\) an elliptic curve,
+        we are required to compute the sum of two point \(P, Q \in \C*\),
+        which is non trivial. In what remain of this section, we shall present how 
+        to do such addition.
+
+    Let \(\C*\) be an ellitptic over the field \(\F\) and let \(P = (x_{1}, y_{1}),
+    Q = (x_{2}, y_{2}) \in \C*\).
+        Then, the following cases hold:
+        \begin{itemize}
+            \item The points are opposite of one another, 
+                then \(P + Q = P + \mathcal{O} = P\).
+
+            \item The two points are distinct; then we consider the line that passes 
+                through them. That is, we compute 
+                \[
+                    x_{3} = m^{2} - x_{1} - x_{2} \qquad y_{3} = m(x_{1} - x_{3}) - y_{1}
+                \]
+                where \(m = \sfrac{(y_{2} - y_{1})}{(x_{2} - x_{1})}\) is the slope.
+
+            \item The two point coincide; then we consider the tangent line.
+                That is, we compute 
+                \[
+                    m = \frac{3x_{1}^{2} + a}{2y_{1}}
+                \]
+                and \(x_{3}, y_{3}\) as before.
+        \end{itemize}
 \end{document}

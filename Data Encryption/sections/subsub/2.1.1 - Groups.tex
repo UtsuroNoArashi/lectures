@@ -22,27 +22,4 @@
             of \(\cdot\) on \(g, k\) times. Denote by \(\gen{g}\) the set of all 
             powers of \(g\). We say that \(G\) is cyclic if \(\gen{g} = G\).
     \end{definition*}
-
-    \begin{definition*}[Subgroup]
-        Let \(G\) be a group, and let \(H \subseteq G\). 
-            We say that \(H\) is a subgroup of \(G\), if \(H\) is a group under 
-            the operation inherited from \(G\).
-    \end{definition*}
-
-    \begin{theorem*}[Langrange's]
-        Let \(G\) be a group, and let \(H\) be one of its subgroups.
-            Let \(\ord{G}, \ord{H}\) denote the order (the number of elements) of 
-            \(G \text{ and } H\), respectively. Then, it holds
-            \[
-                \divides{\ord{H}}{\ord{G}}.
-            \]
-    \end{theorem*}
-
-    When the group in question is cyclic, Langrange's theorem can be states as follow:
-        let \(g \in G\) and denote by \(\ord{g}\) the smallest integer \(n\) such that \(g^{n} = 1\),
-        then, it holds \(\divides{\ord{g}}{\ord{G}}\).
-
-    We will implicitely use Langrange's theorem when we discuss RSA and ElGamal 
-        algorithms.
-
 \end{document}
