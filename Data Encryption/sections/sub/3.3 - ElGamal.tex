@@ -1,0 +1,19 @@
+\documentclass{subfiles}
+\begin{document}
+    After Diffie and Hellman published their paper, apart from the RSA protocol,
+        a new scheme was proposed: the ElGamal protocol. Formally speaking,
+        the algorithm is based on the \gls{dlp}: fixed a group \(\gf{p}\) 
+        and two non-zero elements \(g \text{ and } h\), find \(x\) such that 
+        \[
+            g^{x} \equiv h \mod{p}.
+        \]
+
+    We discuss the algorithm as follow: first we describe the algorithm in the 
+        case of integers modulo a prime, then we discuss it in the context of elliptic curves.
+
+    \subsubsection{The algorithm: the modulo p case}
+    \subfile{../subsub/3.3.1 - ElGamal algorithm modulo p}
+
+    \subsubsection{The algorithm: the elliptic curve case}
+    \subfile{../subsub/3.3.2 - ElGamal algorithm elliptic curve}
+\end{document}

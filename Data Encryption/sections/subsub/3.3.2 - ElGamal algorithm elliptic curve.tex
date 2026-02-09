@@ -1,0 +1,17 @@
+\documentclass{subfiles}
+\begin{document}
+    A more, an trickier implementation of the ElGamal algorithm makes use 
+        of elliptic curves. Recall that the ``sum'' of two points \(P\) and 
+        \(Q\) of some elliptic curve \(\C*\) is not trivial. 
+
+    Back to the algorithm: a TTP fixes a elliptic curve \(\C*\) over the some field \(\gf{p}\). 
+        Analogously to the previous case, an element \(\gamma \in \C*\) is fixed 
+        and the quantitie \(\alpha = a\gamma\) is computed and published over the channel.
+        The remainder of the algorithm is similar to that previously discussed; 
+        the main difference is that multiplications are replaced by additions.
+
+    \begin{remark*}
+        Why do we prefer elliptic curves then? The answer is simple: the computation of 
+            \(n\gamma\) is expensive.
+    \end{remark*}
+\end{document}

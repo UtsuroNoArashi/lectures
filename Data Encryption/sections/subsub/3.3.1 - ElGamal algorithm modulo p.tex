@@ -1,0 +1,33 @@
+\documentclass{subfiles}
+\begin{document}
+    Let a \gls{ttp} choose a (large) prime \(p\); consider the field \(\gf{p}\) and 
+        let \(\gamma\) be a unit. That is, let \(\gamma\) be such that \(\gen{\gamma} = \gf{p}\).
+        Tell \(\mathcal{A}\) to choose \(a \in \set{2, \ldots, p - 1}\) and compute 
+        \[
+            \alpha \equiv \gamma^{a} \mod{p}.
+        \]
+        The quantity \(\alpha\) is public in the channel.
+    
+    Let \(m\) be a message \(\mathcal{B}\) wants to send to \(\mathcal{A}\). 
+        We can assume \(m\) to be an integer in the range \([2, p]\).
+        To chyper \(m, \mathcal{B}\) chooses a integer \(k\), computes 
+        \[
+            c_{1} \equiv \gamma^{k} \mod{p} \quad 
+                \text{ and } \quad c_{2} \equiv m\alpha^{k} \mod{p}
+        \]
+        and send the pair \((c_{1}, c_{2})\) to \(\mathcal{A}\).
+
+    Observe that \(\mathcal{A}\) can easily decode the message; in fact, \(\mathcal{A}\)
+        can compute 
+        \[
+            x \equiv c_{1}^{a} \mod{p}
+        \]
+        hence, \(x^{-1}\) is known as well. Once \(x^{-1}\) is known, computing 
+        \(x^{-1}c_{2} \mod{p}\) gives us \(m\). It's easily seen that  
+        \[\begin{aligned}
+            x^{-1}c_{2} &\equiv (c_{1}^{a})c_{2} \mod{p} \\
+                & \equiv (\gamma^{ak})^{-1}m\alpha^{k} \mod{p} \\ 
+                & \equiv (\gamma^{ak})^{-1}m \gamma^{ak} \mod{p} \\ 
+                & \equiv m \mod {p}.
+        \end{aligned}\]
+\end{document}
