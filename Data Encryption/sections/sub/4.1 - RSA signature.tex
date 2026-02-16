@@ -1,0 +1,28 @@
+\documentclass{subfiles}
+\begin{document}
+    Signing a document by means of the RSA algorithm is somewhat straightforawrd.
+        Let \(d\) is the hash value of some document \(\mathcal{A}\) produced;
+        to sign \(d\) she proceed as follow: she chooses two primes \(p \text{ and } q\),
+        computes their product \(n = pq\) and publish \(n\) and a public verification exponent.
+
+    Following a similar reasoning to that of \emph{Section \ref{Sec:3.2.1}}, the congruence 
+        \[
+            sv \equiv 1 \mod{(p-1)(q - 1)}
+        \]
+        is solved with respect to \(s\). Here \(s\) is the \emph{signing exponent} and \(v\)
+        the \emph{verification exponent}. Lastly, the document is singned as
+        \[
+            \mathcal{S} \equiv d^{s} \mod{n}.
+        \]
+        To check the signature, \(\mathcal{V}\) simply computes 
+        \[
+            \mathcal{S}^{v} \mod{n}
+        \]
+        and checks whether this is \(d\) or not. The correctness of this is given 
+        by Euler's formula.
+
+
+    Similarly to the RSA encryption scheme, the RSA signature securety follows from 
+        the hardness of computing the \(v\)-th root of \(d\), 
+        rather then the factorization of \(n\).
+\end{document}
