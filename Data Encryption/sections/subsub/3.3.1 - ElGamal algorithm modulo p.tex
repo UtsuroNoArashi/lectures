@@ -1,7 +1,7 @@
 \documentclass{subfiles}
 \begin{document}
-    Let a \gls{ttp} choose a (large) prime \(p\); consider the field \(\gf{p}\) and 
-        let \(\gamma\) be a unit. That is, let \(\gamma\) be such that \(\gen{\gamma} = \gf{p}\).
+    Let a \gls{ttp} choose a (large) prime \(p\); consider the field \(\gf*{p}\) and 
+        let \(\gamma\) be a unit. That is, let \(\gamma\) be such that \(\gen{\gamma} = \gf*{p}\).
         Tell \(\mathcal{A}\) to choose \(a \in \set{2, \ldots, p - 1}\) and compute 
         \[
             \alpha \equiv \gamma^{a} \mod{p}.
@@ -30,4 +30,28 @@
                 & \equiv (\gamma^{ak})^{-1}m \gamma^{ak} \mod{p} \\ 
                 & \equiv m \mod {p}.
         \end{aligned}\]
+
+    \begin{example*}
+        Say out TTP chose \(p = 47\) and \(\gamma = 3\). 
+            To compute their public key \(\alpha =  \gamma^{a}, \mathcal{A}\) 
+            chooses \(a = 27\). Hence, the value \(\alpha = 34\) is known on the channel.
+
+        Let \(m = 45\) be the message \(\mathcal{B}\) wants to send to \(\mathcal{A}\),
+            and to compute \(c_{1}, c_{2}\) they choose \(k = 11\). Then, we have 
+            \[
+                c_{1} \equiv 4 \mod{p} \qquad c_{2} \equiv 5 \mod{p}.
+            \]
+
+        Upon recieving the pair \((c_{1}, c_{2})\) can easely decode \(m\). 
+            Observe that, \(x \equiv c_{1}^{a} \equiv 21 \mod{47}\) and 
+            it can be easely checked that \(x^{-1} = 9\). 
+            Therefore, it follows
+            \[\begin{aligned}
+                x^{-1}c_{2} & \equiv \\
+                    & \equiv c_{1}^{a}c_{2} \\ 
+                    & \vdotswithin{\equiv} \\ 
+                    & \equiv 45 \mod{47}
+            \end{aligned}\]
+            which is \(m\) as expected.
+    \end{example*}
 \end{document}
