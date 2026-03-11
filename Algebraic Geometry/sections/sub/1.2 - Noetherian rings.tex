@@ -1,0 +1,148 @@
+\documentclass{subfiles}
+\begin{document}
+    \begin{definition*}
+        Let \(S\) be a set. We define a sequence of inclusion of the form
+            \[
+                S_{1} \subseteq S_{2} \subseteq \cdots \subseteq S_{k} \subseteq \cdots
+            \]
+            a (ascending) chain. Additionally, if there \(\exists n \in \N\) such 
+            that \(S_{n} = S_{n + 1} = \cdots\), we say that the chain is stationary.
+    \end{definition*}
+
+    \begin{definition*}[Noetherian ring]
+        Let \(R\) be a ring. We say that \(R\) is Noetherian if and only if 
+            each ascending chain of ideals of \(R\) is stationary,
+    \end{definition*}
+
+    \begin{proposition*}
+        Let \(R\) be a ring. Then, the following are equivalent.
+        \begin{enumerate}
+            \item \(R\) is Noetherian.
+            \item Each ideal \(I\) of \(R\) is finitely generated.
+            \item However took a family \(\F*\) of ideals of \(R\); 
+                \(\F*\) admits maximum. 
+        \end{enumerate}
+    \end{proposition*}
+
+    \begin{proof*}
+        \begin{description}
+            \item [\((2 \implies 1)\):] Let \(I_{1} \subseteq I_{2} \subseteq 
+                \cdots \subseteq I_{k} \subseteq \cdots\) be a chain of ideals.
+                Let  
+                \[
+                    I = \bigcup_{j = 1}^{\infty} I_{j}
+                \]
+                be an ideal finitely generated of \(R\).
+                That is, \(I = (x_{1}, x_{2}, \ldots, x_{n})\).
+
+                By the way \(I\) is defined, this means that 
+                \[
+                    \exists k_{1}, k_{2}, \ldots, k_{n} \text{ s.t. } x_{i} \in I_{k_{i}},
+                \]
+                hence, if \(m = \max{k_{i}}\) then \(x_{i} \in I_{m} = I_{m + 1} = \cdots\);
+                that is, \(R\) is Noetherian.
+
+            \item [\((1 \implies 3)\):] Consider \(\F*\) be a non-empty family of ideals.
+                Let \(I_{1} \in \F*\). It follows that 
+                \begin{itemize}
+                    \item \(I_{1}\) is maximal, from which the thesis.
+                    \item \(I_{1}\) is not maximal. By hypothesis,
+                        there exists \(I_{2} \supseteq I_{1}\).
+                \end{itemize}
+                Iterating the procedure we either find a maximal ideal,
+                from which the thesis; or we end up with a non-stationary chain,
+                which is absurd.
+
+            \item [\((3 \implies 2)\):] Let \(I \subseteq R\) be an ideal, 
+                \(I \ne (0)\). Consider the following family of ideals
+                \[
+                    \F* = \set{J \subseteq R}[J \text{ is finitely generated}, J \subseteq I].
+                \]
+                Trivially, \(\F* \ne \varnothing\). Let \(I_{MAX}\) be the maximal element in \(\F*\).
+                    Then \(I_{MAX} = (x_{1}, \ldots, x_{m})\) with \(x_{i} \in R\).
+                    Assume, by the sake of contradiction that \(I_{MAX} \ne I\),
+                    this implies that \(\exists y \in I\) such that \(y \notin I_{MAX}\).
+                    But then we should have \((x_{1}, \ldots, x_{m}, y) \in \F*\),
+                    meaning \(I_{MAX}\) isn't the maximal element, which is absurd.
+        \end{description}
+    \end{proof*}
+
+    \begin{proposition*}
+        Let \(f : R \to Q\) be a ring homomorphism. Then, if \(f\) is onto and \(R\)
+            is a Noetherian ring, \(Q\) is a Noetherian ring.
+    \end{proposition*}
+
+    \begin{proof*}
+        Let \(J \subseteq Q\) be an ideal. By the properties of homomorphism
+            \[
+                I = f^{-1}(J) = \set*{a \in R}[f(a) \in J]
+            \]
+            is an ideal of \(R\).
+
+        By hypothesis we have that \(R\) is Noetherian,
+            then we can assume that \(I = (a_{1}, a_{2}, \ldots, a_{m})\).
+            We prove that, \(J = (b_{1}, b_{2}, \ldots, b_{m})\), where \(b_{i} = f(a_{i})\).
+
+        Consider any \(y \in J \implies \exists x \in I \text{ s.t. } f(x) = y\).
+            But 
+            \[
+                x = \sum_{i = 0}^{n} a_{i} x_{i}, x_{i} \in R.
+            \]
+            Hence, we have that 
+            \[
+                \begin{aligned}
+                    y & = f \left\lparen \sum_{i = 1}^{n} a_{i}x_{i} \right\rparen \\ 
+                        & = \sum_{i = 1}^{n} f(a_{i}x_{i}) \\ 
+                        & = \sum_{i = 1}^{n} \underbrace{f(a_{i})}_{= b_{i}}\underbrace{f(x_{i})}_{\in J}
+                \end{aligned}
+            \]
+            therefore \(y \in (b_{1}, b_{2}, \ldots, b_{n})\) and \(J \subseteq (b_{1}, b_{2}, \ldots, b_{n})\).
+            Proving that \((b_{1}, b_{2}, \ldots, b_{n}) \subseteq J\) is trivial.
+    \end{proof*}
+
+    \begin{theorem*}[Hilbert's base]
+        Let \(R\) be a ring. If \(R\) is Noetherian, then \(R[x]\) is Noetherian.
+    \end{theorem*}
+
+    \begin{corollary*}
+        Let \(\F\) be a field. Then, \(\F[x_{1}, x_{2}, \ldots, x_{n}]\) is Noetherian.
+    \end{corollary*}
+
+    \begin{proof*}
+        Let us proceed by induction on the number of variables.
+            By the previous theorem we know that for \(n = 1, \F[x_{1}]\) is Noetherian.
+            As inductive step, assume the statement to be true for \(n - 1\);
+            that is, \(\F[x_{1}, x_{2}, \ldots, x_{n - 1}]\) is Noetherian. 
+            Then, we have that \(\F[x_{1}, x_{2}, \ldots, x_{n - 1}, x_{n}] = \F[x_{1}, x_{2}, \ldots, x_{n - 1}][x_{n}]\),
+            which is true by hypothesis.
+    \end{proof*}
+
+    \begin{corollary*}
+        Given \(I \subseteq \F[x_{1}, x_{2}, \ldots, x_{n}]\), the ring 
+        \[
+            B = \frac{\F[x_{1}, x_{2}, \ldots, x_{n}]}{I}
+        \]
+        is Noetherian.
+    \end{corollary*}
+
+    \begin{proof*}
+        Trivial. By assuming the epimorphism 
+        \[
+            \F[x_{1}, x_{2}, \ldots, x_{n}] \to \frac{\F[x_{1}, x_{2}, \ldots, x_{n}]}{I},
+        \]
+        the statement is true by the previously discussed proposition.
+    \end{proof*}
+
+    \begin{proposition*}
+        Let \(R\) be a Noetherian ring, and let \(J \subseteq R\) be an ideal.
+            Then, \(\exists M \subseteq R\) maximal such that \(J \subseteq M\).
+    \end{proposition*}
+
+    \begin{proof*}
+        Simply consider the family 
+            \[
+                \F* = \set*{I \subseteq R}[J \subseteq I].
+            \]
+            Since \(R\) is Noetherian, then \(\F*\) must admit a maximal element.
+    \end{proof*}
+\end{document}

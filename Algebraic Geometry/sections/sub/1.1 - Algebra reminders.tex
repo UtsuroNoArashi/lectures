@@ -1,0 +1,94 @@
+\documentclass{subfiles}
+\begin{document}
+    Throughout these notes we remind several concepts of both Algebra and Geometry.
+        For the time being we focus on a brief Algebra reminder,
+        in which we focus on some results on rings and ideals.
+
+    \begin{definition*}[Rings]
+        Let \(R\) be a set and 
+        \[\begin{aligned}
+            + &: R \times R \to R \\ 
+            * &: R \times R \to R
+        \end{aligned}\]
+        be two operations. We say that \(R\) is a (commutative) ring if the following holds.
+        \begin{itemize}
+            \item For any \(a, b, c \in R, a + (b + c) = (a + b) + c\).
+            \item Exists an element \(0 \in R\) such that \(a + 0 = 0 + a = a\).
+            \item For any \(a \in R\), there is \(-a \in R\) such that \(a + (-a) = -a + a = 0\).
+            \item For any \(a, b \in R, a + b = b + a\).
+            \item For any \(a, b, c \in R, a * (b * c) = (a * b) * c\).
+            \item For all \(a, b \in R, a * b = b * a\).
+            \item \(*\) distributes over \(+\).
+        \end{itemize}
+    \end{definition*}
+
+    \begin{definition*}[Ideal]
+        Let \(R\) be a ring. We say that a subset \(I \subseteq R\) is and ideal 
+            of \(R\) if it holds that 
+            \begin{itemize}
+                \item \(I\) is subgroup for \((R, +)\). That is, if 
+                    \[
+                        \forall x, y \in I, x + y \in I.
+                    \]
+                \item \(\forall a \in R, \forall x \in I, a * x \in I\).
+            \end{itemize}
+    \end{definition*}
+
+    \begin{remark*}
+        From now on we write \(ab\) instead of \(a * b\).
+    \end{remark*}
+
+    \begin{definition*}
+        Let \(R\) be a ring and let \(T \subseteq R\) be a subset. 
+            We define the set 
+            \[
+                (T) = \set*{\sum_{i = 0}^{n} a_{i}x_{i}}[a_{i} \in R, x_{i} \in T].
+            \]
+
+        Additionally, if \(I = (T)\) and \(\abs{T} < \infty\) we say that \(I\)
+            is \emph{finetely generated}.
+    \end{definition*}
+
+    \begin{definition*}
+        Let \(R, Q\) be rings. A function \(f : R \to Q\) is called (ring) homomorphism
+            if 
+            \begin{itemize}
+                \item \(f(a + b) = f(a) + f(b), \forall a, b \in R\); \\ 
+                \item \(f(ab) = f(a)f(b), \forall a, b \in R\); \\ 
+                \item \(f(1_{R}) = 1_{Q}\).
+            \end{itemize}
+    \end{definition*}
+
+    \begin{remark*}
+        Given \(f : R \to Q\) a ring homomorphism, it can be proved that 
+            \[
+                \ker{f} = \set*{a \in R}[f(a) = 0]
+            \]
+            is an ideal of \(R\). On the other hand, 
+            \(\im{f} = \set{b \in Q}[b = f(a), a \in R]\) is a subring of \(Q\).
+    \end{remark*}
+
+    Recall that, given \(R\) a ring a \(I \subseteq R\) an ideal, 
+        we can consider the quotient ring 
+        \[
+            \frac{A}{I} = \set*{a + I}[a \in R].
+        \]
+        We usually write \(\overline{a}\) instead of \(a + I\).
+
+    Lastly, we present a classic result in ring theory,
+    \begin{theorem*}[First isomorphism theorem]
+        Given a homomorphism \(f : R \to Q\), there exists a unique homomorphism \(g\)
+        such that \(f = \pi \circ g\), where \(\pi\) is the canonical epimorphism.
+        In terms of commutative diagrams, we have the following.
+        \subfile{../../extra/TikZ/Figure - Commutative diagram of FIT}
+    \end{theorem*}
+
+    \begin{proposition*}
+        Given \(R\) a ring and \(\mathfrak{p}\) an ideal, we say that \(\mathfrak{p}\)
+        is a prime ideal of \(R\), if 
+        \[
+            ab \in \mathfrak{p} \implies a \in \mathfrak{p} \lor b \in \mathfrak{p}
+        \]
+        or equivalently, if \(a, b \notin \mathfrak{p} \implies ab \notin \mathfrak{p}\).
+    \end{proposition*}
+\end{document}
