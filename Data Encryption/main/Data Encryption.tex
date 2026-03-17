@@ -1,4 +1,4 @@
-\documentclass[moon, draft]{lectures2}
+\documentclass[draft]{lectures2}
 
 \title{Notes on Data Encryption}
 \author{Riccardo Lo Iacono}
@@ -13,7 +13,11 @@
 \newacronym{dlp}{DLP}{Discrete Logarithm Problem}
 \newacronym{ttp}{TTP}{Trusted Third Party}
 
-% Document specific options 
+% Document specific options/coomands 
+\DeclareDocumentCommand{\bv}{m}{
+    \mathbf{#1}
+}
+
 \begin{document}
     \maketitle
 
@@ -31,6 +35,9 @@
 
     \section{Integers factorization}
     \subfile{../sections/simple/5 - Integers factorization}
+
+    % \section{Code theory}
+    % \subfile{../sections/simple/6 - Code theory}
 
     \printbibliography
     \printglossaries
