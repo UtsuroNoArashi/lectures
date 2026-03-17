@@ -1,0 +1,26 @@
+\documentclass{subfiles}
+\begin{document}
+    We have discussed so far of how the securety of our algorithms is given by,
+        among other things, the necessifty of computing big numbers reduced in modulo.
+        The question then is, can we ease the task when the user has rights on the data?
+        The affirmative answer is provided by the \emph{Square-and-Multiply} algorithm.
+        \emph{Figure \ref{Fig:1}} shows the pseudo-code of the algorithm.
+
+    Informaly speaking, given a number in exponential form; 
+        we decompose the exponent as subsequent powers of two,
+        compute the reduced exponentiations and multiply the results, reducing in modulo 
+        accordingly.
+        \subfile{../../extra/TikZ/Figure 1 - Pseudo code of SaM}
+
+    More rigorously, let \(g\) be the base number, let \(e\) be the exponent
+        and \(n\) the modulo. That is, we want to compute
+        \[
+            g^{e} \mod{n}.
+        \]
+        For the sake of our  discussion, assume \(e >> 1\).
+    
+    Essentially, we consider all the subsequent powers of 2, up to 
+        \(2^{\log{e}}\). Write \(e\) in it's binary expansion and 
+        compute \(g^{e}\) as the product of \(g^{2^{i}}\), 
+        where \(2^{i}\) is in the binary expansion of \(e\).
+\end{document}

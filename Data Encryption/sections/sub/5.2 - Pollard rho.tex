@@ -1,0 +1,72 @@
+\documentclass{subfiles}
+\begin{document}
+    We now discuss an algorithm that can be used to solve, when it works, the DLP.
+        Hence, this algorithm is a good tool for cracking ElGamal-based cryptosystems.
+
+    The idea is the following: let \(S\) be the set of elements we are working with,
+        and consider a function \(f : S \to S\) that randomly distributes the elements in \(S\).
+        Since for our purpouse \(S\) is finite, by applying \(f\) repetedly 
+        it will happen that 
+        \[
+            f(x_{i}) = f(x_{j}), i \ne j.
+        \]
+    The only problem is to determine such a function.
+
+    In our context of the ElGamal algorithm, let \(\gf{p}\) be the choosen field 
+        and let \(g\) be a primitive root. Then, as prosed in (\cite{pollard1996}),
+        we can use the function
+        \[
+            f(x) = \begin{cases}
+                gx, \text{if } 0 \le x < \sfrac{p}{3}; \\ 
+                x^{2}, \text{if } \sfrac{p}{3} \le x < \sfrac{2p}{3}; \\ 
+                ax, \text{if } \sfrac{2p}{3} \le x < p;
+            \end{cases}
+        \]
+        where \(x\) is reduced modulo \(p\). We can assume that \(x_{0} = 1\) and
+        by applying \(f\) we get simply 
+        \[
+            g^{\alpha_{i}}a^{\beta_{i}}
+        \]
+        where the values of \(\alpha_{i}, \beta_{i}\) are given by 
+        \[\alpha_{i} = \begin{cases}
+                \alpha_{i - 1} + 1, \text{if } 0 \le x < \sfrac{p}{3}; \\ 
+                2\alpha_{i - 1}, \text{if } \sfrac{p}{3} \le x < \sfrac{2p}{3}; \\ 
+                \alpha_{i - 1}, \text{if } \sfrac{2p}{3} \le x < p;
+            \end{cases}\]
+
+
+        \[\beta_{i} = \begin{cases}
+            \beta_{i - 1}, \text{if } 0 \le x < \sfrac{p}{3}; \\ 
+            2\beta_{i - 1}, \text{if } \sfrac{p}{3} \le x < \sfrac{2p}{3}; \\ 
+            \beta_{i - 1} + 1, \text{if } \sfrac{2p}{3} \le x < p.
+        \end{cases}.\]
+
+        Then, if we compute \(y_{i} = f(f(y_{i - 1}))\), with \(y_{0} = x_{0}\)
+            and check when \(y_{i} = x_{i}\) we get something of the form 
+            \[
+                g^{\alpha_{i}}a^{\beta_{i}} = g^{\gamma_{i}}a^{\delta_{i}}
+            \]
+            where \(\gamma_{i}, \delta_{i}\) are defined by the same relation of 
+            \(\alpha \text{ and } \beta\).
+            Hence, we have that 
+            \[
+                g^{\alpha_{i} - \gamma_{i}} = a^{\beta_{i} - \delta_{i}}.
+            \]
+            Putting \(u = \alpha_{i} - \gamma_{i}\) and \(v = \beta_{i} - \gamma_{i}\)
+            and considering the logarithm, we get 
+            \[
+                v \log_{g} a \equiv u \mod{(p - 1)}.
+            \]
+            Recall that \(p\) is known, therefore, if \(\gcd{v, p - 1} = 1\)
+            we can multiply by \(v^{-1}\) and easely compute the logarithm.
+            Viceversa, if \(\gcd{v, p - 1} \ge 2\), we can apply the Eucledian algorithm
+            to find \(s\) such that \(su \equiv d \mod{(p - 1)}\). Multiplying 
+            both sides by \(s\), we get 
+            \[
+                d \log_{g}{a} \equiv su \mod{(p - 1)},
+            \]
+            whose solutions is the set 
+            \[
+                \set*{\frac{w}{d} + k \frac{p - 1}{d}}[0 \le k < d].
+            \]
+\end{document}

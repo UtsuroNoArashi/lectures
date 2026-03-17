@@ -1,0 +1,27 @@
+\documentclass{subfiles}
+\begin{document}
+    Differently from the two algorithms previously described, 
+        Lenstra's factorization algorithm assumes we are working with an elliptic curve \(C*\)
+        over the ring \(\Z / n\Z\).
+        The key idea is that, while computing \(kP\), for some \(k \in \Z\) and \(P \in \C*\),
+        we will eventually have to compute the inverse of a element of the ring that admtis no inverse.
+        Precisely we proceed as follow:
+        \begin{enumerate}
+            \item Let \(\C*\) be the elliptic curve \(Y^{2} = X^{3} + AX + B\)
+                over the ring \(\Z/n\Z\).
+
+            \item Fix a point \(P = (a, b)\) at random and \(B \equiv b^{2} - a^{3} - aA \mod{n}\).
+
+            \item For \(j = 2, 3, 4, \ldots\)  up to some bound do:
+                \begin{enumerate}
+                    \item Compute \(Q \equiv jP \mod{N}\) and set \(P = Q\).
+                    \item If the previous step fails, we have found a non trivial divisor \(d\).
+                    \item If \(d \le n\), return \(d\).
+                    \item If \(d = n\) go back a choose a new point, a new curve or both.
+                \end{enumerate}
+            \item Go back to step 2.
+        \end{enumerate}
+
+    Lenstra's factorization algorithm requires \(\bigO{e^{\sqrt{(\log n)(\log\log n)}}}\)
+    time.
+\end{document}
