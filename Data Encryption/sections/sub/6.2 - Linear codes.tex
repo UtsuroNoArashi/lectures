@@ -1,0 +1,44 @@
+\documentclass{subfiles}
+\begin{document}
+    \begin{definition*}
+        Let \(\C* \subseteq A^{n}\) be a code. If we have that \(\C*\) is 
+            a vector subspace of \(A^{n}\), we say that \(\C*\) is linear.
+            That is, \(\C*\) is a linear code if:
+            \begin{enumerate}
+                \item For any \(\bv{c}_{1}, \bv{c}_{2} \in \C*,
+                    \bv{c}_{1} + \bv{c}_{2} \in C\); and
+
+                \item For any \(\bv{c} \in \C*, \forall \alpha \in A, 
+                    \alpha\bv{c} \in \C*\).
+            \end{enumerate}
+    \end{definition*}
+
+    Each code \(\C*\) is identified by the tuple \((n, k, d)\), 
+        where \(n\) is the size of the words (i.e. the number of components),
+        \(k\) the dimesions of \(\C*\) and \(d\) the minimal distance.
+        In the case of linear codes we write \([n, k, d]\) instead of \((n, k, d)\).
+
+    The question now is: how do we can represent a linear code?
+        Since \(\C*\) is a vector subspace, it must have a basis of vectors that 
+        generates the whole subspace. If \(\bv{c}_{1}, \ldots, \bv{c}_{k}\)
+        form a basis for \(\C*\), we can denote by 
+        \[
+            G = \begin{pmatrix}
+                \bv{c}_{1} \\ 
+                \vdots     \\ 
+                \bv{c}_{k} \\
+            \end{pmatrix}
+        \]
+        the \emph{generator matrix} of \(\C*\). It can be easely seen that any 
+        word in \(\C*\) is given by the linear combination of rows in \(G\).
+
+    Alternatively, we can make use of a \emph{parity-check matrix}.
+        That is an \(r \times n\) matrix \(H\) over \(A\), such that 
+        \[
+            \bv{c} \in \C* \iff H\bv{c}^{T} = \bv{0}.
+        \]
+        Note that \(r = \rank H = n - k\), from the dimesional relationship.
+
+    \subsubsection{Theorems and inequalities}
+    \subfile{../subsub/6.2.1 - Theorems and inequalities}
+\end{document}

@@ -1,0 +1,56 @@
+\documentclass{subfiles}
+\begin{document}
+    \begin{definition*}
+        A finite set of symbols \(A\) is said to be an alphabet,
+            if its elements are used to represet strings.
+    \end{definition*}
+
+    \begin{definition*}
+        Let \(A\) be an alphabet. We define word (or string) an \(n\)-tuple of 
+            \(A^{n}\). That is, 
+            \[
+                A^{n} = \set*{\bv{w} = (x_{1}, \ldots, x_{n})}[x_{i} \in A, \forall i].
+            \]
+        Additionally, given a word \(\bv{w}\) its weight \(\norm{\bv{w}}\) is the number of
+            non-zero components in \(\bv{w}\).
+    \end{definition*}
+
+    From the above definition two remarks can be made about the weight of a word:
+        \begin{enumerate}
+            \item For any alphabet \(A, \bv{w} \in A^{n}\) has weight 0 if and only if 
+                \(\bv{w} = \bv{0}\).
+
+            \item For any two strings \(\bv{w}_{1}, \bv{w}_{2} \in A^{n}\), it holds
+                \[
+                    \norm{\bv{w}_{1} - \bv{w}_{2}} = 0 \iff \bv{w}_{1} = \bv{w}_{2}.
+                \]
+        \end{enumerate}
+
+    \begin{definition*}[Hamming's distance]
+        Let \(\bv{w}_{1}, \bv{w}_{2} \in A^{n}\), for some alphabet \(A\).
+            We define the (Hamming) distance of \(\bv{w}_{1}, \bv{w}_{2}\)
+            to be the number of components for which these differ.
+    \end{definition*}
+    \begin{remark*}
+        It can be easely proved that the Hamming's distance is a metric.
+    \end{remark*}
+
+    \begin{definition*}[Code]
+        Let \(A\) be an alphabet, and consider the vector space \(A^{n}\) these creates.
+            We define code a subset \(\C*\) of \(A^{n}\).
+    \end{definition*}
+
+    \begin{definition*}[Minimal distance]
+        Let \(\C*\) be a code. We say that \(C*\) has Minimal distance \(d\)
+        if 
+        \[
+            d = \min{\abs{\bv{w}}}[\bv{w} \in \C*].
+        \]
+    \end{definition*}
+
+    That is, the minimal distance of a code is the minimal weight of all the words in \(\c*\).
+
+    In our discussion of codes we assume \(A\) to be always some finite field \(\F\),
+    or equivalently a Galoi field of \(q\) elements \(\gf{q}\).
+    \clearpage
+\end{document}
