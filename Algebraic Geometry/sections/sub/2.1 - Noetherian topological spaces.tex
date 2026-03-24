@@ -1,0 +1,212 @@
+\documentclass{subfiles}
+\begin{document}
+    \begin{definition*}    
+        Let \(X\) be a topological space. We say that \(X\) is Noetherian 
+            if and only if, any descending chain of closed sets 
+            \[
+                X = X_{1} \supseteq X_{2} \cdots \supseteq X_{k} \supseteq  \cdots
+            \]
+            is stationary.
+    \end{definition*}
+
+    Note that if \(X \subseteq \mathbb{A}^{n}\), then \(X\) is a Noetherian topological space.
+        We now recall what a reducible/inreducible space is.
+    \begin{definition*}
+        Let \(X\) be a topological space. Then, 
+            \(X\) is reducible if \(X = X_{1} \cup X_{2}\) with \(X_{1}, X_{2}\)
+            proper closed subsets. Is inreducible viceversa.
+    \end{definition*}
+
+    \begin{lemma*}
+        Let \(X = X_{1} \cup \cdots \cup X_{k}\) be a topological space,
+            where \(X_{i}\) is a proper closed set. Then, \(X\) is reducible.
+    \end{lemma*}
+
+    \begin{proof*}
+        Let us prove the result by induction on the number of closed sets.
+        \begin{description}
+            \item [\(k = 2\):] follows by the definition.
+            \item [\(k \ge 3\):] Assume that for \(k - 1\) it holds that \(X\)
+                is reducible. This means that \(X = X_{1} \cup \cdots \cup X_{k - 1}\).
+                But each \(X_{i}\) is a closed set; additionally, a finite union of 
+                closed sets is still a closed set. Hence, we have that 
+                \[
+                    X = \underbrace{Z}_{X_{1} \cup \cdots \cup X_{k - 1}} \cup X_{k}.
+                \]
+                Therefore \(X\) is reducible.\qed
+        \end{description} 
+    \end{proof*}
+
+    \begin{lemma*}
+        Let \(X\) be a topological space. Then, the following are equivalent.
+        \begin{enumerate}
+            \item \label{case:1} \(X\) is inreducible.
+            \item \label{case:2} For any \(U_{1}, U_{2} \subseteq X, U_{i} \ne \varnothing\), 
+                then \(U_{1} \cap U_{2} \ne \varnothing\).
+            \item \label{case:3} Each non-empty open set \(U \subseteq X\) is dense in \(X\).
+        \end{enumerate}
+    \end{lemma*}
+
+    \begin{proof*}
+        \begin{description}
+            \item [\(\ref{case:1} \implies \ref{case:2}\):] Let \(U_{1}, U_{2}\) be non-empty open sets 
+                of \(X\). We can write 
+                \[
+                    U_{1} = X \setminus X_{1} \text{ and } \quad U_{2} = X \setminus X_{2},
+                \]
+                with \(X_{1}, X_{2}\) proper closed sets of \(X\).
+                By the sake of contradiction, let \(U_{1} \cap U_{2} = \varnothing\).
+                Then we have that 
+                \[\begin{aligned}
+                    U_{1} \cap U_{2} & = X \setminus X_{1} \cap X \setminus X_{2} \\
+                        & = X \setminus (X_{1} \cup X_{2}) = \varnothing.
+                \end{aligned}\]
+                Thus we have \(X = X_{1} \cup X_{2}\), which is a contradiction.
+
+            \item [\(\ref{case:2} \implies \ref{case:3}\):] Let \(U \subseteq X\) be an non-empty open set.
+                Then \(\forall W \subseteq X\), such that \(W\) is open and 
+                non-empty, we have that \(U \cap W \ne \varnothing\). 
+                By the criterion for density, it follows that \(U\) is dense.
+
+            
+            \item [\(\ref{case:3} \implies \ref{case:1}\):] Let check this one. % Assume \(X = X_{1} \cup X_{2}\) with \(X_{i}\)
+            %     proper closed sets. Let \(U_{1} = X \setminus X_{1}, U_{2} = X \setminus X_{2}\)
+            %     be non-empty open sets. By 2., we should 
+                \qed
+        \end{description}
+    \end{proof*}
+    \clearpage
+
+    \begin{theorem*}
+        Let \(V \subseteq \mathbb{A}^{n}\) be an affine closed set. Then,
+        \(V\) is inreducible if and only if \(I(V)\) is a prime ideal.
+    \end{theorem*}
+
+    \begin{proof*}
+        \begin{description}
+            \item [\(\impliedby \):] By the sake of contradiction let \(V\) be reducible. 
+                Then, \(V = V_{1} \cup V_{2}\), with \(V_{i}\) be proper closed sets.
+                We have that 
+                \[
+                    V_{1} \subset V \text{ and } V_{2} \subset X.
+                \]
+                Considering the ideals, we have 
+                \[
+                    I(V_{1}) \supset I(V) \text{ and } I(V_{2}) \supset I(V).
+                \]
+                Hence, there exist \(F_{1}, F_{2} \in \K\) such that \(F_{1} \in I(V_{1}),
+                F_{2} \in I(V_{2}), F_{1}, F_{2} \ne I(V)\). Thus, 
+                \(\forall P \in V, F_{1}F_{2}(P) = F_{1}(P)F_{2}(P) = 0\).
+                Meaning \(P \in V_{1} \lor P \in V_{2} \implies F_{1}F_{2} \in I(V)\)
+                which is a contradiction.
+
+            \item [\(\implies\):] Assume that \(I(V)\) is not prime.
+                Therefore, \(\exists F_{1}, F_{2} \in \K, F_{1},F_{2} \notin I(V) \land F_{1}F_{2} \in I(V)\).
+                
+                Let \(S_{i} = I(V) \cup \set{F_{i}}\). We have 
+                \[\begin{aligned}
+                    V(S_{i}) &= V(\set{F_{i}} \cup I(V)) \\ 
+                     &= V(\set{F_{i}}) \cap V, i = 1, 2 \\ 
+                     &= \set{P \in V}[F_{i}(P) = 0].
+                \end{aligned}\]
+                Thus, each \(V_{i}\) is a proper closed subset of \(V\).
+
+            We prove that \(V_{1} \cup V_{2} = V\). Let \(P \in V\).
+                Then, \(F_{1}F_{2}(P) = 0 \implies P \in V_{1} \lor P \in V_{2}\),
+                hence \(P \in V_{1} \cup V_{2}\).\qed
+        \end{description}
+    \end{proof*}
+
+    \begin{remark*}
+        Note that if \(\F\) is an infinite field, then \(\mathbb{A}^{n}\) is inreducible.
+
+        In fact, if \(V = \mathbb{A}^{n}\), Considering the ideals this generate we have 
+        \[
+            I(V) = I(\mathbb{A}^{n}) = \set{F \in \K[x_{1}, \ldots, x_{n}]}[F(P) = 0, \forall P \in \mathbb{A}^{n}].
+        \]
+        By the identity principle \todo{Search what this ``indentity principle'' is.}, we have that the only
+        polynomial in \(I(V)\) is the null one; hence \(I(V)\)  is an integral domain,
+        thus is prime and therefore \(V\) is inreducible.
+    \end{remark*}
+
+    \begin{proposition*}
+        Noetherian topological spaces satisfy the following.
+        \begin{enumerate}
+            \item If \(X\) is a Noetherian topological space and \(Y \subseteq X\) 
+                is a topological subspace, then \(Y\) is Noetherian.
+
+            \item The union of finitely many Noetherian topological spaces is Noetherian.
+            \item If \(X\) is a Noetherian topological space, then \(X\) is semi-compact.
+        \end{enumerate}
+    \end{proposition*}
+
+    \begin{proof*}
+        \begin{enumerate}
+            \item Note that we can write \(Y\) as a chain of closed sets; that is,
+                \(Y = Y_{1} \supseteq Y_{2} \cdots \supseteq Y_{k} \supseteq \cdots\),
+                where each \(Y_{i} = Y \cap X_{i}\). What we are left with is proving that the 
+                \(X_{i}\)s form a chain in \(X\). Let us rewrite the \(X_{i}\).
+
+                Let \(X_{1}' = X_{1}\). For any \(i \ge 2\) we have \(Y_{i} = Y \cap X_{i}\)
+                and \(Y_{i} \subseteq Y_{i - 1}\), meaning that \(Y_{i} \subseteq X_{i - 1}\);
+                that is, \(Y_{i} = Y \cap (X_{i} \cap \cdots \cap X_{1}) = Y \cap X_{i}'\).
+
+                From the above \(X_{1}' \subseteq X_{2}' \subseteq \cdots \subseteq X_{k}' \subseteq \cdots\).
+                Since \(X\) is Noetherian, the chain of \(X_{i}'\) must be stationary,
+                hence the chain of \(Y_{i}\) is also stationary.
+
+            \item Since we are considering a finite union, we can simply prove the 
+                proposition for \(n = 2\), as the proof for \(n \ge 3\) follows by induction.
+
+                Let \(Y, Z\) be Noetherian spaces. We prove that \(Y \cup Z = X\) is a Noetherian
+                    spaces. 
+
+                Since \(Y, Z\) are Noetherian we know that 
+                \[\begin{aligned}
+                    Y & = Y_{1} \supseteq Y_{2} \supseteq \cdots \supseteq Y_{k} \supseteq \cdots \\ 
+                    Z & = Z_{1} \supseteq Z_{2} \supseteq \cdots \supseteq Z_{l} \supseteq \cdots. \\ 
+                \end{aligned}\]
+                Additionally, each \(Y_{i} \text{ and } Z_{i}\) can be seen as the intersection of some 
+                    closed set of \(X\) with \(Y \text{ and } Z\) respectively.
+                    That is, \(Y_{i} = Y \cap X_{i}\) and \(Z_{i} = Z \cap X_{i}\).
+
+                Now we know that \(\exists s \in \N\) such that \(Y_{s} = Y_{s + 1} = \cdots\) and 
+                    \(\exists t \in \N\) such that \(Z_{t} = Z_{t + 1} = \cdots\). Hence, 
+                    if \(m = \max{s, t}\) we have that \(Y_{m} = Y_{Y + 1} = \cdots\) and 
+                    \(Z_{m} = Z_{m  + 1} = \cdots\). But for all \(i\), it holds 
+                    \[
+                        X_{i} = (Y \cap X_{i}) \cup (Z \cap X_{i}) = (Y \cup Z) \cap X_{i}
+                    \]
+                    by which \(X_{m} = X_{m + 1} = \cdots\), meaning that \(X\) is Noetherian.
+
+                \item Let \(X = \bigcup_{i \in I} U_{i}\), with \(I\) set of indexes.
+
+                    Let \(i_{1} \in I\). If \(X = U_{i_{1}}\) we are done.
+                    Otherwise, there exists some \(i_{2}\) such that \(U_{i_{2}} \subset U_{i_{2}}\).
+                    If \(U_{i_{1}} \cup U_{i_{2}} = X\) we are done, otherwise we repeat the process.
+
+                    Two scenarios follow:
+                    \begin{enumerate}
+                        \item \(\exists i_{n} \in I\) such that \(U_{i_{1}} \cup U_{i_{2}} \cup \cdots \cup U_{i_{n}} = X\).
+                            In which case we get the thesis; or 
+                        \item We get a chain of open sets that is not stationary. Meaning that,
+                            once we consider the complements, we have a chain of closed sets that is
+                            not stationary, which contradicts the hypotesis of \(X\) being Noetherian.\qed
+                    \end{enumerate}
+            \end{enumerate}
+    \end{proof*}
+
+
+    \begin{lemma*}
+        Let \(X\) be a Noetherian space. If \(\F* \ne \varnothing\) is a family of closed sets,
+        then exists \(m \in \F*\) minimum.
+    \end{lemma*}
+
+    \begin{proof*}
+        Trivial. Analogous to the proof of the existence of a maximal element in a Noetherian ring.\qed
+    \end{proof*}
+
+    \subsubsection{Unique decomposition}
+    \subfile{../subsub/2.1.1 - Unique decomposition}
+
+\end{document}

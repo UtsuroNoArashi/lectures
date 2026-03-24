@@ -17,16 +17,16 @@
     \begin{proposition*}
         Let \(R\) be a ring. Then, the following are equivalent.
         \begin{enumerate}
-            \item \(R\) is Noetherian.
-            \item Each ideal \(I\) of \(R\) is finitely generated.
-            \item However took a family \(\F*\) of ideals of \(R\); 
+            \item \label{enm:1}  \(R\) is Noetherian.
+            \item \label{enm:2} Each ideal \(I\) of \(R\) is finitely generated.
+            \item \label{enm:3} However took a family \(\F*\) of ideals of \(R\); 
                 \(\F*\) admits maximum. 
         \end{enumerate}
     \end{proposition*}
 
     \begin{proof*}
         \begin{description}
-            \item [\((2 \implies 1)\):] Let \(I_{1} \subseteq I_{2} \subseteq 
+            \item [\(\ref{enm:2} \implies \ref{enm:1}\):] Let \(I_{1} \subseteq I_{2} \subseteq 
                 \cdots \subseteq I_{k} \subseteq \cdots\) be a chain of ideals.
                 Let  
                 \[
@@ -42,7 +42,7 @@
                 hence, if \(m = \max{k_{i}}\) then \(x_{i} \in I_{m} = I_{m + 1} = \cdots\);
                 that is, \(R\) is Noetherian.
 
-            \item [\((1 \implies 3)\):] Consider \(\F*\) be a non-empty family of ideals.
+            \item [\(\ref{enm:1} \implies \ref{enm:3}\):] Consider \(\F*\) be a non-empty family of ideals.
                 Let \(I_{1} \in \F*\). It follows that 
                 \begin{itemize}
                     \item \(I_{1}\) is maximal, from which the thesis.
@@ -53,7 +53,7 @@
                 from which the thesis; or we end up with a non-stationary chain,
                 which is absurd.
 
-            \item [\((3 \implies 2)\):] Let \(I \subseteq R\) be an ideal, 
+            \item [\(\ref{enm:3} \implies \ref{enm:3}\):] Let \(I \subseteq R\) be an ideal, 
                 \(I \ne (0)\). Consider the following family of ideals
                 \[
                     \F* = \set{J \subseteq R}[J \text{ is finitely generated}, J \subseteq I].
@@ -63,7 +63,7 @@
                     Assume, by the sake of contradiction that \(I_{MAX} \ne I\),
                     this implies that \(\exists y \in I\) such that \(y \notin I_{MAX}\).
                     But then we should have \((x_{1}, \ldots, x_{m}, y) \in \F*\),
-                    meaning \(I_{MAX}\) isn't the maximal element, which is absurd.
+                    meaning \(I_{MAX}\) isn't the maximal element, which is absurd.\qed
         \end{description}
     \end{proof*}
 
@@ -114,7 +114,7 @@
             As inductive step, assume the statement to be true for \(n - 1\);
             that is, \(\F[x_{1}, x_{2}, \ldots, x_{n - 1}]\) is Noetherian. 
             Then, we have that \(\F[x_{1}, x_{2}, \ldots, x_{n - 1}, x_{n}] = \F[x_{1}, x_{2}, \ldots, x_{n - 1}][x_{n}]\),
-            which is true by hypothesis.
+            which is true by hypothesis.\qed
     \end{proof*}
 
     \begin{corollary*}
@@ -130,7 +130,7 @@
         \[
             \F[x_{1}, x_{2}, \ldots, x_{n}] \to \frac{\F[x_{1}, x_{2}, \ldots, x_{n}]}{I},
         \]
-        the statement is true by the previously discussed proposition.
+        the statement is true by the previously discussed proposition.\qed
     \end{proof*}
 
     \begin{proposition*}
@@ -143,6 +143,6 @@
             \[
                 \F* = \set*{I \subseteq R}[J \subseteq I].
             \]
-            Since \(R\) is Noetherian, then \(\F*\) must admit a maximal element.
+            Since \(R\) is Noetherian, then \(\F*\) must admit a maximal element.\qed
     \end{proof*}
 \end{document}
