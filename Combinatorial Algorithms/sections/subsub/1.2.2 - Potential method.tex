@@ -1,0 +1,15 @@
+\documentclass{subfiles}
+\begin{document}
+    Following the idea of potential energy,
+        which in phisics represent the energy stored within the object before this begins to move,
+        the potential method make use of a potential function to pay out for the computations.
+        More precisely, we define a function \(\phi(I)\), that depends on the specific algorithm, 
+        that describes the potential of the specific instance \(I\) of the structure.
+        With this formulation, the amortized cost is given by 
+        \[
+            T_{\alpha}(n) = \sum_{i = 1}^{k} T_{i}(n) + \phi(I_{k}) - \phi(I_{0}),
+        \]
+        where \(T_{i}\) is the time required by \(i\)-th operation.
+
+    We leave the application of the method to the binary example to the reader.
+\end{document}
