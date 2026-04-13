@@ -1,0 +1,24 @@
+\documentclass{subfiles}
+\begin{document}
+    Our first analysis focuses on the case in which an order relation, 
+        that we assume to be total, exists among the elements of \(S\).
+
+    A simple solution to the problem would be to make use of BST, 
+        as the operations of insertion, deletion and member have a time \(\thetaOf{\log n}\).
+        The reader should be aware that BST have a severe drawback: 
+        dependink on how the elements are inserted and/or deleted the 
+        height of the tree can become linear, making the desired operations take \(\bigO{n}\).
+
+    Hence the question: can we find a data structure with similar properties of BST 
+        whose height is always logarithmic to the number of internal nodes? 
+        The affirmative answer is given by a set of advanced tree structure -- 
+        B-trees, AVL-trees, etc -- of which we discuss \gls{rb}.
+
+    \subsubsection{Definition and properties}
+    \subfile{../subsub/2.1.1 - RB trees - definition and properties}
+
+    \subsubsection{Balancing of RB trees}
+    \subfile{../subsub/2.1.2 - Balancing of RB trees}
+
+    \todo{Show how insertion, deletion and member work with them.}
+\end{document}

@@ -1,0 +1,45 @@
+\documentclass{subfiles}
+\begin{document}
+    As for the case of \lstinline{RB-Insert}, 
+        the \lstinline{RB-Delete} procedure is also based on the BST one,
+        with few differences: the main one being the call to \lstinline{RB-Delete-Fixup}.
+
+        % TODO: write RB-Delete
+    
+    Once again, we mainly focus on \lstinline{RB-Delete-Fixup} procedure 
+        as this does the heavy lift. Consider \Cref{RB-Delete-Fixup}'s code: 
+        it's evident that the properties that can fail are property 
+        \ref{RB-trees:const1}, \ref{RB-trees:const2}, \ref{RB-trees:const4} and 
+        \ref{RB-trees:const5} are violated. We can correct the latter,
+        by imposing the following: when a black node \(y\) is removed or moved, 
+        the node \(x\) that takes its place gets an ``extra'' black.
+        Thus, under this interpretation, \lstinline{RB-Delete-Fixup} must correct 
+        properties \ref{RB-trees:const1}, \ref{RB-trees:const2} and \ref{RB-trees:const4}.
+
+    We focus our discussion on proving that the procedure corrects property \ref{RB-trees:const1},
+        as the other follow directly. We have eight possible cases, in pairs symmetrical.
+        Hence we focus our attention on case 1-4. In our treating of \lstinline{RB-Delete-Fixup},
+        \(x\) always points to the node with the ``extra'' black.
+
+    \begin{description}
+        \item [Case 1:] \(x\)'s sibling \(w\) is red;
+            therefore, if we swap the color of \(x.p\) and \(w\) and rotate to the left on 
+            \(w\). In doing so, one of Case 2, Case 3 or Case 4 will fix the tree. 
+
+        \item [Case 2:] \(w\) and its children are black;
+            we remove a red from both \(x\) and \(w\) and add an extra black to \(x.p\) 
+            to conpensate.
+
+        \item [Case 3:] \(w\) is black, its left child is red and is right child is black. 
+            We can simply switch the color of \(w\) and is left child and do a right rotation on 
+            \(w\), thus folling in Case 4.
+
+        \item [Case 4:] \(w\) is black and is right child is red;
+            we can apply some color change and rotate to the right on \(x.p\),
+            without any reb-black property being violated.
+    \end{description}
+
+    In terms of time complexity, \lstinline{RB-Delete} is easely seen to be \(\bigO{\log n}\).
+    
+
+\end{document}

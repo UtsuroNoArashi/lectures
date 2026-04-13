@@ -1,0 +1,49 @@
+\documentclass{subfiles}
+\begin{document}
+    \begin{figure*}[!ht]
+        \centering
+        \begin{subfigure}{0.3\textwidth}
+            \centering
+            \begin{tikzpicture}[
+                    treeInternal/.style = {draw, circle, minimum size = 0.25cm, fill = rpIris!50}
+                ]
+                \graph [tree layout] {
+                    "" -- {
+                        y [treeInternal] -- {
+                            x [treeInternal] -- {
+                                "" [as=$\alpha$],
+                                "" [as=$\beta$]
+                            },
+                            "" [as=$\gamma$]
+                        }
+                    }
+                }; 
+            \end{tikzpicture}
+        \end{subfigure}
+        \begin{subfigure}{0.3\textwidth}
+            \centering
+            \begin{tikzpicture}
+                \draw [-Stealth] (3, 0.5) -- (0, 0.5) node [above, midway] {RotateLeft(T, x)};
+                \draw [-Stealth] (0, -0.5) -- (3, -0.5) node [below, midway] {RotateRight(T, y)};
+            \end{tikzpicture}
+        \end{subfigure}
+        \begin{subfigure}{0.3\textwidth}
+            \centering
+            \begin{tikzpicture}[
+                    treeInternal/.style = {draw, circle, minimum size = 0.25cm, fill = rpIris!50}
+                ]
+                \graph[tree layout] {
+                    "" -- {
+                        x [treeInternal] -- {
+                            "" [as=$\alpha$],
+                            y [treeInternal] -- {
+                                "" [as=$\beta$], "" [as=$\gamma$]
+                            } 
+                        }
+                    }
+                };
+            \end{tikzpicture}
+        \end{subfigure}
+        \caption{Rotation operations on a BST}\label{Fig:1}
+    \end{figure*}
+\end{document}

@@ -1,13 +1,23 @@
-\documentclass[draft, moon]{lectures2}
+\documentclass[draft, dawn]{lectures2}
 
 \title{Note on Combinatorial Algorithms}
 \author{Riccardo Lo Iacono}
 
 %% Glossaries 
 \makeglossaries
+\newacronym{bst}{BST}{Binary Search Trees}
+\newacronym{rb}{RB}{Red-Black Trees}
 
 %% Document specific commands 
 \DeclareDocumentCommand{\A}{}{\mathcal{A}}
+\DeclareMathOperator{\@bh}{Bh}
+\DeclareDocumentCommand{\bh}{m}{
+    \ifstrempty{#1}{
+        \@bh\left\lparen \cdot \right\rparen
+    }{
+        \@bh\left\lparen #1 \right\rparen
+    }
+}
 
 \begin{document}
     \maketitle
@@ -15,4 +25,6 @@
     \section[Analysis of algorithms]{Complexity theory and amortized analysis of algorithms}
     \subfile{../sections/simple/1 - Complexity theory and amortized analysis}
 
+    \section{The dictionary problem}
+    \subfile{../sections/simple/2 - The dictionary problem}
 \end{document}

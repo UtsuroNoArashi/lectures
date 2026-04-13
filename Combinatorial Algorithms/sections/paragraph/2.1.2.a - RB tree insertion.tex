@@ -1,0 +1,39 @@
+\documentclass{subfiles}
+\begin{document}
+    For the sake of simplicity the procedure for inserting a node in an RB tree is 
+        almost the same to that of BST; the only difference is given by the 
+        \lstinline{RB-Insert-Fixup} procedure at the end. See \Cref{RB-Insert}.
+
+    % TODO: RB-Insert pseudo code 
+    % \subfile{../../extras/TikZ/Procedure - RB -Insert}
+
+    Consider the \lstinline{RB-Insert-Fixup} procedure shown below.
+        By a simple analysis, six cases arise, in pairs symmetrical.
+        Before we analize each, let us question which of the RB properties 
+        may fail: is easely noted that property \ref{RB-trees:const1}, 
+        \ref{RB-trees:const3} and \ref{RB-trees:const5} still hold.
+        Thus, only property \ref{RB-trees:const2} and \ref{RB-trees:const4}
+        can fail; the former failing when \(z\) is the root and the latter 
+        when its parent is red. We consider cases 1-3 as 4-6 are symmetrical.
+
+    \begin{description}
+        \item [Case 1:] since both \(z.p\) and \(y\) are red;
+            we can push the ``redness'' upwards towards \(z.p.p\).
+            Since no other property fails, 
+            we simply check if \(z.p.p\) break any property.
+
+        \item [Case 2:] \(z\) is a right child while \(y\) is black;
+            we can simply rotate on \(z.p\) and let Case 3 take care of the rest. 
+
+        \item [Case 3:] \(z\) is a left child while \(y\) is black;
+            whether executed directly or through Case 2, \(z.p.p\) identity is unchanged,
+            then we can simply apply some color changes and a right rotation on \(z.p.p\).
+    \end{description}
+
+    For what regards \lstinline{RB-Insert} complexity: note that 
+        it takes time proportional to the height of tree, 
+        which we proved to be logarithmic; the \lstinline{RB-Insert-Fixup}
+        is repeated only if case 1 gets executed. The total number of times 
+        it can be executed is \(\log n\). Thus, \lstinline{RB-Insert} takes 
+        \(\bigO{\log n}\) time.
+\end{document}
