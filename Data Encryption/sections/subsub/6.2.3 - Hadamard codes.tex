@@ -1,0 +1,24 @@
+\documentclass{subfiles}
+\begin{document}
+    Named after \emph{Jaques Hadamard}, was actually proposed by \emph{R. C. Bose} and 
+        \emph{S. S. Shrikhande}, and refers to the family of \([2^{k}, k, 2^{k - 1}]\)
+        linar code. We can distinguish two ``classes'' of Hadamard codes: 
+        the plain one and the augmented one. The former have a message length of 
+        \(k = m\); the latter of \(k = m + 1\). In what follows, we refer to the 
+        second class of codes as augmented Hadamard codes.
+
+    To construct an Hadamard code, fix \(\gf{2}\) as field and let \(k\) be the 
+        lenght of the words. Then, the generator matrix for the code is composed of 
+        all binary strings of lenght \(k\), lexicographically ordered. That is,
+        the matrix 
+        \[G = \begin{pmatrix}
+                \uparrow & \uparrow & & \uparrow \\ 
+                y_{1} & y_{2} & \cdots & y_{2^{k}} \\ 
+                \downarrow & \downarrow & & \downarrow
+            \end{pmatrix}\]
+        where \(y_{i} \in \set{0, 1}^{k}\).
+
+    With the same assumptions, the generator matrix for an augmented Hadamard code 
+        is composed by all the binary strings of lenght \(k\) whose first component,
+        is a 1.
+\end{document}

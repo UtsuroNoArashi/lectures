@@ -1,0 +1,22 @@
+\documentclass{subfiles}
+\begin{document}
+    \begin{algorithm}[!ht]
+        \caption{Square and Multiply algorithm}\label{Fig:1}
+        \KwIn{\(g \in \Z_{n}\) and an integer \(0 \le e < n\), 
+            whose binary representation is \(e = \sum_{i = 0}^{t} e_{i}2^{i}\)}
+        \KwOut{\(g^{e} \mod{n}\)}
+        Set \(b \leftarrow 1\). If \(e = 0\) return \(b\).
+        \DontPrintSemicolon\;
+        Set \(A \leftarrow g\).
+        \DontPrintSemicolon\;
+        If \(e_{0} = 1\), set \(b \leftarrow g\).
+        \DontPrintSemicolon\;
+        For \(i\) from \(1\) to \(t\) do:
+        \DontPrintSemicolon\;
+            \Indp Set \(A \leftarrow A^{2} \mod{n}\).
+            \DontPrintSemicolon\;
+            If \(e_{i} = 1\), set \(b \leftarrow A * b \mod{n}\).
+        \DontPrintSemicolon\;
+        \Indm Return b.
+    \end{algorithm}
+\end{document}

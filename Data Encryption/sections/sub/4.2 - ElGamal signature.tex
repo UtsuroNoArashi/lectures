@@ -1,0 +1,31 @@
+\documentclass{subfiles}
+\begin{document}
+    Let a TTP choose a large prime \(p\) and an integer \(g\) such that 
+        \(\gf{p} = \gen{g}\). Say \(\mathcal{A}\) has to sign a document \(d\);
+        before doing so they must choose a signing exponent \(s\) and compute the quantity
+        \[
+            v \equiv g^{s} \mod{p}.
+        \]
+    The quantity \(v\), alongside the parameter \(g\) and \(p\), 
+        represent \(\mathcal{A}\)'s public verification key.
+
+    The signature itself is produced, by choosing an integer \(e < p\) and computing 
+        the quantities 
+        \[
+            S_{1} \equiv g^{e} \mod{p} \qquad S_{2} \equiv (d - sS_{1})e^{-1} \mod{p - 1}.
+        \]
+
+    To verify the signature, \(\mathcal{V}\) checks that 
+        \[
+            v^{S_{1}}S_{1}^{S_2} \mod{p} = g^{d} \mod{p}.
+        \]
+
+    Note that the above equation correctly checks the signature; in fact, 
+        we have that 
+        \[\begin{aligned}
+            v^{S_{1}}S_{1}^{S_{2}} & \equiv g^{sS_{1}} g^{eS_{2}} \\
+            & \equiv g^{sS_{1} + eS_{2}} \equiv g^{sS_{1} + e(d - sS_{1})e^{-1}} \equiv g^{d} \mod{p}.
+        \end{aligned}\]
+
+
+\end{document}

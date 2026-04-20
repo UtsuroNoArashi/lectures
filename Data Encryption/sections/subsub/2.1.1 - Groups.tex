@@ -1,0 +1,25 @@
+\documentclass{subfiles}
+\begin{document}
+    \begin{definition*}[Group]
+        Let \(G\) be a set. Assume \(\cdot : G \to G\) to be some function. 
+            We say that the pair \((G, \cdot)\), often simply as \(G\),
+            is a group if the following properties hold: 
+            \begin{itemize}
+                \item \(\forall a, b, c \in G, a \cdot (b \cdot c) = (a \cdot b) \cdot c\);
+                \item \(\exists e \in G \ \forall g \in G \text{ s.t. } g \cdot e = e \cdot g = g\);
+                \item \(\forall g \in G \ \exists g^{-1} \in G \text{ s.t. } g \cdot g^{-1} = g^{-1} \cdot g = e\).
+            \end{itemize}
+
+        If it also holds that \(\forall a, b \in G, a \cdot b = b \cdot a\), 
+            we say that \(G\) is an abelian (or commutative) group.
+    \end{definition*}
+
+    We consider finite groups: that is, group with finitely many elements.
+        Precisely, we are interested on the following class of groups.
+
+    \begin{definition*}[Cyclic group]
+        Let \(G\) be a group, and let \(g \in G\). Denote by \(g^{k}\) the application 
+            of \(\cdot\) on \(g, k\) times. Denote by \(\gen{g}\) the set of all 
+            powers of \(g\). We say that \(G\) is cyclic if \(\gen{g} = G\).
+    \end{definition*}
+\end{document}

@@ -1,0 +1,50 @@
+\documentclass{subfiles}
+\begin{document}
+    Should be clear by now that prime numbers are at the core of cryptography,
+        since these are hard to find\footnotemark. On the other hand,
+        as in the case of RSA, we need to find distinct prime numbers 
+        that are not big, yet not easily computable. 
+        Meaning a test for primality would be a good tool.
+        Luckly such tool exists -- Pollard's \(p - 1\) algorithm --
+        though it's applicable to a specific type of numbers.
+
+    Let's consider the details. Pollard's algorithm is based on the concept of 
+        \(B\)-smooth numbers; that is, numbers whose prime factors are all smaller than 
+        or equal to a given bound \(B\). Precisely, let \(n = pq\), where \(p, q\) are 
+        prime, be the integer to factorize; assume we have found a integer \(L\)
+        such that 
+        \[
+             \divides{p - 1}{L} \text{ and } \ndivides{q - 1}{L}.
+        \]
+        This means that there exists \(i, j\) and \(k, k \ne 0\) such that 
+        \[
+            L = i(p - 1) \text{ and } L = j(q - 1) + k.
+        \]
+        By Fermat little theorem we have 
+        \[\begin{aligned}
+            a^{L} & \equiv 1 \mod{p} \\ 
+            a^{L} & \equiv a^{k} \mod{q}.
+        \end{aligned}\]
+        Then, we have that 
+        \[
+            \divides{p}{a^{L} - 1} \text{ and } \ndivides{q}{a^{L} - 1},
+        \]
+        for most values of \(a\). It follows that \(p = \gcd{a^{L} - 1, n}\).
+
+    The interesting part is that, if \(p - 1\) is such that it's the product of small 
+        prime numbers, then it divides \(n!\). In other words, what we do is 
+        fix \(a \in \Z^{+}\) and compute \(\gcd{a^{n!}, n} = d\); if \(d \ne 1\) or 
+        \(d \ne n\) we have found a non-trivial factor, otherwise we try again by changing the value 
+        of \(a\).
+
+    Is easily noted that the algorithm has, at least apparently two severe drawbacks: 
+        the computation of the factorial and the consequential complexity. 
+        Let us say that, how would be clear later in this section, such drawbacks do not exists.
+    
+    \footnotetext{The statement is true unless \emph{Riemann} hypothesis turns out to be true.}
+
+    Back to the algorithm: we've said that Pollard's algorithm works if either \(p - 1\) or \(q - 1\)
+        are product of small primes; the question is how likely this happens?
+        It's here that \(B\)-smoothness plays a key role: if \(n\) is \(B\)-smooth,
+        then it divides \(B!\); additionally, any prime \(l\) dividing \(n\) has to be less than or equal to \(B\).
+\end{document}
