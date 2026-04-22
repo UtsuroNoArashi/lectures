@@ -1,0 +1,37 @@
+\documentclass{subfiles}
+\begin{document}
+    We now turn our attention to a more interesting question: 
+        fixed a source over some alphabet, how do we design the optimal code for it?
+        The question, apparently hard, has a somewhat obvious answer:
+        take in account the lengths of the codewords. Or better said, 
+        the average one.
+
+    Formally speaking, we take in account the \gls{acl} of the code, 
+        defined as the quantity
+        \[
+            L_{S}(C) = \sum_{i = 1}^{n} p_{i}l_{i}
+        \]
+        such that is minimal. We say that a code \(\C*\) is compact (or optimal) for the source 
+        \(S\) if, among all prefix codes for \(S\), \(\C*\) has the minimal ACL.
+
+    \begin{remark*}
+        Is there a lower bound for the ACL? Yes, and it given by the following result.
+        \begin{lemma*}[Shannon]
+            If \(\C*\) is a UD code for a source \(S\) with probabilities 
+            \(p_{1}, \ldots, p_{n}\), and \(d\) is the size of the code alphabet,
+            then
+            \[
+                L_{S}(\C*) \ge \frac{H(S)}{\log d}
+            \]
+        \end{lemma*}
+    \end{remark*}
+
+    In addition to the ACL, we can define two addtional quantities that gives informations 
+        on the code: the efficiency \(\vartheta(\C*) = \tfrac{H(S)}{L_{S}(\C*)}\),
+        which by Shannon lemma is bounded between 0 and 1; 
+        and the redundancy \(\rho_{S}(\C*) = 1 - \vartheta_{S}(\C*)\).
+
+    Some attempt to provide a way to build optimal codes have been tried:
+        the Shannon-Fano encoding for instance; but none achived the goal.
+        \clearpage
+\end{document}
