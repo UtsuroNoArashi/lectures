@@ -1,0 +1,23 @@
+\documentclass{subfiles}
+\begin{document}
+    One of the fundament abilities a computer scientist must have is that of algorithms analysis,
+        which can essentially be summarized as follow: let \(P\) be some algorithmically-solvable problem, 
+        and let \(\A_{1}\) and \(\A_{2}\) be two algorithms, we assume to be distinct,
+        that solve \(P\); how do we choose which one is better with respect to a resource?
+        
+    In most cases, but not exclusively, we are interested in those algorithms whose 
+        time complexity is minimal. But to do so we need some tools that allows as 
+        to determine the ``optimality''. One of such tools is asymptotic notation, 
+        which we breafly recall in the next section.
+
+    In some cases asymptotic notation may be missleading; in fact it can happen 
+        that and algorithm \(\A_{1}\) has a worst case complexity, 
+        which is the one we are interested in, that is lower the that of algorithm \(\A_{2}\),
+        yet in practice \(\A_{2}\) behaves better. We discuss this kind of analysis in \Cref{Sec:1.2}.
+
+    \subsection{Asymptotic analysis}
+    \subfile{../sub/1.1 - Asymptotic analysis}
+
+    \subsection{Amortized analysis}
+    \subfile{../sub/1.2 - Amortized analysis}
+\end{document}

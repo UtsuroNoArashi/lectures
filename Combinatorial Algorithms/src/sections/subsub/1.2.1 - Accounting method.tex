@@ -1,0 +1,26 @@
+\documentclass{subfiles}
+\begin{document}
+    The first of the two methods we present to compute the amortized cost is the so called
+        \emph{accounting} method, whose name will be clear in a moment.
+        To begin with let us restate our problem: given \(\A\) an algorithm with a 
+        worse time complexity \(T_{w}(n)\), what is the time complexity over a 
+        sequence of \(k\) execution of \(A\).
+
+    The idea behind the method is relatively simple: assign one or more tokens to a set of operations,
+        based on some property, in such a way that these can pay out the cost of the other operations.
+        With this definition, our amortized cost is 
+        \[
+            T_{\alpha}(n) = T(n) + deposited(n) - withdrawn(n),
+        \]
+        where \(T(n)\) is number of steps done in the worst case.
+
+
+    If we consider the binary counter example, we can think to deposit a token any time 
+        we flip a zero to a one, while we withdraw one when a one is flipped back to a zero.
+        Now, at every step at most a zero is flipped to a one, hence \(deposited(n) = 1\).
+        Therefore, \(T(n) - withdrawn(n) \le 1\), since we can always flip a one to a zero without a cost,
+        which means 
+        \[
+            T_{\alpha}(n) = T(n) + deposited(n) - withdrawn(n) \le 2 = \bigO{1}.
+        \]
+\end{document}
