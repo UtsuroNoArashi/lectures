@@ -1,0 +1,24 @@
+% Project preamble
+\title{Notes on Information Theory}
+\author{Riccardo Lo Iacono}
+
+%% List of BibTeX files to include 
+\addbibresource{../extra/BibTeX/papers.bib}
+
+%% List of glossaries goes here.
+\makeglossaries 
+\newacronym{ud}{UD}{Uniquely Decodable}
+\newacronym{acl}{ACL}{Average Codeword Length}
+
+%% List of document specific commands
+\NewDocumentCommand{\acl}{O{S} O{\C*}}{
+    L_{#1}(#2)
+}
+
+\NewDocumentCommand{\eff}{O{S} O{\C*}}{
+    \vartheta_{#1}(#2)
+}
+
+\NewDocumentCommand{\red}{O{S} O{\C*}}{
+    \rho_{#1}(#2)
+}
