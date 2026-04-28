@@ -7,11 +7,11 @@
 
     In the present section we describe a variation of the classical Huffman 
         encoding that does exactly so. We'll show that all that we need are 
-        the symbols to transmit, ordered non increasingly, and the first 
+        the symbols to transmit, ordered non-increasingly, and the first 
         codeword for each length.
 
     Before we proceed, let us observe something: there exist optimal codes 
-        that are not produced by any Huffman tree, for instance the tree 
+        that correspond to no Huffman tree, for instance the tree 
         on the right in \Cref{fig:nonHuffman}, corresponds to no Huffman, yet it's optimal.
         
     Let's now consider how to compute the Canonical Huffman encoding.
@@ -36,27 +36,26 @@
         the question is how to build \lstinline{fc}. Let \lstinline{MAX}
         be the maximal codeword length, then \lstinline{fc[MAX] = 0},
         as a consequence of the tree we are building, for any \(l \le\) \lstinline{MAX},
-        \lstinline{fc[l] = fc[l + 1] + num[l + 1] << 1}. The pseudo-code in 
-        Procedure \ref{proc:pseudoFC} uses a bottom-up approach, hence the tree built is 
+        \lstinline{fc[l] = fc[l + 1] + num[l + 1] / d}, where \(d\) is the size of the alphabet.
+        The pseudo-code in Procedure \ref{proc:pseudoFC} uses a bottom-up approach, hence the tree built is 
         unbalanced to the left.
         
-        \subfile{../../TikZ/Figure 4 - FC procedure}
+        \subfile{../../TikZ/Procedure - FC procedure}
 
         \begin{example*}
             Assume we want to compute the Canonical Huffman encoding for the tree 
                 in \Cref{fig:exampleHuffman}. It follows easely that \lstinline{num = \{1, 6\}}
-                and \lstinline{symb = \{g, b, c, e, f, d\}}. We now proceed building the 
+                and \lstinline{symb = \{a, \{g, b, c, e, f, d\}\}}. We now proceed building the 
                 \lstinline{fc} array. By using the procedure we have \lstinline{fc[2] = 0}
-                    while \lstinline{fc[1] = (fc[2] + num[2]) << 1 = 2}. Note that in this 
-                    case the shift operation is ternary. The tree we obtain, 
+                    while \lstinline{fc[1] = (fc[2] + num[2]) / 3 = 2}. The tree we obtain, 
                     symmetric to that of \Cref{fig:exampleHuffman}, is shown below.
                     \subfile{../../TikZ/Figure - Example of Canonical Huffman encoding}
         \end{example*}
 
-    To conclude our discussion, we now provide the pseudo code to decode a Canonical 
-        Huffman encoded string. Recall that the decoder has access to both \lstinline{fc}
+    To conclude our discussion, we provide the Procedure \ref{proc:decodeCanonical}
+        to decode string encoded using Canonical Huffman.
+        Recall that the decoder has access to both \lstinline{fc}
         and \lstinline{symb}; therefore, we can simply read bits until the value 
-        is less than \lstinline{fc[l]}, for all \(l\). The Procedure \ref{proc:decodeCanonical}
-        summarizes the procedure.
-        \subfile{../../TikZ/Figure 5 - Canonical Huffman decoding}
+        is less than \lstinline{fc[l]}, for all \(l\).
+        \subfile{../../TikZ/Procedure - Canonical Huffman decoding}
 \end{document}

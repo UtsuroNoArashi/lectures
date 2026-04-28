@@ -1,0 +1,44 @@
+\documentclass{subfiles}
+\begin{document}\label{sec:arithmeticEncoding}
+    Huffman encoding has a limitation: the codewords can have length less then one bit.
+        This limitation of the Huffman encoding is evident when one of the source symbols
+        have a higher probability then the others. 
+
+    Proposed by Peter Elias, another of Fano's students, Arithmetic encoding
+        output is no longer a string of codewords, 
+        rather a unique encoding of the whole text.
+        The core idea is that of encoding the whole as floating-point number 
+        in the range [0, 1].
+
+    The algorithm is relatively simple: initialize the range, split it into \(n\)
+        subintervals each proportional to the probability of a symbol, 
+        and after reading a symbol select the associated range and 
+        update the subintervals accordingly. After the whole text has been read,
+        output a value within it.
+        Below we provide the pseudo-code of the procedure to encode a string using Arithmetic encoding.
+
+    \subfile{../../TikZ/Procedure - Arithmetic encoding}
+
+    \begin{example*}
+        Consider the string \(S = abac\), how do we encode it? 
+            By apply the encoding procedure we get the following.
+            
+            \subfile{../../TikZ/Figure - Example of Arithmetic encoding}
+    \end{example*}
+
+
+    The decoding process is symmetric: the range [0, 1] is divided in \(n\)
+        subintervals, at each iteration the proper range is selected and 
+        the intervals recomputed accordingly. The process is valid 
+        because the procedure is syncronized; that is,
+        both encoder and decoder know the source alphabet and the associated probabilities.
+        Below the pseudo-code code of the procedure to decode a string encoded with Arithmetic encoding.
+
+    \subfile{../../TikZ/Procedure - Arithmetic decoding.tex}
+    \begin{example*}
+        Consider \(x = \sfrac{39}{128}\). If the source symbols and probabilities 
+            are that of the previous example, what is the decoded string?
+            
+            \subfile{../../TikZ/Figure - Example of Arithmetic decoding}
+    \end{example*}
+\end{document}

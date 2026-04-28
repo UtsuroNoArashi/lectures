@@ -1,5 +1,5 @@
 \documentclass{subfiles}
-\begin{document}
+\begin{document}\label{sec:huffmanCodes}
     The first method to build optimal codes was discovered by D. A. Huffman,
         as solution problem posed by his lecturer Robert Fano\footnotemark.
         
@@ -23,10 +23,10 @@
         assigns the codewords by traversing the tree.
         Practically speaking, we can summarize the algorithm as follow:
     \begin{enumerate}
-        \item In not available, compute the symbols probabilities by scanning the txst.
+        \item If not available, compute the symbols probabilities by scanning the text.
         \item Sort the symbols according to their probabilities, non-increseingly.
-        \item Make sure that the number of source symbols is of the form \(d + \alpha(d - 1)\),
-            where \(\alpha\) is an integer.
+        \item Make sure that the number of source symbols \(n\) is \(d + \alpha(d - 1)\),
+            for some integer \(\alpha\).
             If needed add \emph{dummy} symbols with probability 0.
         \item Merge the least \(d\) probable symbols in to a node until a root is formed.
         \item Assign the codeword by traversing the tree.
@@ -39,7 +39,6 @@
 
     In terms of complexity Huffman encoding/decoing takes \(\bigO{n \log n}\),
         where \(n\) is the number of source symbols. 
-
 
     In addition to the tree overhead, we have to consider the possibility in 
         which the tree gets corrupted. In the next few sections we consider some 
